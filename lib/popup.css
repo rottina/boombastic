@@ -28,8 +28,9 @@ header {
 	background: transparent;
 }
 
-h1 .o1 {display:inline-block;-webkit-transform: rotate(-14deg);}
-h1 .o2 {display:inline-block;-webkit-transform: rotate(17deg);}
+h1 .o1, h1 .o2 { display:inline-block; }
+h1 .o1 { -webkit-transform: rotate(-14deg); }
+h1 .o2 { -webkit-transform: rotate(17deg); }
 
 h1 {
 	position: absolute;
@@ -79,7 +80,7 @@ h3, h4 {
 	text-shadow: 1px 1px 0 #121;
 }
 
-h3 { /* artist */
+h3 {
 	font-weight: 900;
 	font-size: 14px;
 	margin: 19px 0 0 76px;
@@ -94,8 +95,12 @@ h4 {
 h4:before {content: '\201C';}
 h4:after {content: '\201D';}
 
-ol, li {margin:0;padding:0;list-style-type: none;}
-ol {margin-right: 3px;}
+ol, li {
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+ol { margin-right: 3px; }
 
 ol li {
 	position: relative;
@@ -126,7 +131,6 @@ li:hover h3, li:hover h4 {
 audio {
 	position: absolute;
 	top: 21px;
-	/*width: 44px;*/
 	width: 48px;
 	right: 1px;
 	border: 0;
@@ -134,28 +138,9 @@ audio {
 audio:hover {
 	cursor: pointer;
 }
-
-audio::-webkit-media-controls-play-button {color: gold;}
-
-/*audio::-webkit-media-controls-panel {display: none;} */
-audio::-webkit-media-controls-mute-button {display: none;}
-audio::-webkit-media-controls-timeline-container {display: none;}
-audio::-webkit-media-controls-current-time-display {display: none;}
-audio::-webkit-media-controls-time-remaining-display {display: none;}
-audio::-webkit-media-controls-timeline {display: none;}
-audio::-webkit-media-controls-volume-slider-container {display: none;}
-audio::-webkit-media-controls-volume-slider {display: none;}
-audio::-webkit-media-controls-seek-back-button {display: none;}
-audio::-webkit-media-controls-seek-forward-button {display: none;}
-audio::-webkit-media-controls-fullscreen-button {display: none;}
-audio::-webkit-media-controls-rewind-button {display: none;}
-audio::-webkit-media-controls-return-to-realtime-button {display: none;}
-audio::-webkit-media-controls-toggle-closed-captions-button {display: none;}
-
-
-
-
-
+audio::-webkit-media-controls-panel {
+	background: transparent;
+}
 
 select {
 	position: absolute;
