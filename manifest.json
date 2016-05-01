@@ -22,7 +22,6 @@
     "*://*.apple.com/*",
     "http://ws.audioscrobbler.com/*",
     "http://pitchfork.com/*",
-    "http://charts.spotify.com/*",
     "http://www.take40.com/*",
     "http://np.absoluteradio.co.uk/*",
     "http://hypem.com/*",
@@ -30,7 +29,7 @@
     "http://feeds.feedburner.com/*"
   ],
   "short_name": "Boom!",
-  "version": "2.2",
+  "version": "2.3",
   "web_accessible_resources": [
     "img/*.*",
     "lib/*.*"
