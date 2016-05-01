@@ -39,7 +39,7 @@ h1 {
 	left: 9px;
 	width: auto;
 	height: 34px;
-	text-shadow: 2px 2px 0 rgb(0,0,0);
+	text-shadow: 2px 2px 0 #000;
 	letter-spacing: -0.03em;
 }
 
@@ -124,15 +124,38 @@ li:hover h3, li:hover h4 {
 	transition: color .3s ease-out, color .3s ease-in;
 }
 audio {
-	width: 44px;
 	position: absolute;
 	top: 21px;
+	/*width: 44px;*/
+	width: 48px;
 	right: 1px;
 	border: 0;
 }
 audio:hover {
-	cursor:pointer;
+	cursor: pointer;
 }
+
+audio::-webkit-media-controls-play-button {color: gold;}
+
+/*audio::-webkit-media-controls-panel {display: none;} */
+audio::-webkit-media-controls-mute-button {display: none;}
+audio::-webkit-media-controls-timeline-container {display: none;}
+audio::-webkit-media-controls-current-time-display {display: none;}
+audio::-webkit-media-controls-time-remaining-display {display: none;}
+audio::-webkit-media-controls-timeline {display: none;}
+audio::-webkit-media-controls-volume-slider-container {display: none;}
+audio::-webkit-media-controls-volume-slider {display: none;}
+audio::-webkit-media-controls-seek-back-button {display: none;}
+audio::-webkit-media-controls-seek-forward-button {display: none;}
+audio::-webkit-media-controls-fullscreen-button {display: none;}
+audio::-webkit-media-controls-rewind-button {display: none;}
+audio::-webkit-media-controls-return-to-realtime-button {display: none;}
+audio::-webkit-media-controls-toggle-closed-captions-button {display: none;}
+
+
+
+
+
 
 select {
 	position: absolute;
@@ -143,11 +166,11 @@ select {
 	border: 1px solid #151517;
 	border-radius: 3px;
 	box-shadow:
-    1px 1px 2px 0 #121212,
-    inset 1px 1px 1px 0 #3e3e3e;
-  color: #f8f8f8;
-  background-color: #3e3e3e;
-  outline: 0;
+	1px 1px 2px 0 #121212,
+	inset 1px 1px 1px 0 #3e3e3e;
+	color: #f8f8f8;
+	background-color: #3e3e3e;
+	outline: 0;
 }
 
 .album {
@@ -173,13 +196,13 @@ a {outline: none;text-decoration: none;}
 	width: 128px;
 	height: 25px;
 	right: 3px;
-  -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.2)));
-  border-radius: 2px;
+	-webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.2)));
+	border-radius: 2px;
 }
 
 #visualisation > div {
-    width: 2.5%;
-    display: inline-block;
-    position: absolute;
-    bottom: 0;
+	width: 2.5%;
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
 }

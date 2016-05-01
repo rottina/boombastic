@@ -5,6 +5,8 @@
   <meta name="author" content="Mike Rottina">
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" type="text/css">
   <link href="/lib/popup.css" rel="stylesheet" type="text/css">
+    <script src="/lib/jquery.min.js" defer></script>
+  <script src="/lib/popup.js" defer></script>
 </head>
 <body>
   <header>
@@ -111,11 +113,6 @@
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/genre=21/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25 | Rock</option>
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/genre=19/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25 | World</option>
 
-      <option disabled="disabled">LAST.FM ::::::::::::::::::::::::::::::::::::::::::::</option>
-      <option value="http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=fc1c6a25df9ed839bb8fa005740439e9&limit=25">&nbsp;&nbsp;last.fm | Top Tracks</option>
-<!--       <option value="http://ws.audioscrobbler.com/2.0/?method=chart.gethypedtracks&api_key=fc1c6a25df9ed839bb8fa005740439e9&limit=25">&nbsp;&nbsp;last.fm | Most Hyped Tracks</option>
-      <option value="http://ws.audioscrobbler.com/2.0/?method=chart.getlovedtracks&api_key=fc1c6a25df9ed839bb8fa005740439e9&limit=25">&nbsp;&nbsp;last.fm | Most Loved Tracks</option> -->
-
       <option disabled="disabled">PITCHFORK MEDIA ::::::::::::::::::::</option>
       <option value="http://pitchfork.com/rss/reviews/best/tracks/">&nbsp;&nbsp;Pitchfork Media | Best New Tracks</option>
       <option value="http://pitchfork.com/rss/reviews/best/reissues/">&nbsp;&nbsp;Pitchfork Media | Best New Reissues</option>
@@ -135,7 +132,5 @@
     </select>
   </header>
   <section><ol> </ol></section>
-  <script src="/lib/jquery.min.js"></script>
-  <script src="/lib/popup.js"></script>
 </body>
 </html>
