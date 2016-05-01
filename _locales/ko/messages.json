@@ -1,0 +1,14 @@
+ {
+  "extName": {
+    "message": "Boombastic!",
+    "description": "The name of the extension."
+  },
+  "headingTagline": {
+    "message": "인터넷에서 미리보기 대중 음악.",
+    "description": "The subheading tagline."
+  },
+  "extDescription": {
+    "message": "보세요, 미리보기 및 인터넷에서 대중 음악 을 구입할 수 있습니다.",
+    "description": "The description under the name of the extension in the extensions page."
+  }
+}

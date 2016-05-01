@@ -1,0 +1,14 @@
+ {
+  "extName": {
+    "message": "Boombastic!",
+    "description": "The name of the extension."
+  },
+  "headingTagline": {
+    "message": "Ακούστε λαϊκή μουσική στο διαδίκτυο.",
+    "description": "The subheading tagline."
+  },
+  "extDescription": {
+    "message": "Ανακαλύψτε, προεπισκόπηση και να αγοράσουν τη λαϊκή μουσική στο διαδίκτυο.",
+    "description": "The description under the name of the extension in the extensions page."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Boombastic!",
+    "description": "The name of the extension."
+  },
+  "headingTagline": {
+    "message": "预览最流行的音乐在互联网上.",
+    "description": "The subheading tagline."
+  },
+  "extDescription": {
+    "message": "搜索，预览，购买最流行的音乐在互联网上。",
+    "description": "The description under the name of the extension in the extensions page."
+  }
+}

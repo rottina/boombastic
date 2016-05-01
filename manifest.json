@@ -1,0 +1,38 @@
+{
+  "author": "Mike Rottina",
+  "browser_action": {
+    "default_icon": "img/icon48.png",
+    "default_popup": "popup.html",
+    "default_title": "__MSG_extName__"
+  },
+  "default_locale": "en_US",
+  "description": "__MSG_extDescription__",
+  "homepage_url": "https://twitter.com/rottina/",
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "incognito": "spanning",
+  "manifest_version": 2,
+  "name": "__MSG_extName__",
+  "offline_enabled": false,
+  "permissions":[
+    "http://www.billboard.com/*",
+    "*://*.apple.com/*",
+    "http://ws.audioscrobbler.com/*",
+    "http://pitchfork.com/*",
+    "http://charts.spotify.com/*",
+    "http://www.take40.com/*",
+    "http://np.absoluteradio.co.uk/*",
+    "http://hypem.com/*",
+    "http://www.amazon.com/*",
+    "http://feeds.feedburner.com/*"
+  ],
+  "short_name": "Boom!",
+  "version": "2.2",
+  "web_accessible_resources": [
+    "img/*.*",
+    "lib/*.*"
+  ]
+}

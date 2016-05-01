@@ -1,0 +1,14 @@
+ {
+  "extName": {
+    "message": "Boombastic!",
+    "description": "The name of the extension."
+  },
+  "headingTagline": {
+    "message": "इंटरनेट पर सबसे लोकप्रिय संगीत का पूर्वावलोकन करें.",
+    "description": "The subheading tagline."
+  },
+  "extDescription": {
+    "message": "डिस्कवर , पूर्वावलोकन और इंटरनेट पर सबसे लोकप्रिय संगीत खरीद.",
+    "description": "The description under the name of the extension in the extensions page."
+  }
+}

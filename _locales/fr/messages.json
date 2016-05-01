@@ -1,0 +1,14 @@
+ {
+  "extName": {
+    "message": "Boombastic!",
+    "description": "The name of the extension."
+  },
+  "headingTagline": {
+    "message": "Aperçu de la musique populaire sur Internet.",
+    "description": "The subheading tagline."
+  },
+  "extDescription": {
+    "message": "Découvrir, prévisualiser et acheter la musique populaire sur Internet.",
+    "description": "The description under the name of the extension in the extensions page."
+  }
+}

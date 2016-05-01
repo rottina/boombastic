@@ -1,0 +1,14 @@
+ {
+  "extName": {
+    "message": "Boombastic!",
+    "description": "The name of the extension."
+  },
+  "headingTagline": {
+    "message": "インターネット上でのプレビューポピュラー音楽.",
+    "description": "The subheading tagline."
+  },
+  "extDescription": {
+    "message": "発見し、プレビュー、インターネット上で人気のある音楽を購入。",
+    "description": "The description under the name of the extension in the extensions page."
+  }
+}

@@ -1,0 +1,14 @@
+ {
+  "extName": {
+    "message": "Boombastic!",
+    "description": "The name of the extension."
+  },
+  "headingTagline": {
+    "message": "Förhands den populäraste musiken på internet.",
+    "description": "The subheading tagline."
+  },
+  "extDescription": {
+    "message": "Utforska, förhandsgranska och köpa de mest populära musiken på internet.",
+    "description": "The description under the name of the extension in the extensions page."
+  }
+}
