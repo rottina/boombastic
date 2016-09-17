@@ -1,5 +1,5 @@
 # Boombastic!
-A chrome extension to display music charts, and other feeds.
+A chrome extension that displays music charts & other feeds, and lets you preview songs.
 
 ## Chrome Store URL
 * [Boombastic! Chrome Store URL](https://chrome.google.com/webstore/detail/boombastic/oiebiojhhafjfnbelgcfdbejekdomcel?hl=en-US)
