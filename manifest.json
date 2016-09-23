@@ -18,18 +18,18 @@
   "name": "__MSG_extName__",
   "offline_enabled": false,
   "permissions":[
-    "http://www.billboard.com/*",
+    "*://*//www.billboard.com/*",
     "*://*.apple.com/*",
-    "http://ws.audioscrobbler.com/*",
-    "http://pitchfork.com/*",
-    "http://www.take40.com/*",
-    "http://np.absoluteradio.co.uk/*",
-    "http://hypem.com/*",
-    "http://www.amazon.com/*",
-    "http://feeds.feedburner.com/*"
+    "*://*//ws.audioscrobbler.com/*",
+    "*://*//pitchfork.com/*",
+    "*://*//www.take40.com/*",
+    "*://*//np.absoluteradio.co.uk/*",
+    "*://*//hypem.com/*",
+    "*://*//www.amazon.com/*",
+    "*://*//feeds.feedburner.com/*"
   ],
   "short_name": "Boom!",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "web_accessible_resources": [
     "img/*.*",
     "lib/*.*"
