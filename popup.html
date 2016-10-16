@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="author" content="Mike Rottina">
-  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
   <link href="/lib/popup.css" rel="stylesheet" type="text/css">
   <script src="/lib/jquery.min.js" defer></script>
   <script src="/lib/popup.js" defer></script>
@@ -15,18 +15,28 @@
     <div id="visualisation" class="hideIfNoApi"><div style="left: 0%; height: 0"></div><div style="left: 3.125%; height: 0"></div><div style="left: 6.25%; height: 0"></div><div style="left: 9.375%; height: 0"></div><div style="left: 12.5%; height: 0"></div><div style="left: 15.625%; height: 0"></div><div style="left: 18.75%; height: 0"></div><div style="left: 21.875%; height: 0"></div><div style="left: 25%; height: 0"></div><div style="left: 28.125%; height: 0"></div><div style="left: 31.25%; height: 0"></div><div style="left: 34.375%; height: 0"></div><div style="left: 37.5%; height: 0"></div><div style="left: 40.625%; height: 0"></div><div style="left: 43.75%; height: 0"></div><div style="left: 46.875%; height: 0"></div><div style="left: 50%; height: 0"></div><div style="left: 53.125%; height: 0"></div><div style="left: 56.25%; height: 0"></div><div style="left: 59.375%; height: 0"></div><div style="left: 62.5%; height: 0"></div><div style="left: 65.625%; height: 0"></div><div style="left: 68.75%; height: 0"></div><div style="left: 71.875%; height: 0"></div><div style="left: 75%; height: 0"></div><div style="left: 78.125%; height: 0"></div><div style="left: 81.25%; height: 0"></div><div style="left: 84.375%; height: 0"></div><div style="left: 87.5%; height: 0"></div><div style="left: 90.625%; height: 0"></div><div style="left: 93.75%; height: 0"></div><div style="left: 96.875%; height: 0"></div></div>
 
     <select id="chartselector">
-      <option disabled="disabled">ABSOLUTE RADIO UK :::::::::::::::::::::::::</option>
-      <option value="http://np.absoluteradio.co.uk/played/abr.rss">&nbsp;&nbsp;Absolute Radio UK | Recently Played</option>
+
       <option disabled="disabled">AMAZON ::::::::::::::::::::::::::::::::::::::::::::</option>
       <option value="http://www.amazon.com/gp/rss/bestsellers/dmusic/digital-music-track/">&nbsp;&nbsp;Amazon | Best Sellers</option>
       <option value="http://www.amazon.com/gp/rss/most-wished-for/music/ref=zg_mw_music_rsslink">&nbsp;&nbsp;Amazon | Most Wished For</option>
       <option value="http://www.amazon.com/gp/rss/movers-and-shakers/dmusic/digital-music-track/">&nbsp;&nbsp;Amazon | Movers &amp; Shakers</option>
       <option value="http://www.amazon.com/gp/rss/new-releases/music/ref=zg_bsnr_music_rsslink">&nbsp;&nbsp;Amazon | New Releases</option>
+
+      <option disabled="disabled">WEB FAVES :::::::::::::::::::::::::::::::::::::::::</option>
+      <option value="http://np.absoluteradio.co.uk/played/abr.rss">&nbsp;&nbsp;Absolute Radio UK | Recently Played</option>
+      <option value="http://hypem.com/feed/spy/">&nbsp;&nbsp;Hype Machine | Global Spy</option>
+      <option value="http://hypem.com/feed/latest/fresh">&nbsp;&nbsp;Hype Machine | Latest Freshness</option>
+      <option value="http://hypem.com/feed/twitter/popular">&nbsp;&nbsp;Hype Machine | Popular on Twitter</option>
+      <option value="http://hypem.com/feed/popular/3day/1/feed.xml">&nbsp;&nbsp;Hype Machine | Popular on Blogs</option>
+      <option value="http://feeds.feedburner.com/indieshuffle?format=xml">&nbsp;&nbsp;Indie Shuffle | Singles</option>
+      <option value="http://pitchfork.com/rss/reviews/best/tracks/">&nbsp;&nbsp;Pitchfork Media | Best New Tracks</option>
+      <option value="http://pitchfork.com/rss/reviews/best/reissues/">&nbsp;&nbsp;Pitchfork Media | Best New Reissues</option>
+      <option value="custom-playlist-prince">&nbsp;&nbsp;Unique Playlist | Prince's &lsquo;New Girl&rsquo; Party Mix</option><!-- http://boingboing.net/2016/04/25/listen-to-princes-personal-p.html -->
+
       <option disabled="disabled">BILLBOARD :::::::::::::::::::::::::::::::::::::::::</option>
       <option value="http://www.billboard.com/rss/charts/social-50" selected>&nbsp;&nbsp;Billboard | Social 25</option>
       <option value="http://www.billboard.com/rss/charts/hot-100">&nbsp;&nbsp;Billboard | Hot 100</option>
       <option value="http://www.billboard.com/rss/charts/twitter-top-tracks">&nbsp;&nbsp;Billboard | Twitter Top Tracks</option>
-
       <option value="custom-bilboard-1966">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 1966</option>
       <option value="custom-bilboard-1967">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 1967</option>
       <option value="custom-bilboard-1968">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 1968</option>
@@ -79,13 +89,6 @@
       <option value="custom-bilboard-2015">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 2015</option>
       <option value="custom-bilboard-2016">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 2016</option>
 
-      <option disabled="disabled">HYPE MACHINE ::::::::::::::::::::::::::::::::::</option>
-      <option value="http://hypem.com/feed/spy/">&nbsp;&nbsp;Hype Machine | Global Spy</option>
-      <option value="http://hypem.com/feed/latest/fresh">&nbsp;&nbsp;Hype Machine | Latest Freshness</option>
-      <option value="http://hypem.com/feed/twitter/popular">&nbsp;&nbsp;Hype Machine | Popular on Twitter</option>
-      <option value="http://hypem.com/feed/popular/3day/1/feed.xml">&nbsp;&nbsp;Hype Machine | Popular on Blogs</option>
-      <option disabled="disabled">INDIE SHUFFLE :::::::::::::::::::::::::::::::::::</option>
-      <option value="http://feeds.feedburner.com/indieshuffle?format=xml">&nbsp;&nbsp;Indie Shuffle | Singles</option>
       <option disabled="disabled">iTUNES :::::::::::::::::::::::::::::::::::::::::::::::</option>
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25</option>
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/genre=20/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25 | Alternative</option>
@@ -115,10 +118,6 @@
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/genre=21/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25 | Rock</option>
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/genre=19/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25 | World</option>
 
-      <option disabled="disabled">PITCHFORK MEDIA ::::::::::::::::::::</option>
-      <option value="http://pitchfork.com/rss/reviews/best/tracks/">&nbsp;&nbsp;Pitchfork Media | Best New Tracks</option>
-      <option value="http://pitchfork.com/rss/reviews/best/reissues/">&nbsp;&nbsp;Pitchfork Media | Best New Reissues</option>
-
       <option disabled="disabled">ROLLING STONE LISTS :::::::::::::::::::::::::</option>
       <option value="custom-rs-summersongs-1970s">&nbsp;&nbsp;Rolling Stone | 1970s | 20 Best Summer Songs</option>
       <option value="custom-rs-pop-1984">&nbsp;&nbsp;Rolling Stone | 1984 | 20 Best Songs</option>
@@ -126,9 +125,6 @@
       <option value="custom-rs-country-saddest">&nbsp;&nbsp;Rolling Stone | 12 Saddest Country Songs</option>
       <option value="custom-rs-hiphop-greatest">&nbsp;&nbsp;Rolling Stone | 10 Greatest Hip-Hop Songs</option>
       <option value="custom-rs-sexiest">&nbsp;&nbsp;Rolling Stone | 10 Sexiest Songs</option>
-
-      <option disabled="disabled">UNIQUE PLAYLISTS :::::::::::::::::::::::::</option>
-      <option value="custom-playlist-prince">&nbsp;&nbsp;Unique Playlist | Prince's &lsquo;New Girl&rsquo; Party Mix</option><!-- http://boingboing.net/2016/04/25/listen-to-princes-personal-p.html -->
 
     </select>
   </header>
