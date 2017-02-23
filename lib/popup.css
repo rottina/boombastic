@@ -70,7 +70,7 @@ section {
 
 h3, h4 {
 	float: left;
-	width: 205px;
+	width: 185px;
 	height: 20px;
 	padding: 0;
 	color: #dadada;
@@ -131,12 +131,11 @@ li:hover h3, li:hover h4 {
 audio {
 	position: absolute;
 	top: 21px;
-	width: 64px;
-	right: -30px;
+	width: 84px;
+	right: -20px;
 	border: 0;
 	padding: 0;
 	margin: 0;
-	display: block;
 }
 audio:hover {
 	cursor: pointer;
