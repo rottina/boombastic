@@ -25,10 +25,11 @@
     "*://np.absoluteradio.co.uk/*",
     "*://hypem.com/*",
     "*://*.amazon.com/*",
-    "*://feeds.feedburner.com/*"
+    "*://feeds.feedburner.com/*",
+    "*://www.abc.net.au/*"
   ],
   "short_name": "Boom!",
-  "version": "2.3.7",
+  "version": "2.3.8",
   "web_accessible_resources": [
     "img/*.*",
     "lib/*.*"
