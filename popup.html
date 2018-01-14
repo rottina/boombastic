@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="author" content="Mike Rottina">
   <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-  <link href="/lib/popup.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/lib/popup.css" type="text/css">
   <script src="/lib/jquery.min.js" defer></script>
   <script src="/lib/popup.js" defer></script>
 </head>
@@ -17,28 +17,29 @@
     <select id="chartselector">
 
       <option disabled="disabled">AMAZON ::::::::::::::::::::::::::::::::::::::::::::</option>
-      <option value="http://www.amazon.com/gp/rss/bestsellers/dmusic/digital-music-track/">&nbsp;&nbsp;Amazon | Best Sellers</option>
-      <option value="http://www.amazon.com/gp/rss/most-wished-for/music/ref=zg_mw_music_rsslink">&nbsp;&nbsp;Amazon | Most Wished For</option>
-      <option value="http://www.amazon.com/gp/rss/movers-and-shakers/dmusic/digital-music-track/">&nbsp;&nbsp;Amazon | Movers &amp; Shakers</option>
-      <option value="http://www.amazon.com/gp/rss/new-releases/music/ref=zg_bsnr_music_rsslink">&nbsp;&nbsp;Amazon | New Releases</option>
+      <option value="https://www.amazon.com/gp/rss/bestsellers/dmusic/digital-music-track/">&nbsp;&nbsp;Amazon | Digital Best Sellers</option>
+      <option value="https://www.amazon.com/gp/rss/most-wished-for/music/ref=zg_mw_music_rsslink">&nbsp;&nbsp;Amazon | Most Wished For</option>
+      <option value="https://www.amazon.com/gp/rss/movers-and-shakers/dmusic/digital-music-track/">&nbsp;&nbsp;Amazon | Movers &amp; Shakers</option>
+      <option value="https://www.amazon.com/gp/rss/new-releases/music/ref=zg_bsnr_music_rsslink">&nbsp;&nbsp;Amazon | New Releases</option>
 
       <option disabled="disabled">WEB FAVES :::::::::::::::::::::::::::::::::::::::::</option>
       <option value="http://www.abc.net.au/jazz/xml/ABC%20JazzJustPlayedRSS.xml">&nbsp;&nbsp;ABC Jazz Party Mix</option>
       <option value="http://np.absoluteradio.co.uk/played/abr.rss">&nbsp;&nbsp;Absolute Radio UK | Recently Played</option>
-      <option value="http://hypem.com/feed/spy/">&nbsp;&nbsp;Hype Machine | Global Spy</option>
-      <option value="http://hypem.com/feed/latest/fresh">&nbsp;&nbsp;Hype Machine | Latest Freshness</option>
-      <option value="http://hypem.com/feed/twitter/popular">&nbsp;&nbsp;Hype Machine | Popular on Twitter</option>
-      <option value="http://hypem.com/feed/popular/3day/1/feed.xml">&nbsp;&nbsp;Hype Machine | Popular on Blogs</option>
       <option value="http://feeds.feedburner.com/indieshuffle?format=xml">&nbsp;&nbsp;Indie Shuffle | Singles</option>
-      <!-- <option value="http://pitchfork.com/rss/reviews/best/tracks/">&nbsp;&nbsp;Pitchfork Media | Best New Tracks</option> -->
-      <option value="http://pitchfork.com/rss/reviews/best/reissues/">&nbsp;&nbsp;Pitchfork Media | Best New Reissues</option>
-      <option value="custom-playlist-prince">&nbsp;&nbsp;Unique Playlist | Prince's &lsquo;New Girl&rsquo; Party Mix</option><!-- http://boingboing.net/2016/04/25/listen-to-princes-personal-p.html -->
+      <option value="https://pitchfork.com/rss/reviews/best/tracks/">&nbsp;&nbsp;Pitchfork Media | Best New Tracks</option>
+      <option value="https://pitchfork.com/rss/reviews/best/reissues/">&nbsp;&nbsp;Pitchfork Media | Best New Reissues</option>
+      <option value="custom-playlist-prince">&nbsp;&nbsp;Unique Playlist | Prince's &lsquo;New Girl&rsquo; Party Mix</option><!-- https://boingboing.net/2016/04/25/listen-to-princes-personal-p.html -->
 
+      <option disabled="disabled">ROLLING STONE :::::::::::::::::::::::::</option>
+      <option value="custom-rs-summersongs-1970s">&nbsp;&nbsp;Rolling Stone | 1970s | 20 Best Summer Songs</option>
+      <option value="custom-rs-pop-1984">&nbsp;&nbsp;Rolling Stone | 1984 | 20 Best Songs</option>
+      <option value="custom-rs-best-2000s">&nbsp;&nbsp;Rolling Stone | 2000s | 20 Best Songs</option>
+      <option value="custom-rs-country-saddest">&nbsp;&nbsp;Rolling Stone | 12 Saddest Country Songs</option>
+      <option value="custom-rs-hiphop-greatest">&nbsp;&nbsp;Rolling Stone | 10 Greatest Hip-Hop Songs</option>
+      <option value="custom-rs-sexiest">&nbsp;&nbsp;Rolling Stone | 10 Sexiest Songs</option>
 
-      <option disabled="disabled">BILLBOARD :::::::::::::::::::::::::::::::::::::::::</option>
-      <option value="http://www.billboard.com/rss/charts/social-50" selected>&nbsp;&nbsp;Billboard | Social 25</option>
-      <option value="http://www.billboard.com/rss/charts/hot-100">&nbsp;&nbsp;Billboard | Hot 100</option>
-      <option value="http://www.billboard.com/rss/charts/twitter-top-tracks">&nbsp;&nbsp;Billboard | Twitter Top Tracks</option>
+      <option disabled="disabled">BILLBOARD HOT 100 :::::::::::::::::::::::::::</option>
+      <option value="custom-bilboard-2018">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 2018</option>
       <option value="custom-bilboard-2017">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 2017</option>
       <option value="custom-bilboard-2016">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 2016</option>
       <option value="custom-bilboard-2015">&nbsp;&nbsp;Billboard | Hot 100 | #1 songs | 2015</option>
@@ -120,14 +121,6 @@
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/genre=24/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25 | Raggae</option>
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/genre=21/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25 | Rock</option>
       <option value="https://itunes.apple.com/us/rss/topsongs/limit=25/genre=19/explicit=true/xml">&nbsp;&nbsp;iTunes Top 25 | World</option>
-
-      <option disabled="disabled">ROLLING STONE LISTS :::::::::::::::::::::::::</option>
-      <option value="custom-rs-summersongs-1970s">&nbsp;&nbsp;Rolling Stone | 1970s | 20 Best Summer Songs</option>
-      <option value="custom-rs-pop-1984">&nbsp;&nbsp;Rolling Stone | 1984 | 20 Best Songs</option>
-      <option value="custom-rs-best-2000s">&nbsp;&nbsp;Rolling Stone | 2000s | 20 Best Songs</option>
-      <option value="custom-rs-country-saddest">&nbsp;&nbsp;Rolling Stone | 12 Saddest Country Songs</option>
-      <option value="custom-rs-hiphop-greatest">&nbsp;&nbsp;Rolling Stone | 10 Greatest Hip-Hop Songs</option>
-      <option value="custom-rs-sexiest">&nbsp;&nbsp;Rolling Stone | 10 Sexiest Songs</option>
 
     </select>
   </header>
