@@ -27,7 +27,7 @@
     "*://www.abc.net.au/*"
   ],
   "short_name": "Boom!",
-  "version": "2.3.9",
+  "version": "2.4.0",
   "web_accessible_resources": [
     "img/*.*",
     "lib/*.*"
