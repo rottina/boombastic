@@ -130,7 +130,7 @@ li:hover h3, li:hover h4 {
 }
 audio {
 	position: absolute;
-	top: 21px;
+	top: 8px;
 	width: 84px;
 	right: -20px;
 	border: 0;
@@ -142,6 +142,34 @@ audio:hover {
 }
 audio::-webkit-media-controls-panel {
 	background: transparent;
+}
+
+audio::-webkit-media-controls-enclosure {
+	background: transparent;
+	width: 59px;
+	overflow: hidden;
+}
+
+audio::-webkit-media-controls-panel {
+filter: invert(100%);
+}
+
+audio::-webkit-media-controls-play-button {
+	margin-left: 10px;
+}
+
+audio::-webkit-media-controls-timeline, audio::-internal-media-controls-overflow-button,
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-internal-track-segment-highlight-before,
+audio::-internal-track-segment-highlight-after,
+audio::-webkit-media-controls-timeline,
+-internal-media-controls-overflow-button {
+	display: none !important;
+}
+
+input[type=range] {
+	display: none !important;
 }
 
 select {
