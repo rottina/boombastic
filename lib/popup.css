@@ -104,7 +104,7 @@ ol { margin-right: 3px; }
 
 ol li {
 	position: relative;
-	min-height: 70px;
+	min-height: 88px;
 	margin: 0 0 5px 7px;
 	border: 1px solid #232328;
 	width: 97%;
@@ -124,6 +124,15 @@ ol li a i {
 	color: #f1f1f1;
 	font-weight: 300;
 }
+
+ol li .itms {
+	margin: 10px auto 0 5px;
+	height: auto;
+	width: 63px;
+}
+
+/Users/mike/Dev/git/boombastic/img/iTunes_Store_Small_Badge_RGB_012318.svg
+
 li:hover h3, li:hover h4 {
 	color: #6ea4e7;
 	transition: color .3s ease-out, color .3s ease-in;
