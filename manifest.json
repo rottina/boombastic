@@ -22,12 +22,11 @@
     "*://pitchfork.com/*",
     "*://www.take40.com/*",
     "*://np.absoluteradio.co.uk/*",
-    "*://*.amazon.com/*",
     "*://feeds.feedburner.com/*",
     "*://www.abc.net.au/*"
   ],
   "short_name": "Boom!",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "web_accessible_resources": [
     "img/*.*",
     "lib/*.*"
