@@ -6,14 +6,14 @@
 ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner, ::-webkit-resizer { display: none; }
 
 body {
+	background-color: #000;
+	color: #f8f8f8;
 	font-family: 'Lato', sans-serif;
 	font-weight: 300;
-	width: 350px;
 	height: 595px;
 	margin: 0;
 	padding: 0;
-	color: #f8f8f8;
-	background-color: #000;
+	width: 350px;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -113,11 +113,11 @@ ol li {
 }
 
 ol li a {
+	color: #fff;
 	float: left;
+	height: 60px;
 	margin: 0;
 	width: 85%;
-	height: 60px;
-	color: #fff;
 }
 
 ol li a i {
@@ -126,8 +126,8 @@ ol li a i {
 }
 
 ol li .itms {
-	margin: 10px auto 0 5px;
 	height: auto;
+	margin: 10px auto 0 5px;
 	width: 63px;
 }
 
@@ -136,14 +136,14 @@ li:hover h3, li:hover h4 {
 	transition: color .3s ease-out, color .3s ease-in;
 }
 audio {
-  position: absolute;
-  top: 8px;
-  width: 100px;
-  right: -35px;
   border: 0;
-  padding: 0;
 	margin: 0;
 	outline: 0;
+  padding: 0;
+  position: absolute;
+  right: -35px;
+  top: 8px;
+  width: 100px;
 }
 
 audio:hover {
@@ -182,51 +182,50 @@ input[type=range] {
 }
 
 select {
+	background-color: #3e3e3e;
+	border: 1px solid #151517;
+	border-radius: 3px;
+	box-shadow: 1px 1px 2px 0 #121212;
+	color: #f8f8f8;
+	height: 31px;
+	inset: 1px 1px 1px 0 #3e3e3e;
+	outline: 0;
 	position: absolute;
 	top: 58px;
 	right: 3px;
 	width: 325px;
-	height: 31px;
-	border: 1px solid #151517;
-	border-radius: 3px;
-	box-shadow:
-	1px 1px 2px 0 #121212,
-	inset 1px 1px 1px 0 #3e3e3e;
-	color: #f8f8f8;
-	background-color: #3e3e3e;
-	outline: 0;
 }
 
 .album {
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px 0 #000;
 	position: absolute;
 	top: 5px;
 	left: 5px;
-	box-shadow: 1px 1px 1px 0 #000;
-	border-radius: 5px;
 }
 
 .badge {
+	left: 9px;
 	position: absolute;
 	top: 42px;
-	left: 9px;
 }
 
-a {outline: none;text-decoration: none;}
+a {outline: none; text-decoration: none;}
 .noaudio { cursor: not-allowed; opacity: 0.33;}
 
 #visualisation {
+	border-radius: 2px;
+	height: 25px;
 	position: absolute;
+	right: 3px;
 	top: 10px;
 	width: 128px;
-	height: 25px;
-	right: 3px;
 	-webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.2)));
-	border-radius: 2px;
 }
 
 #visualisation > div {
-	width: 2.5%;
+	bottom: 0;
 	display: inline-block;
 	position: absolute;
-	bottom: 0;
+	width: 2.5%;
 }
