@@ -29,55 +29,55 @@ header {
 }
 
 h1 .o1, h1 .o2 { display:inline-block; }
-h1 .o1 { -webkit-transform: rotate(-14deg); }
-h1 .o2 { -webkit-transform: rotate(17deg); }
+h1 .o1 { transform: rotate(-14deg); }
+h1 .o2 { transform: rotate(17deg); }
 
 h1 {
-	position: absolute;
 	font-size: 30px;
 	font-weight: 900;
-	top: -15px;
-	left: 9px;
-	width: auto;
 	height: 34px;
-	text-shadow: 2px 2px 0 #000;
+	left: 9px;
 	letter-spacing: -0.03em;
+	position: absolute;
+	text-shadow: 2px 2px 0 #000;
+	top: -15px;
+	width: auto;
 }
 
 h2 {
-	position: absolute;
+	color: #e5e5e5;
 	font-size: 10px;
 	font-weight: 500;
-	color: #e5e5e5;
-	top: 30px;
-	left: 10px;
-	width: auto;
 	height: auto;
+	left: 10px;
 	letter-spacing: -0.02em;
+	position: absolute;
+	top: 30px;
+	width: auto;
 }
 
 section {
-	position: absolute;
-	top: 99px;
+	height: 491px;
 	left:	0;
 	margin: 0 2px 0 0;
-	padding: 0;
-	width: 345px;
-	height: 491px;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	padding: 0;
+	position: absolute;
+	top: 99px;
+	width: 345px;
 }
 
 h3, h4 {
-	float: left;
-	width: 185px;
-	height: 20px;
-	padding: 0;
 	color: #dadada;
+	float: left;
+	height: 20px;
 	overflow: hidden;
+	padding: 0;
 	text-overflow: ellipsis;
-	white-space: nowrap;
 	text-shadow: 1px 1px 0 #121;
+	white-space: nowrap;
+	width: 185px;
 }
 
 h3 {
@@ -103,13 +103,13 @@ ol, li {
 ol { margin-right: 3px; }
 
 ol li {
-	position: relative;
-	min-height: 88px;
-	margin: 0 0 5px 7px;
-	border: 1px solid #232328;
-	width: 97%;
 	background-image: radial-gradient(circle farthest-corner at center top, #222 0%, #131313 70%);
 	border-radius: 5px;
+	border: 1px solid #232328;
+	margin: 0 0 5px 7px;
+	min-height: 88px;
+	position: relative;
+	width: 97%;
 }
 
 ol li a {
