@@ -5,13 +5,12 @@
   <meta name="author" content="Mike Rottina">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
   <link rel="stylesheet" href="/lib/popup.css" type="text/css">
-  <script src="/lib/jquery.min.js" defer></script>
-  <script src="/lib/popup.js" defer></script>
+  <script src="/lib/boom.js" defer></script>
 </head>
 <body>
   <header>
     <h1>B<span class="o1">o</span><span class="o2">o</span>mbastic<span class="o2"> !</span></h1>
-    <h2> </h2>
+    <h2 id="tagline"> </h2>
     <div id="visualisation" class="hideIfNoApi">
       <div style="left: 0%; height: 0"></div><div style="left: 3.125%; height: 0"></div><div style="left: 6.25%; height: 0"></div><div style="left: 9.375%; height: 0"></div><div style="left: 12.5%; height: 0"></div><div style="left: 15.625%; height: 0"></div><div style="left: 18.75%; height: 0"></div><div style="left: 21.875%; height: 0"></div><div style="left: 25%; height: 0"></div><div style="left: 28.125%; height: 0"></div><div style="left: 31.25%; height: 0"></div><div style="left: 34.375%; height: 0"></div><div style="left: 37.5%; height: 0"></div><div style="left: 40.625%; height: 0"></div><div style="left: 43.75%; height: 0"></div><div style="left: 46.875%; height: 0"></div><div style="left: 50%; height: 0"></div><div style="left: 53.125%; height: 0"></div><div style="left: 56.25%; height: 0"></div><div style="left: 59.375%; height: 0"></div><div style="left: 62.5%; height: 0"></div><div style="left: 65.625%; height: 0"></div><div style="left: 68.75%; height: 0"></div><div style="left: 71.875%; height: 0"></div><div style="left: 75%; height: 0"></div><div style="left: 78.125%; height: 0"></div><div style="left: 81.25%; height: 0"></div><div style="left: 84.375%; height: 0"></div><div style="left: 87.5%; height: 0"></div><div style="left: 90.625%; height: 0"></div><div style="left: 93.75%; height: 0"></div><div style="left: 96.875%; height: 0"></div>
     </div>
@@ -20,8 +19,8 @@
 
       <option disabled="disabled">WEB FAVES :::::::::::::::::::::::::::::::::::::::::</option>
       <option value="https://feeds.feedburner.com/indieshuffle?format=xml">&nbsp;&nbsp;Indie Shuffle</option>
-      <option value="https://pitchfork.com/rss/reviews/best/tracks/">&nbsp;&nbsp;Pitchfork | Best New Tracks</option>
-      <option value="https://pitchfork.com/rss/reviews/best/reissues/">&nbsp;&nbsp;Pitchfork | Best New Reissues</option>
+      <option value="https://pitchfork.com/feed/reviews/best/tracks/rss">&nbsp;&nbsp;Pitchfork | Best New Tracks</option>
+      <option value="https://pitchfork.com/feed/reviews/best/reissues/rss">&nbsp;&nbsp;Pitchfork | Best New Reissues</option>
       <option value="custom-playlist-prince">&nbsp;&nbsp;Unique Playlist | Prince's &lsquo;New Girl&rsquo; Party Mix</option><!-- https://boingboing.net/2016/04/25/listen-to-princes-personal-p.html -->
 
       <option disabled="disabled">BILLBOARD HOT 100 :::::::::::::::::::::::::::</option>
@@ -125,6 +124,6 @@
 
     </select>
   </header>
-  <section><ol> </ol></section>
+  <main><ol> </ol></main>
 </body>
 </html>

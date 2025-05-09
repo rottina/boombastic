@@ -18,14 +18,14 @@ body {
 }
 
 header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 335px;
+	background: transparent;
 	height: auto;
+	left: 0;
 	margin: 0;
 	padding: 0;
-	background: transparent;
+	position: absolute;
+	top: 0;
+	width: 335px;
 }
 
 h1 .o1, h1 .o2 { display:inline-block; }
@@ -56,7 +56,7 @@ h2 {
 	width: auto;
 }
 
-section {
+main {
 	height: 491px;
 	left:	0;
 	margin: 0 2px 0 0;
