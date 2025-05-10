@@ -1,12 +1,3 @@
-// var context = new AudioContext(),
-//     analyser = this.context.createAnalyser(),
-//     frequencyData = new Uint8Array(this.analyser.frequencyBinCount),
-//     sourceNode, audios, currentAudio,
-//     visualisation = document.getElementById("visualisation"),
-//     // $("#visualisation"),
-//     bars = document.getElementById("visualisation > div"),
-//     barSpacingPercent = 100 / this.analyser.frequencyBinCount;
-
 const Boom = {
   init: () => {
     console.log("in INIT");
@@ -38,11 +29,17 @@ const Boom = {
           console.log(
             `%c${i}`,
             "color:red",
-            node.querySelector("title")?.textContent || "",
+            node.querySelector("name")?.textContent || "Untitled",
           );
-          console.log(i, node.querySelector("rights")?.textContent || "No rights");
           console.log(i, node.querySelector("artist")?.textContent || "No artist");
+          console.log(i, node.querySelector('img[height="60"]')?.textContent || "No 60 img");
+          
+          console.log(i, node.querySelector("link")?.textContent || "No mp4");
+          console.log(i, node.querySelector("price")?.textContent || "No price");
+
+
           console.groupEnd();
+          
         }
         // console.log(xmlDoc.getElementsByTagName('entry')[0]);
         // console.log(xmlDoc.getElementsByTagName('im:name')[0]);
