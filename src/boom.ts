@@ -92,7 +92,7 @@ const Boom = {
     let amImage = document.createElement("img");
     amImage.setAttribute("src", "../img/apple-music-compact.svg");
     amImage.setAttribute("alt", "Apple Music");
-    amImage.setAttribute("class", "itms");
+    amImage.setAttribute("class", "am");
     amImage.setAttribute("title", "Lsten on Apple Music");
 
     let img = document.createElement("img");
@@ -120,7 +120,7 @@ const Boom = {
     li.appendChild(link);
     li.appendChild(audio);
     li.appendChild(amImage);
-    document.querySelector("ul")?.appendChild(li);
+    document.querySelector("ol")?.appendChild(li);
 
 // <li>
 //   <a href="#" id="1650841515" title="Taylor Swift in iTunes">
