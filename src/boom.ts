@@ -5,10 +5,10 @@ const Boom = {
     const publisherId = "11l6841";
     // https://music.apple.com/us/album/last-night/1667990565?i=1667990774&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841
 
-    https://music.apple.com/us/album/catch-a-cold-one/1752596071?i=1752596086&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1752596086&at=11l6841
+    //https://music.apple.com/us/album/catch-a-cold-one/1752596071?i=1752596086&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1752596086&at=11l6841
     console.log("in Init");
     Boom.getTracks(
-      "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=6/explicit=true/json"
+      "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json"
     );
   },
 
@@ -27,7 +27,7 @@ const Boom = {
         for (let i = 0; i < tracks.length; i++) {
           let trackId = tracks[i].id.attributes["im:id"];
           let trackArtist = tracks[i]["im:artist"].label;
-          let trackTitle = tracks[i]["im:name"].label;
+          let trackTitle = tracks[i]["im:name"].label; 
           let trackImgUrl = tracks[i]["im:image"][1].label;
           let trackAudioUrl = tracks[i].link[1].attributes.href;
 
@@ -62,6 +62,8 @@ const Boom = {
     console.log("in displayTrack");
     let li = document.createElement("li");
     console.log("trackImgUrl: " + trackImgUrl);
+    console.log("trackTitle: " + trackTitle);
+    trackTitle
     //let Text = document.createTextNode(trackArtist);
     document.querySelector("ul")?.appendChild(li);
     Boom.generateAudioElement(li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl);
@@ -71,50 +73,50 @@ const Boom = {
     console.log("in generateAudioElement");
     let audio = document.createElement("audio");
     audio.setAttribute("type", "audio/mpeg");
-    audio.setAttribute("src", trackAudioUrl);
+    audio.setAttribute("src", trackImgUrl);
     audio.setAttribute("controls", "controls");
     audio.setAttribute("controlsList", "nodownload");
     audio.setAttribute("preload", "auto");
     audio.setAttribute("loop", "false");
 
     let link = document.createElement("a");
-    link.setAttribute("href", trackAudioUrl);
+    link.setAttribute("href", trackImgUrl);
     link.setAttribute("id", "x");
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener noreferrer");
     link.setAttribute("title", "WOOOOOO");
 
-    let itms = document.createElement("img");
-    itms.setAttribute("src", "../img/apple-music-compact.svg");
-    itms.setAttribute("alt", "Apple Music");
-    itms.setAttribute("class", "itms");
-    itms.setAttribute("title", "Lsten on Apple Music");
+    let amImage = document.createElement("img");
+    amImage.setAttribute("src", "../img/apple-music-compact.svg");
+    amImage.setAttribute("alt", "Apple Music");
+    amImage.setAttribute("class", "itms");
+    amImage.setAttribute("title", "Lsten on Apple Music");
 
     let img = document.createElement("img");
-    img.setAttribute("src", trackImgUrl);
+    img.setAttribute("src", trackAudioUrl );
+    img.setAttribute("class", "album");
     img.setAttribute("height", "60");
     img.setAttribute("width", "60");
     img.setAttribute("alt", "album art");
-    img.setAttribute("class", "album");
-    img.setAttribute("title", trackTitle);
+    img.setAttribute("title", "album art");
     //img.setAttribute("loading", "lazy");
 
     let h3 = document.createElement("h3");
     h3.setAttribute("class", "artist");
-    h3.innerText = trackArtist;
-    h3.setAttribute("title", trackArtist);
-    h3.setAttribute("aria-label", trackArtist);
+    let h3Node: Text = document.createTextNode(trackArtist);
+    if (h3) { h3.appendChild(h3Node); }
     
     let h4 = document.createElement("h4");
     h4.setAttribute("class", "title");
-    h4.innerText = trackTitle;
+    let h4Node: Text = document.createTextNode(trackTitle);
+    if (h4) { h4.appendChild(h4Node); }
 
     link.appendChild(img);
     link.appendChild(h3);
     link.appendChild(h4);
     li.appendChild(link);
     li.appendChild(audio);
-    li.appendChild(itms);
+    li.appendChild(amImage);
     document.querySelector("ul")?.appendChild(li);
 
 // <li>
