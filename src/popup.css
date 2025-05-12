@@ -26,11 +26,14 @@
   display: none;
 }
 
+
 body {
   background-color: #000;
   color: #f8f8f8;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 333;
   height: 595px;
   margin: 0;
   padding: 0;

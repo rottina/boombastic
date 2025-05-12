@@ -1,6 +1,11 @@
+import { isThrowStatement } from "typescript";
+
 const Boom = {
   init: () => {
     const publisherId = "11l6841";
+    // https://music.apple.com/us/album/last-night/1667990565?i=1667990774&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841
+
+    https://music.apple.com/us/album/catch-a-cold-one/1752596071?i=1752596086&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1752596086&at=11l6841
     console.log("in Init");
     Boom.getTracks(
       "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=6/explicit=true/json"
@@ -23,7 +28,7 @@ const Boom = {
           let trackId = tracks[i].id.attributes["im:id"];
           let trackArtist = tracks[i]["im:artist"].label;
           let trackTitle = tracks[i]["im:name"].label;
-          let trackImgUrl = tracks[i]["im:image"][2].label;
+          let trackImgUrl = tracks[i]["im:image"][1].label;
           let trackAudioUrl = tracks[i].link[1].attributes.href;
 
           console.group(i);
@@ -56,13 +61,13 @@ const Boom = {
   displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string) {
     console.log("in displayTrack");
     let li = document.createElement("li");
-    let Text = document.createTextNode(trackArtist);
-    li.appendChild(Text);
+    console.log("trackImgUrl: " + trackImgUrl);
+    //let Text = document.createTextNode(trackArtist);
     document.querySelector("ul")?.appendChild(li);
-    Boom.generateAudioElement(trackArtist, trackAudioUrl, trackTitle, trackImgUrl);
+    Boom.generateAudioElement(li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl);
   },
 
-  generateAudioElement: function displayTrack(trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string) {
+  generateAudioElement: function displayTrack(li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string) {
     console.log("in generateAudioElement");
     let audio = document.createElement("audio");
     audio.setAttribute("type", "audio/mpeg");
@@ -77,37 +82,53 @@ const Boom = {
     link.setAttribute("id", "x");
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener noreferrer");
-    link.setAttribute("title", "blahhhhh");
+    link.setAttribute("title", "WOOOOOO");
 
     let itms = document.createElement("img");
-    itms.setAttribute("src", "../img/iTunes_Store_Small_Badge_RGB_012318.svg");
-    itms.setAttribute("alt", "iTunes Store");
+    itms.setAttribute("src", "../img/apple-music-compact.svg");
+    itms.setAttribute("alt", "Apple Music");
     itms.setAttribute("class", "itms");
-    itms.setAttribute("title", "Get it on iTunes");
+    itms.setAttribute("title", "Lsten on Apple Music");
 
     let img = document.createElement("img");
-    img.setAttribute("src", trackAudioUrl);
+    img.setAttribute("src", trackImgUrl);
     img.setAttribute("height", "60");
     img.setAttribute("width", "60");
     img.setAttribute("alt", "album art");
     img.setAttribute("class", "album");
-    img.setAttribute("title", "album art");
+    img.setAttribute("title", trackTitle);
     //img.setAttribute("loading", "lazy");
 
     let h3 = document.createElement("h3");
     h3.setAttribute("class", "artist");
-    h3.innerText = "Taylor Swift";
+    h3.innerText = trackArtist;
+    h3.setAttribute("title", trackArtist);
+    h3.setAttribute("aria-label", trackArtist);
     
     let h4 = document.createElement("h4");
     h4.setAttribute("class", "title");
-    h4.innerText = "Anti-Hero";
-    
-    document.querySelector("ul")?.appendChild(audio);
-    document.querySelector("ul")?.appendChild(link);
-    document.querySelector("ul")?.appendChild(itms);
-    document.querySelector("ul")?.appendChild(img);
-    document.querySelector("ul")?.appendChild(h3);
-    document.querySelector("ul")?.appendChild(h4);   
+    h4.innerText = trackTitle;
+
+    link.appendChild(img);
+    link.appendChild(h3);
+    link.appendChild(h4);
+    li.appendChild(link);
+    li.appendChild(audio);
+    li.appendChild(itms);
+    document.querySelector("ul")?.appendChild(li);
+
+// <li>
+//   <a href="#" id="1650841515" title="Taylor Swift in iTunes">
+//     <img src="60x60bb.jpg" height="60" width="60" alt="album art" class="album">
+//     <h3>Taylor Swift</h3>
+//     <h4>Anti-Hero</h4>
+//   </a>
+//     <audio type="audio/mpeg" src="aac.p.m4a" preload="auto" controls=""></audio>
+//     <img src="/img/iTunes_Store_Small_Badge_RGB_012318.svg" alt="iTunes Store" class="itms" title="Get it on iTunes">
+// </li>
+
+
+ 
   } // Closing brace for generateAudioElement function
 
 }; // Closing brace for Boom object
