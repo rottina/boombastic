@@ -1,70 +1,116 @@
 const Boom = {
   init: () => {
-    console.log("in INIT");
+    const publisherId = "11l6841";
+    console.log("in Init");
     Boom.getTracks(
-      "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=6/explicit=true/xml",
-      "xml",
+      "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=6/explicit=true/json"
     );
   },
 
-  getTracks: async function getData(playlist: string, dataType: string) {
+  getTracks: async <T>(playlist: string): Promise<T> => {
     const playlistInfo: string = "in gettracks " + playlist;
     console.log(playlist);
-    const response = await fetch(playlist);
+    try {
+      const response = await fetch(playlist);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      } else {
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+        const data = await response.json();
+        const tracks = data.feed.entry;
+        console.dir(tracks);
+        for (let i = 0; i < tracks.length; i++) {
+          let trackId = tracks[i].id.attributes["im:id"];
+          let trackArtist = tracks[i]["im:artist"].label;
+          let trackTitle = tracks[i]["im:name"].label;
+          let trackImgUrl = tracks[i]["im:image"][2].label;
+          let trackAudioUrl = tracks[i].link[1].attributes.href;
 
-    const tracks = await response.text();
-    if (tracks) {
-      if (dataType === "xml") {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(tracks, "text/xml");
-        //console.log(Object.values(xmlDoc));
-        const nodeList = xmlDoc.querySelectorAll("entry");
-        let trackArtist, trackTitle, trackAlbum, trackUrl; 
-        for (const [i, node] of nodeList.entries()) {
-          trackArtist = node.querySelector("artist")?.textContent || "No artist";
-          trackTitle = node.querySelector("name")?.textContent || "No title";
-
-          // trackUrl = node.querySelector("im:collection")?.textContent || "No url";
-          // Fields needed:
-          // artist, title, 60img, album/song url
-          console.group(i, node);
+          console.group(i);
+          console.log("trackId: " + trackId);
           console.log(
             `%c${i}`,
             "color:green",
-            node.querySelector("name")?.textContent || "No song title",
+            trackArtist
           );
-          console.log(i, node.querySelector("artist")?.textContent || "No artist");
-          console.log(i, node.querySelector('image[height="60"]')?.textContent?.trim() ?? "No 60 img");
-          
-          console.log(i, node.querySelector('link[rel="enclosure"]')?.getAttribute('href') || "No mp4 link");
-          console.log(i, node.querySelector("price")?.textContent || "No price");
+          console.log(
+            `%c${i}`,
+            "font-style:bold",
+            trackTitle
+          );
+          console.log("trackImgUrl: " + trackImgUrl);
+          console.log("trackAudioUrl: " + trackAudioUrl);
           console.groupEnd();
+          
+          Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl);
         }
-        //Boom.displayTrack(trackArtist, trackTitle);
-        // console.log(xmlDoc.getElementsByTagName('entry')[0]);
-        // console.log(xmlDoc.getElementsByTagName('im:name')[0]);
-        // console.log(xmlDoc.getElementsByTagName('title')[0]);
-      } else {
-        //json  [0].childNodes[5]
+        return data as T; // Return the data as the generic type T
       }
-    } else {
-      console.error("Failed to parse response");
+    }
+    catch (error: any) {
+      console.error("Fetch error:", error);
+      throw error;
     }
   },
 
-  displayTrack: function displayTrack(trackArtist: string, trackTitle: string) {
-    console.log("in printTracks");
-    console.log(trackArtist +' *** '+ trackTitle);
+  displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string) {
+    console.log("in displayTrack");
     let li = document.createElement("li");
     let Text = document.createTextNode(trackArtist);
     li.appendChild(Text);
     document.querySelector("ul")?.appendChild(li);
-  }
-};
+    Boom.generateAudioElement(trackArtist, trackAudioUrl, trackTitle, trackImgUrl);
+  },
+
+  generateAudioElement: function displayTrack(trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string) {
+    console.log("in generateAudioElement");
+    let audio = document.createElement("audio");
+    audio.setAttribute("type", "audio/mpeg");
+    audio.setAttribute("src", trackAudioUrl);
+    audio.setAttribute("controls", "controls");
+    audio.setAttribute("controlsList", "nodownload");
+    audio.setAttribute("preload", "auto");
+    audio.setAttribute("loop", "false");
+
+    let link = document.createElement("a");
+    link.setAttribute("href", trackAudioUrl);
+    link.setAttribute("id", "x");
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+    link.setAttribute("title", "blahhhhh");
+
+    let itms = document.createElement("img");
+    itms.setAttribute("src", "../img/iTunes_Store_Small_Badge_RGB_012318.svg");
+    itms.setAttribute("alt", "iTunes Store");
+    itms.setAttribute("class", "itms");
+    itms.setAttribute("title", "Get it on iTunes");
+
+    let img = document.createElement("img");
+    img.setAttribute("src", trackAudioUrl);
+    img.setAttribute("height", "60");
+    img.setAttribute("width", "60");
+    img.setAttribute("alt", "album art");
+    img.setAttribute("class", "album");
+    img.setAttribute("title", "album art");
+    //img.setAttribute("loading", "lazy");
+
+    let h3 = document.createElement("h3");
+    h3.setAttribute("class", "artist");
+    h3.innerText = "Taylor Swift";
+    
+    let h4 = document.createElement("h4");
+    h4.setAttribute("class", "title");
+    h4.innerText = "Anti-Hero";
+    
+    document.querySelector("ul")?.appendChild(audio);
+    document.querySelector("ul")?.appendChild(link);
+    document.querySelector("ul")?.appendChild(itms);
+    document.querySelector("ul")?.appendChild(img);
+    document.querySelector("ul")?.appendChild(h3);
+    document.querySelector("ul")?.appendChild(h4);   
+  } // Closing brace for generateAudioElement function
+
+}; // Closing brace for Boom object
 
 window.addEventListener("load", (event) => {
   console.log("extension loaded");
