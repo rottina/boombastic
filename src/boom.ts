@@ -64,8 +64,9 @@ const Boom = {
   displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string) {
     console.log("in displayTrack");
     let li = document.createElement("li");
+    li.setAttribute("data-id", trackId);
     console.log("trackImgUrl: " + trackImgUrl);
-    console.log("trackImgUrl: " + trackImgUrl);
+    console.log("trackAudioUrl: " + trackAudioUrl);
     console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
     //let Text = document.createTextNode(trackArtist);
     document.querySelector("ul")?.appendChild(li);
@@ -76,7 +77,7 @@ const Boom = {
     console.log("in generateAudioElement");
     let audio = document.createElement("audio");
     audio.setAttribute("type", "audio/mpeg");
-    audio.setAttribute("src", trackImgUrl);
+    audio.setAttribute("src", trackAudioUrl);
     audio.setAttribute("controls", "controls");
     audio.setAttribute("controlsList", "nodownload");
     audio.setAttribute("preload", "auto");
