@@ -30,6 +30,7 @@ const Boom = {
           let trackTitle = tracks[i]["im:name"].label; 
           let trackImgUrl = tracks[i]["im:image"][1].label;
           let trackAudioUrl = tracks[i].link[1].attributes.href;
+          let trackAppleMusicUrl = tracks[i].id.label;
 
           console.group(i);
           console.log("trackId: " + trackId);
@@ -45,9 +46,11 @@ const Boom = {
           );
           console.log("trackImgUrl: " + trackImgUrl);
           console.log("trackAudioUrl: " + trackAudioUrl);
+          console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
           console.groupEnd();
           
-          Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl);
+          Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl);
+          break; // debug: Remove this break to display all tracks
         }
         return data as T; // Return the data as the generic type T
       }
@@ -58,18 +61,18 @@ const Boom = {
     }
   },
 
-  displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string) {
+  displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string) {
     console.log("in displayTrack");
     let li = document.createElement("li");
     console.log("trackImgUrl: " + trackImgUrl);
-    console.log("trackTitle: " + trackTitle);
-    trackTitle
+    console.log("trackImgUrl: " + trackImgUrl);
+    console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
     //let Text = document.createTextNode(trackArtist);
     document.querySelector("ul")?.appendChild(li);
-    Boom.generateAudioElement(li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl);
+    Boom.generateAudioElement(li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl);
   },
 
-  generateAudioElement: function displayTrack(li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string) {
+  generateAudioElement: function displayTrack(li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string) {
     console.log("in generateAudioElement");
     let audio = document.createElement("audio");
     audio.setAttribute("type", "audio/mpeg");
@@ -80,7 +83,7 @@ const Boom = {
     audio.setAttribute("loop", "false");
 
     let link = document.createElement("a");
-    link.setAttribute("href", trackImgUrl);
+    link.setAttribute("href", trackAppleMusicUrl);
     link.setAttribute("id", "x");
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener noreferrer");
@@ -108,7 +111,7 @@ const Boom = {
     
     let h4 = document.createElement("h4");
     h4.setAttribute("class", "title");
-    let h4Node: Text = document.createTextNode(trackTitle);
+    let h4Node: Text = document.createTextNode('Static track name blah');
     if (h4) { h4.appendChild(h4Node); }
 
     link.appendChild(img);

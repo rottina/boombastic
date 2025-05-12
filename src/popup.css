@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "DM Sans";
+  src:
+    local("DM Sans"),
+    url("DMSans-VariableFont_opsz,wght.ttf") format("ttf");
+}
+
 ::-webkit-scrollbar {
   width: 7px;
 }
