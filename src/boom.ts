@@ -17,28 +17,28 @@ const Boom = {
       const response = await fetch(playlist);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
-      } else {
+      } 
         const publisherSlug = "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
         const data = await response.json();
         const tracks = data.feed.entry;
         console.dir(tracks);
-        for (let i = 0; i < tracks.length; i++) {
-          let trackId = tracks[i].id.attributes["im:id"];
-          let trackArtist = tracks[i]["im:artist"].label;
-          let trackTitle = tracks[i]["im:name"].label; 
-          let trackImgUrl = tracks[i]["im:image"][1].label;
-          let trackAudioUrl = tracks[i].link[1].attributes.href;
-          let trackAppleMusicUrl = tracks[i].id.label + publisherSlug;
+        for(const track of tracks) {
+          let trackId = track.id.attributes["im:id"];
+          let trackArtist = track["im:artist"].label;
+          let trackTitle = track["im:name"].label; 
+          let trackImgUrl = track["im:image"][1].label;
+          let trackAudioUrl = track.link[1].attributes.href;
+          let trackAppleMusicUrl = track.id.label + publisherSlug;
 
-          console.group(i);
+          console.group(trackId);
           console.log("trackId: " + trackId);
           console.log(
-            `%c${i}`,
+            `%c${trackId}`,
             "color:green",
             trackArtist
           );
           console.log(
-            `%c${i}`,
+            `%c${trackId}`,
             "font-style:bold",
             trackTitle
           );
@@ -51,7 +51,6 @@ const Boom = {
           break; // debug: Remove this break to display all tracks
         }
         return data as T; // Return the data as the generic type T
-      }
     }
     catch (error: any) {
       console.error("Fetch error:", error);
