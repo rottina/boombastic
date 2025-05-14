@@ -2,7 +2,7 @@
   font-family: "DM Sans";
   src:
     local("DM Sans"),
-    url("DMSans-VariableFont_opsz,wght.ttf") format("ttf");
+    url("lib/DMSans-VariableFont_opsz,wght.ttf") format("ttf");
 }
 
 ::-webkit-scrollbar {
@@ -279,13 +279,13 @@ a {
   top: 10px;
   width: 128px;
   -webkit-box-reflect: below 1px
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(transparent),
-      to(rgba(255, 255, 255, 0.2))
-    );
+  gradient(
+    linear,
+    left top,
+    left bottom,
+    from(transparent),
+    to(rgba(255, 255, 255, 0.2))
+  );
 }
 
 #visualisation > div {
