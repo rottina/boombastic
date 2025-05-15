@@ -1,0 +1,16 @@
+{
+  "options": [
+      {
+        "label": "Apple Music Top 25 | Raggae",
+        "value": "genre=24/explicit=true/json"
+      },
+      {
+        "label": "Apple Music Top 25 | Rock",
+        "value": "genre=21/explicit=true/json"
+      },
+      {
+        "label": "Apple Music Top 25 | World",
+        "value": "genre=19/explicit=true/json"
+      }
+  ]
+}

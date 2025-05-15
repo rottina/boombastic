@@ -1,10 +1,10 @@
-import { isThrowStatement } from "typescript";
 
 const Boom = {
   init: () => {
     // https://music.apple.com/us/album/last-night/1667990565?i=1667990774&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841
 
     console.log("in Init");
+    Boom.populateSelector();
     Boom.getTracks(
       "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json"
     );
@@ -12,45 +12,43 @@ const Boom = {
 
   getTracks: async <T>(playlist: string): Promise<T> => {
     const playlistInfo: string = "in gettracks " + playlist;
-    console.log(playlist);
+    //console.log(playlist);
     try {
       const response = await fetch(playlist);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
-      } 
-        const publisherSlug = "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
-        const data = await response.json();
-        const tracks = data.feed.entry;
-        console.dir(tracks);
-        for(const track of tracks) {
-          let trackId = track.id.attributes["im:id"];
-          let trackArtist = track["im:artist"].label;
-          let trackTitle = track["im:name"].label; 
-          let trackImgUrl = track["im:image"][1].label;
-          let trackAudioUrl = track.link[1].attributes.href;
-          let trackAppleMusicUrl = track.id.label + publisherSlug;
+      }
+      const publisherSlug = "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
+      let parent = document.querySelector("ol");
+      if (parent) { parent.innerHTML = ""; } //clear children
+      const data = await response.json();
+      const tracks = data.feed.entry;
+        //console.dir(tracks);
+      for(const track of tracks) {
+        let trackId = track.id.attributes["im:id"];
+        let trackArtist = track["im:artist"].label;
+        let trackTitle = track["im:name"].label; 
+        let trackImgUrl = track["im:image"][1].label;
+        let trackAudioUrl = track.link[1].attributes.href;
+        let trackAppleMusicUrl = track.id.label + publisherSlug;
 
-          console.group(trackId);
-          console.log("trackId: " + trackId);
-          console.log(
-            `%c${trackId}`,
-            "color:green",
-            trackArtist
-          );
-          console.log(
-            `%c${trackId}`,
-            "font-style:bold",
-            trackTitle
-          );
-          console.log("trackImgUrl: " + trackImgUrl);
-          console.log("trackAudioUrl: " + trackAudioUrl);
-          console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
-          console.groupEnd();
+          // console.group(trackId);
+          // console.log("trackId: " + trackId);
+          // console.log(
+          //   `%c${trackId}`,
+          //   "color:green",
+          //   trackArtist,
+          //   trackTitle
+          // );
+          // console.log("trackImgUrl: " + trackImgUrl);
+          // //console.log("trackAudioUrl: " + trackAudioUrl);
+          // console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
+          // console.groupEnd();
           
-          Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl);
-          break; // debug: Remove this break to display all tracks
-        }
-        return data as T; // Return the data as the generic type T
+        Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl);
+        //break; // debug: Remove this break to display all tracks
+      }
+      return data as T; // Return the data as the generic type T
     }
     catch (error: any) {
       console.error("Fetch error:", error);
@@ -59,33 +57,32 @@ const Boom = {
   },
 
   displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string) {
-    console.log("in displayTrack");
+    //console.log("in displayTrack");
     let li = document.createElement("li");
     li.setAttribute("data-id", trackId);
-    console.log("trackImgUrl: " + trackImgUrl);
-    console.log("trackAudioUrl: " + trackAudioUrl);
-    console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
+    // console.log("trackImgUrl: " + trackImgUrl);
+    // console.log("trackAudioUrl: " + trackAudioUrl);
+    // console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
     //let Text = document.createTextNode(trackArtist);
     document.querySelector("ul")?.appendChild(li);
     Boom.generateAudioElement(li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl);
   },
 
   generateAudioElement: function displayTrack(li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string) {
-    console.log("in generateAudioElement");
+    //console.log("in generateAudioElement -------" + trackAudioUrl);
     let audio = document.createElement("audio");
     audio.setAttribute("type", "audio/mpeg");
-    audio.setAttribute("src", trackAudioUrl);
-    audio.setAttribute("controls", "controls");
-    //audio.setAttribute("controlsList", "nodownload");
+    audio.setAttribute("src", "#");
+    audio.setAttribute("controls", "");
     audio.setAttribute("preload", "auto");
-    audio.setAttribute("loop", "false");
+    //audio.setAttribute("loop", "false");
 
     let link = document.createElement("a");
     link.setAttribute("href", trackAppleMusicUrl);
     link.setAttribute("id", "x");
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener noreferrer");
-    link.setAttribute("title", "WOOOOOO");
+    link.setAttribute("title", trackTitle);
 
     let amImage = document.createElement("img");
     amImage.setAttribute("src", "../img/apple-music-compact.svg");
@@ -119,21 +116,50 @@ const Boom = {
     li.appendChild(audio);
     li.appendChild(amImage);
     document.querySelector("ol")?.appendChild(li);
+  },
 
-// <li>
-//   <a href="#" id="1650841515" title="Taylor Swift in iTunes">
-//     <img src="60x60bb.jpg" height="60" width="60" alt="album art" class="album">
-//     <h3>Taylor Swift</h3>
-//     <h4>Anti-Hero</h4>
-//   </a>
-//     <audio type="audio/mpeg" src="aac.p.m4a" preload="auto" controls=""></audio>
-//     <img src="/img/iTunes_Store_Small_Badge_RGB_012318.svg" alt="iTunes Store" class="itms" title="Get it on iTunes">
-// </li>
+  populateSelector: async <T>(): Promise<T> => {
+    console.log('in populateSelect');
+    const optionsFile = "options.json";
+    try {
+      const response = await fetch(optionsFile);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      } 
+      const data = await response.json();
+      const prefix = "https://itunes.apple.com/us/rss/topsongs/limit=25/";
+      const opts = data.options;
+      console.dir(opts);
+      const selector = document.querySelector("select");
+        console.dir(opts);
+        for(const opt of opts) {
+          //break; // debug
+          if (selector) {
+              let optionElement = document.createElement("option");
+              if (optionElement) {
+                optionElement.value = prefix + opt.value;
+                optionElement.textContent = opt.label;
+              }
+              if (optionElement) {
+                selector.appendChild(optionElement);
+              }
+              selector.addEventListener("change", (event) => {
+              let selectedValue = (event.target as HTMLSelectElement).value;
+              console.log("Selected value:", selectedValue);
+              // Call getTracks with the selected value
+              Boom.getTracks(selectedValue);
+            });
+          }
 
+        }
+        return data as T; // Return the data as the generic type T
+    }
+    catch (error: any) {
+      console.error("Fetch error:", error);
+      throw error;
+    }
 
- 
   } // Closing brace for generateAudioElement function
-
 }; // Closing brace for Boom object
 
 window.addEventListener("load", (event) => {
