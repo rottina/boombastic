@@ -1,9 +1,6 @@
 
 const Boom = {
   init: () => {
-    // https://music.apple.com/us/album/last-night/1667990565?i=1667990774&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841
-
-    console.log("in Init");
     Boom.populateSelector();
     Boom.getTracks(
       "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json"
@@ -60,22 +57,22 @@ const Boom = {
     //console.log("in displayTrack");
     let li = document.createElement("li");
     li.setAttribute("data-id", trackId);
-    // console.log("trackImgUrl: " + trackImgUrl);
-    // console.log("trackAudioUrl: " + trackAudioUrl);
-    // console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
-    //let Text = document.createTextNode(trackArtist);
-    document.querySelector("ul")?.appendChild(li);
-    Boom.generateAudioElement(li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl);
+    console.log("trackImgUrl: " + trackImgUrl);
+    console.log("trackAudioUrl: " + trackAudioUrl);
+    console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
+    let Text = document.createTextNode(trackArtist);
+    document.querySelector("ol")?.appendChild(li);
+    Boom.generateAudioElement({li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl});
   },
 
-  generateAudioElement: function displayTrack(li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string) {
+  generateAudioElement: function displayTrack({li, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl}:{li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string}) {
     //console.log("in generateAudioElement -------" + trackAudioUrl);
     let audio = document.createElement("audio");
     audio.setAttribute("type", "audio/mpeg");
-    audio.setAttribute("src", "#");
+    audio.setAttribute("src", "" + trackAudioUrl);
     audio.setAttribute("controls", "");
     audio.setAttribute("preload", "auto");
-    //audio.setAttribute("loop", "false");
+    audio.setAttribute("loop", "false");
 
     let link = document.createElement("a");
     link.setAttribute("href", trackAppleMusicUrl);
@@ -91,7 +88,7 @@ const Boom = {
     amImage.setAttribute("title", "Lsten on Apple Music");
 
     let img = document.createElement("img");
-    img.setAttribute("src", trackAudioUrl );
+    img.setAttribute("src", trackImgUrl);
     img.setAttribute("class", "album");
     img.setAttribute("height", "60");
     img.setAttribute("width", "60");
@@ -106,7 +103,7 @@ const Boom = {
     
     let h4 = document.createElement("h4");
     h4.setAttribute("class", "title");
-    let h4Node: Text = document.createTextNode('Static track name blah');
+    let h4Node: Text = document.createTextNode(trackTitle);
     if (h4) { h4.appendChild(h4Node); }
 
     link.appendChild(img);
@@ -150,7 +147,6 @@ const Boom = {
               Boom.getTracks(selectedValue);
             });
           }
-
         }
         return data as T; // Return the data as the generic type T
     }
@@ -162,7 +158,16 @@ const Boom = {
   } // Closing brace for generateAudioElement function
 }; // Closing brace for Boom object
 
-window.addEventListener("load", (event) => {
+document.addEventListener("play", (e) => {
+    let audios = document.getElementsByTagName('audio');
+    for(let ag = 0, len = audios.length; ag < len;ag++){
+      if(audios[ag] != e.target){
+        audios[ag].pause();
+      }
+    }
+}, true);
+
+window.addEventListener("load", (z) => {
   console.log("extension loaded");
   Boom.init();
 });

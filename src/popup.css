@@ -127,8 +127,9 @@ h3 {
 
 h4 {
   font-weight: 500;
-  margin: -3px 0 0 76px;
   font-size: 13px;
+  font-style: oblique;
+  margin: 0 0 0 76px;
 }
 
 h4:before {
