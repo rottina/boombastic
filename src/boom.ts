@@ -136,6 +136,12 @@ const Boom = {
               if (optionElement) {
                 optionElement.value = prefix + opt.value;
                 optionElement.textContent = opt.label;
+                if(opt.type === "na") {
+                  optionElement.setAttribute("disabled", "disabled");
+                }
+                if(opt.type === "custom") {
+                  // implement apple music lookup
+                }
               }
               if (optionElement) {
                 selector.appendChild(optionElement);

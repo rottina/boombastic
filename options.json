@@ -1,116 +1,154 @@
 {
   "options": [
-      {        
+      {
+        "type": "appmus",  
         "label": "Apple Music Top 25 | Alternative",
         "value": "genre=20/explicit=true/json"
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Blues",
         "value": "genre=2/explicit=true/json"
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Brazilian",
         "value": "genre=1122/explicit=true/json"
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Chinese",
         "value": "genre=1232/explicit=true/json"
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Classical",          
         "value": "genre=5/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Country",          
         "value": "genre=6/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Dance",          
         "value": "genre=17/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Easy Listening",          
         "value": "genre=25/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Electronic",
         "value": "genre=7/explicit=true/json"
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Folk",
         "value": "genre=22/explicit=true/json"
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | French Pop",          
         "value": "genre=50000064/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | German Pop",          
         "value": "genre=50000066/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Hip-Hop / Rap",          
         "value": "genre=18/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Indie",          
         "value": "genre=50000065/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Jazz",          
         "value": "genre=11/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | J-Pop",          
         "value": "genre=27/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | K-Pop",          
         "value": "genre=51/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Latino",          
         "value": "genre=12/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Metal",          
         "value": "genre=21/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | New Age",          
         "value": "genre=13/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Opera",          
         "value": "genre=25/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Pop",          
         "value": "genre=14/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | R&B",          
         "value": "genre=15/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Raggae",          
         "value": "genre=24/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Rock",          
         "value": "genre=21/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | Soundtrack",          
         "value": "genre=50000067/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | TV Shows",          
         "value": "genre=50000068/explicit=true/json"   
       },
       {
+        "type": "appmus",
         "label": "Apple Music Top 25 | World",          
         "value": "genre=19/explicit=true/json"   
+      },
+      {
+        "type": "na",
+        "label": "========================",          
+        "value": ""
+      },
+      {
+        "type": "custom",
+        "label": "Mike's Custom Playlist",          
+        "value": "mike.json"   
       }
   ]
 }
