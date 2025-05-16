@@ -20,7 +20,7 @@ const Boom = {
       if (parent) { parent.innerHTML = ""; } //clear children
       const data = await response.json();
       const tracks = data.feed.entry;
-        //console.dir(tracks);
+      console.dir(tracks);
       for(const track of tracks) {
         let trackId = track.id.attributes["im:id"];
         let trackArtist = track["im:artist"].label;
@@ -28,9 +28,10 @@ const Boom = {
         let trackImgUrl = track["im:image"][1].label;
         let trackAudioUrl = track.link[1].attributes.href;
         let trackAppleMusicUrl = track.id.label + publisherSlug;
+        let trackAlbumName = track["im:collection"]["im:name"].label;
 
           // console.group(trackId);
-          // console.log("trackId: " + trackId);
+          console.log("trackAlbumName: " + trackAlbumName);
           // console.log(
           //   `%c${trackId}`,
           //   "color:green",
@@ -42,7 +43,7 @@ const Boom = {
           // console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
           // console.groupEnd();
           
-        Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl);
+        Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl, trackAlbumName);
         //break; // debug: Remove this break to display all tracks
       }
       return data as T; // Return the data as the generic type T
@@ -53,19 +54,19 @@ const Boom = {
     }
   },
 
-  displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string) {
+  displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string, trackAlbumName: string) {
     //console.log("in displayTrack");
     let li = document.createElement("li");
     li.setAttribute("data-id", trackId);
-    console.log("trackImgUrl: " + trackImgUrl);
-    console.log("trackAudioUrl: " + trackAudioUrl);
-    console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
+    // console.log("trackImgUrl: " + trackImgUrl);
+    // console.log("trackAudioUrl: " + trackAudioUrl);
+    // console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
     let Text = document.createTextNode(trackArtist);
     document.querySelector("ol")?.appendChild(li);
-    Boom.generateAudioElement({li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl});
+    Boom.generateAudioElement({li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl, trackAlbumName});
   },
 
-  generateAudioElement: function displayTrack({li, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl}:{li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string}) {
+  generateAudioElement: function displayTrack({li, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl, trackAlbumName}:{li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string, trackAlbumName: string}) {
     //console.log("in generateAudioElement -------" + trackAudioUrl);
     let audio = document.createElement("audio");
     audio.setAttribute("type", "audio/mpeg");
@@ -92,9 +93,8 @@ const Boom = {
     img.setAttribute("class", "album");
     img.setAttribute("height", "60");
     img.setAttribute("width", "60");
-    img.setAttribute("alt", "album art");
-    img.setAttribute("title", "album art");
-    //img.setAttribute("loading", "lazy");
+    img.setAttribute("alt", "album cover");
+    img.setAttribute("title", trackAlbumName);
 
     let h3 = document.createElement("h3");
     h3.setAttribute("class", "artist");
@@ -160,14 +160,14 @@ const Boom = {
 
 document.addEventListener("play", (e) => {
     let audios = document.getElementsByTagName('audio');
-    for(let ag = 0, len = audios.length; ag < len;ag++){
+    for(let ag = 0, len = audios.length; ag < len; ag++){
       if(audios[ag] != e.target){
         audios[ag].pause();
       }
     }
 }, true);
 
-window.addEventListener("load", (z) => {
+window.addEventListener("load", (event) => {
   console.log("extension loaded");
   Boom.init();
 });
