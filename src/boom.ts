@@ -87,8 +87,7 @@ const Boom = {
     //console.log("in displayTrack");
     let li = document.createElement("li");
     li.setAttribute("data-id", trackId);
-    let Text = document.createTextNode(trackArtist);
-    document.querySelector("ol")?.appendChild(li);
+    document.querySelector("ul")?.appendChild(li);
     Boom.generateTrackPanel({li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl, trackAlbumName});
   },
 
@@ -136,7 +135,7 @@ const Boom = {
     li.appendChild(link);
     li.appendChild(audio);
     li.appendChild(amImage);
-    document.querySelector("ol")?.appendChild(li);
+    document.querySelector("ul")?.appendChild(li);
   },
 
   populateSelector: async <T>(): Promise<T> => {
@@ -148,18 +147,18 @@ const Boom = {
         throw new Error(`HTTP error! status: ${response.status}`);
       } 
       const data = await response.json();
-      const prefix = "https://itunes.apple.com/us/rss/topsongs/limit=25/";
+      const appleMusicPrefix = "https://itunes.apple.com/us/rss/topsongs/limit=25/";
       const opts = data.options;
       console.dir(opts);
       const selector = document.querySelector("select");
-        console.dir(opts);
+        //console.dir(opts);
         for(const opt of opts) {
           //break; // debug
           if (selector) {
               let optionElement = document.createElement("option");
               if (optionElement) {
                 if (opt.type === "appmus") {
-                  optionElement.value = prefix + opt.value;
+                  optionElement.value = appleMusicPrefix + opt.value;
                 } else {
                   optionElement.value = opt.value;
                 }
@@ -167,15 +166,14 @@ const Boom = {
                 if(opt.type === "na") {
                   optionElement.setAttribute("disabled", "disabled");
                 }
-              }
-              if (optionElement) {
                 selector.appendChild(optionElement);
               }
+
               selector.addEventListener("change", (event) => {
               let selectedValue = (event.target as HTMLSelectElement).value;
               console.log("Selected value:", selectedValue);
               localStorage["lastListenedTo"] = selectedValue;
-              console.log("localStorage['lastListenedTo']: " + localStorage["lastListenedTo"]);
+              console.log("changed lastListenedTo: " + selectedValue);
               // Call getTracks with the selected value
               Boom.getTracks(selectedValue);
             });
