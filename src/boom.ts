@@ -1,4 +1,3 @@
-
 const Boom = {
   init: () => {
     let lastListenedTo = localStorage["lastListenedTo"] || "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
@@ -14,10 +13,8 @@ const Boom = {
 
   getTracks: async <T>(playlist: string): Promise<T | undefined> => {
     //console.log(playlist);
-
     if (playlist.includes("pitchfork")) {
       console.log("pitchfork playlist");
-
       fetch(playlist)
         .then(response => response.text())
         .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
@@ -55,20 +52,6 @@ const Boom = {
           let trackAudioUrl = track.link[1].attributes.href;
           let trackAppleMusicUrl = track.id.label + publisherSlug;
           let trackAlbumName = track["im:collection"]["im:name"].label;
-
-            // console.group(trackId);
-            // console.log("trackAlbumName: " + trackAlbumName);
-            // console.log(
-            //   `%c${trackId}`,
-            //   "color:green",
-            //   trackArtist,
-            //   trackTitle
-            // );
-            // console.log("trackImgUrl: " + trackImgUrl);
-            // //console.log("trackAudioUrl: " + trackAudioUrl);
-            // console.log("trackAppleMusicUrl: " + trackAppleMusicUrl);
-            // console.groupEnd();
-            
           Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl, trackAlbumName);
           //break; // debug: Remove this break to display all tracks
         }
@@ -88,7 +71,7 @@ const Boom = {
     let searchString = searchTerm.replace(/ /g, "+");
     searchUrl += searchString;
     console.log("createItunesSearchTermcreateItunesSearchTerm: " + searchUrl);
-
+    //WIP
     // createItunesSearchTermcreateItunesSearchTerm: https://itunes.apple.com/search?term=Eric+Torres+Echoes,+Spaces,+Lines
 
     // fetch(searchUrl)
@@ -106,10 +89,10 @@ const Boom = {
     li.setAttribute("data-id", trackId);
     let Text = document.createTextNode(trackArtist);
     document.querySelector("ol")?.appendChild(li);
-    Boom.generateAudioElement({li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl, trackAlbumName});
+    Boom.generateTrackPanel({li, trackArtist, trackAudioUrl, trackTitle, trackImgUrl, trackAppleMusicUrl, trackAlbumName});
   },
 
-  generateAudioElement: function displayTrack({li, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl, trackAlbumName}:{li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string, trackAlbumName: string}) {
+  generateTrackPanel: function generateTrackPanel({li, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl, trackAlbumName}:{li: HTMLLIElement, trackArtist: string, trackTitle: string,  trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string, trackAlbumName: string}) {
     let audio = document.createElement("audio");
     audio.setAttribute("type", "audio/mpeg");
     audio.setAttribute("src", "" + trackAudioUrl);
@@ -205,16 +188,16 @@ const Boom = {
       throw error;
     }
 
-  } // Closing brace for generateAudioElement function
+  } 
 }; // Closing brace for Boom object
 
 document.addEventListener("play", (e) => {
-    let audios = document.getElementsByTagName('audio');
-    for(let ag = 0, len = audios.length; ag < len; ag++){
-      if(audios[ag] != e.target){
-        audios[ag].pause();
-      }
+  let audios = document.getElementsByTagName('audio');
+  for(let ag = 0, len = audios.length; ag < len; ag++){
+    if(audios[ag] != e.target){
+      audios[ag].pause();
     }
+  }
 }, true);
 
 window.addEventListener("load", (event) => {
