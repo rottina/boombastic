@@ -149,6 +149,11 @@
         "type": "custom",
         "label": "Mike's Custom Playlist",          
         "value": "mike.json"   
+      },
+      {
+        "type": "rssfeed",
+        "label": "Pitchfork | Best New Reissues",          
+        "value": "https://pitchfork.com/feed/reviews/best/reissues/rss"   
       }
   ]
 }
