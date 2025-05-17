@@ -39,11 +39,11 @@ const Boom = {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const publisherSlug = "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
-        let parent = document.querySelector("ol");
+        let parent = document.querySelector("ul");
         if (parent) { parent.innerHTML = ""; } //clear children
         const data = await response.json();
         const tracks = data.feed.entry;
-        console.dir(tracks);
+        //console.dir(tracks);
         for (const track of tracks) {
           let trackId = track.id.attributes["im:id"];
           let trackArtist = track["im:artist"].label;
@@ -149,7 +149,6 @@ const Boom = {
       const data = await response.json();
       const appleMusicPrefix = "https://itunes.apple.com/us/rss/topsongs/limit=25/";
       const opts = data.options;
-      console.dir(opts);
       const selector = document.querySelector("select");
         //console.dir(opts);
         for(const opt of opts) {
@@ -166,6 +165,7 @@ const Boom = {
                 if(opt.type === "na") {
                   optionElement.setAttribute("disabled", "disabled");
                 }
+                selector.setAttribute("selected", "selected");
                 selector.appendChild(optionElement);
               }
 
