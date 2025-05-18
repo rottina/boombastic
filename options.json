@@ -1,6 +1,11 @@
 {
   "options": [
       {
+        "type": "na",
+        "label": "== Apple Music ===================",          
+        "value": ""
+      },
+      {
         "type": "appmus",  
         "label": "Apple Music Top 25 | Alternative",
         "value": "genre=20/explicit=true/json"
