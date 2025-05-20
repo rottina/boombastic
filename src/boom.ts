@@ -1,3 +1,4 @@
+const publisherSlug = "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
 const Boom = {
   init: () => {
     let lastListenedTo = localStorage["lastListenedTo"] || "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
@@ -30,6 +31,38 @@ const Boom = {
             let appleMusicTerm = Boom.createItunesSearchTerm(creator + " " + title);
           });
         }).catch(error => console.error('Error fetching or parsing RSS:', error));
+
+    } else if (playlist.includes("custom-bilboard")) {
+        try {
+        const response = await fetch("playlists/"+playlist+".json");
+        console.log("bilboard playlist " + playlist + ".json");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        let parent = document.querySelector("ul");
+        if (parent) { parent.innerHTML = ""; } //clear children
+        const data = await response.json();
+        const tracks = data.feed.entry;
+        //console.dir(tracks);
+        for (const track of tracks) {
+          let trackId = track.id.attributes["im:id"];
+          let trackArtist = track["im:artist"].label;
+          let trackTitle = track["im:name"].label; 
+          let trackImgUrl = track["im:image"][1].label;
+          let trackAudioUrl = track.link[1].attributes.href;
+          let trackAppleMusicUrl = track.id.label + publisherSlug;
+          let trackAlbumName = track["im:collection"]["im:name"].label;
+          Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl, trackAlbumName);
+          //break; // debug: Remove this break to display all tracks
+        }
+        return data as T; // Return the data as the generic type T
+      }
+      catch (error: any) {
+        console.error("Fetch error:", error);
+        throw error;
+        return undefined; // Ensure a return value in case of an error
+      }
       
     } else {
 
@@ -38,7 +71,7 @@ const Boom = {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const publisherSlug = "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
+        
         let parent = document.querySelector("ul");
         if (parent) { parent.innerHTML = ""; } //clear children
         const data = await response.json();
