@@ -1,4 +1,7 @@
 const publisherSlug = "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
+const githubPrefix = "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/AG/src/playlists/";
+const itunesApiPrefix = "https://itunes.apple.com/search?limit=1&media=music&entity=song&term=";
+
 const Boom = {
   init: () => {
     let lastListenedTo = localStorage["lastListenedTo"] || "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
@@ -28,13 +31,12 @@ const Boom = {
             const creator = creatorElement ? creatorElement.textContent : null;
             console.log("Title:", title);
             console.log("Creator:", creator);
-            let appleMusicTerm = Boom.createItunesSearchTerm(creator + " " + title);
           });
         }).catch(error => console.error('Error fetching or parsing RSS:', error));
 
     } else if (playlist.includes("custom-bilboard")) {
         try {
-        const response = await fetch("playlists/"+playlist+".json");
+        const response = await fetch(githubPrefix +playlist+".json");
         console.log("bilboard playlist " + playlist + ".json");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -43,25 +45,20 @@ const Boom = {
         let parent = document.querySelector("ul");
         if (parent) { parent.innerHTML = ""; } //clear children
         const data = await response.json();
-        const tracks = data.feed.entry;
-        //console.dir(tracks);
+        const tracks = data;
+        console.dir(tracks);
         for (const track of tracks) {
-          let trackId = track.id.attributes["im:id"];
-          let trackArtist = track["im:artist"].label;
-          let trackTitle = track["im:name"].label; 
-          let trackImgUrl = track["im:image"][1].label;
-          let trackAudioUrl = track.link[1].attributes.href;
-          let trackAppleMusicUrl = track.id.label + publisherSlug;
-          let trackAlbumName = track["im:collection"]["im:name"].label;
-          Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl, trackAlbumName);
-          //break; // debug: Remove this break to display all tracks
+          let searchTerm = track["s"] + " " + track["a"];
+          console.log("searchTermmmmmmmm :::: "+searchTerm);
+          let finalSearchString = searchTerm.replace(/ /g, "+");
+          console.log("finalSearchString :::: "+finalSearchString);
+          Boom.itunesSearch(finalSearchString);
         }
         return data as T; // Return the data as the generic type T
       }
       catch (error: any) {
         console.error("Fetch error:", error);
         throw error;
-        return undefined; // Ensure a return value in case of an error
       }
       
     } else {
@@ -98,22 +95,26 @@ const Boom = {
     }
   },
 
-  createItunesSearchTerm: function createItunesSearchTerm(searchTerm: string) {
-    let searchUrl = "https://itunes.apple.com/search?limit=15&media=music&entity=song&country=us&term=";
+  itunesSearch: (finalSearchString: string) => {
+    let searchUrl = itunesApiPrefix + finalSearchString;
 
-    let searchString = searchTerm.replace(/ /g, "+");
-    searchUrl += searchString;
-    console.log("createItunesSearchTermcreateItunesSearchTerm: " + searchUrl);
-    //WIP
-    // createItunesSearchTermcreateItunesSearchTerm: https://itunes.apple.com/search?term=Eric+Torres+Echoes,+Spaces,+Lines
-
-    // fetch(searchUrl)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log("data: " + data);
-    //     console.dir(data);
-    //   })
-    //   .catch(error => console.error('Error fetching or parsing RSS:', error));
+    fetch(searchUrl)
+      .then(response => response.json())
+      .then(res => {
+        if (res.resultCount > 0) {
+          let trackId = res.results[0].trackId;
+          let trackArtist = res.results[0].artistName;
+          let trackTitle = res.results[0].trackName;
+          let trackImgUrl = res.results[0].artworkUrl100;
+          let trackAudioUrl = res.results[0].previewUrl;
+          let trackAppleMusicUrl = res.results[0].collectionViewUrl + publisherSlug;
+          let trackAlbumName = res.results[0].collectionName;
+          Boom.displayTrack(trackId, trackArtist, trackTitle, trackImgUrl, trackAudioUrl, trackAppleMusicUrl, trackAlbumName);
+        } else {
+          console.log("No results found for the search term.");
+        }
+      })
+      .catch(error => console.error('Error fetching or parsing JSON:', error));
   },
 
   displayTrack: function displayTrack(trackId: string, trackArtist: string, trackTitle: string, trackImgUrl: string, trackAudioUrl: string, trackAppleMusicUrl: string, trackAlbumName: string) {

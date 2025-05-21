@@ -20,6 +20,7 @@
   "offline_enabled": false,
   "host_permissions": [
     "*://*.apple.com/*",
+    "*://*.githubusercontent.com/*",
     "*://pitchfork.com/*",
     "*://feeds.feedburner.com/*"
   ],
