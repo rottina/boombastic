@@ -1,14 +1,13 @@
 [
-    { "artist": "Bump, Bump, Bump", "song": "B2K" },
-    { "artist": "All I Have", "song": "Jennifer Lopez" },
-    { "artist": "In Da Club", "song": "50 Cent" },
-    { "artist": "Get Busy", "song": "Sean Paul" },
-    { "artist": "21 Questions", "song": "50 Cent" },
-    { "artist": "This Is the Night", "song": "Clay Aiken" },
-    { "artist": "Crazy in Love", "song": "Beyoncé featuring Jay-Z" },
-    { "artist": "Shake Ya Tailfeather", "song": "Nelly, P. Diddy and Murphy Lee"
-    },
-    { "artist": "Baby Boy", "song": "Beyoncé featuring Sean Paul" },
-    { "artist": "Stand Up", "song": "Ludacris featuring Shawnna" },
-    { "artist": "Hey Ya!", "song": "OutKast" }
+  { "s": "Bump, Bump, Bump", "a": "B2K" },
+  { "s": "All I Have", "a": "Jennifer Lopez" },
+  { "s": "In Da Club", "a": "50 Cent" },
+  { "s": "Get Busy", "a": "Sean Paul" },
+  { "s": "21 Questions", "a": "50 Cent" },
+  { "s": "This Is the Night", "a": "Clay Aiken" },
+  { "s": "Crazy in Love", "a": "Beyoncé featuring Jay-Z" },
+  { "s": "Shake Ya Tailfeather", "a": "Nelly, P. Diddy and Murphy Lee"},
+  { "s": "Baby Boy", "a": "Beyoncé featuring Sean Paul" },
+  { "s": "Stand Up", "a": "Ludacris featuring Shawnna" },
+  { "s": "Hey Ya!", "a": "OutKast" }
 ]
