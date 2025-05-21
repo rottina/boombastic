@@ -20,9 +20,9 @@
   "offline_enabled": false,
   "host_permissions": [
     "*://*.apple.com/*",
+    "*://feeds.feedburner.com/*",
     "*://*.githubusercontent.com/*",
-    "*://pitchfork.com/*",
-    "*://feeds.feedburner.com/*"
+    "*://pitchfork.com/*"
   ],
   "short_name": "Boom!",
   "version": "2.0.0"
