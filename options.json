@@ -162,6 +162,16 @@
       },
       {
         "type": "custom",
+        "label": "Billboard | Hot 100 | #1 singles | 2025",          
+        "value": "custom-bilboard-2025"
+      },
+      {
+        "type": "custom",
+        "label": "Billboard | Hot 100 | #1 singles | 2024",          
+        "value": "custom-bilboard-2024"
+      },
+      {
+        "type": "custom",
         "label": "Billboard | Hot 100 | #1 singles | 2023",          
         "value": "custom-bilboard-2023"
       },
