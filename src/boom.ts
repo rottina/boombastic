@@ -4,17 +4,18 @@ const githubPrefix =
   "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/main/src/playlists/";
 const itunesApiPrefix =
   "https://itunes.apple.com/search?limit=1&media=music&entity=song&term=";
+const defaultPlaylist =
+  "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
 
 const Boom = {
   init: () => {
-    const lastListenedTo =
-      localStorage.lastListenedTo ||
-      "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
+    const lastListenedTo = localStorage.lastListenedTo || defaultPlaylist;
     if (lastListenedTo) {
       console.log(`lastListenedTo: ${lastListenedTo}`);
       localStorage.lastListenedTo = lastListenedTo;
     } else {
-      console.log("lastListenedTo is null");
+      console.log("lastListenedTo is not set, using default playlist");
+      localStorage.lastListenedTo = defaultPlaylist;
     }
     Boom.populateSelector();
     Boom.getTracks(lastListenedTo);
@@ -23,24 +24,31 @@ const Boom = {
   getTracks: async <T>(playlist: string): Promise<T | undefined> => {
     //console.log(playlist);
     if (playlist.includes("pitchfork")) {
-      console.log("pitchfork playlist");
-      fetch(playlist)
-        .then((response) => response.text())
-        .then((str) => new window.DOMParser().parseFromString(str, "text/xml"))
-        .then((data) => {
-          const items = data.querySelectorAll("item");
-          for (const item of items) {
-            const titleElement = item.querySelector("title");
-            const title = titleElement ? titleElement.textContent : null;
-            const creatorElement = item.querySelector("creator");
-            const creator = creatorElement ? creatorElement.textContent : null;
-            console.log("Title:", title);
-            console.log("Creator:", creator);
-          }
-        })
-        .catch((error) =>
-          console.error("Error fetching or parsing RSS:", error),
-        );
+      try {
+        const response = await fetch(`${playlist}`);
+        console.log(`pfork playlist ${playlist}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const parent = document.querySelector("ul");
+        if (parent) {
+          parent.innerHTML = "";
+        } //clear children
+        const data = await response.json();
+        const tracks = data.items;
+        //console.dir(tracks);
+        for (const track of tracks) {
+          let finalSearchString = `${track.url}`;
+          const parts = finalSearchString.split("/");
+          finalSearchString = parts.pop() || "";
+          finalSearchString = finalSearchString.replace(/-/g, " ");
+          Boom.itunesSearch(finalSearchString);
+        }
+        return data as T; // Return the data as the generic type T
+      } catch (error: unknown) {
+        console.error("Fetch error:", error);
+        throw error;
+      }
     } else if (playlist.includes("custom-bilboard")) {
       try {
         const response = await fetch(`${githubPrefix + playlist}.json`);
@@ -230,7 +238,7 @@ const Boom = {
     link.appendChild(h4);
     li.appendChild(link);
     li.appendChild(audio);
-    console.trace();
+    //console.trace();
     li.appendChild(amImage);
     document.querySelector("ul")?.appendChild(li);
   },

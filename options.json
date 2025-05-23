@@ -2,6 +2,26 @@
   "options": [
     {
       "type": "na",
+      "label": "== Pitchfork ======================",
+      "value": ""
+    },
+    {
+      "type": "pitchfork",
+      "label": "Pitchfork | Best New Tracks",
+      "value": "https://pitchfork.com/feed/reviews/best/tracks/json"
+    },
+    {
+      "type": "pitchfork",
+      "label": "Pitchfork | Best Re-issues",
+      "value": "https://pitchfork.com/feed/reviews/best/reissues/json"
+    },
+    {
+      "type": "pitchfork",
+      "label": "Pitchfork | Best Albums",
+      "value": "https://pitchfork.com/feed/reviews/best/albums/json"
+    },
+    {
+      "type": "na",
       "label": "== Apple Music ===================",
       "value": ""
     },
@@ -470,16 +490,6 @@
       "type": "custom",
       "label": "Billboard | Hot 100 | #1 singles | 1964",
       "value": "custom-bilboard-1964"
-    },
-    {
-      "type": "na",
-      "label": "=PITTCHHHHH=======================",
-      "value": ""
-    },
-    {
-      "type": "rssfeed",
-      "label": "Pitchfork | Best New Reissues",
-      "value": "https://pitchfork.com/feed/reviews/best/reissues/rss"
     }
   ]
 }
