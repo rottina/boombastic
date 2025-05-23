@@ -262,13 +262,16 @@ const Boom = {
         if (opt.type === "na") {
           optionElement.setAttribute("disabled", "disabled");
         }
-        selector.setAttribute("selected", "selected");
+        if (opts.value === localStorage.lastListenedTo) {
+          optionElement.setAttribute("selected", "selected");
+        //selector.setAttribute("selected", "selected");
+        }
         selector.appendChild(optionElement);
       }
       selector.addEventListener("change", (event) => {
         const selectedValue = (event.target as HTMLSelectElement).value;
         console.log("Selected value:", selectedValue);
-        localStorage.lastListenedTo = selectedValue;
+        localStorage.setItem("lastListenedTo", selectedValue);
         console.log(`changed lastListenedTo: ${selectedValue}`);
         // Call getTracks with the selected value
         Boom.getTracks(selectedValue);
