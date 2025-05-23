@@ -2,7 +2,7 @@
   "options": [
     {
       "type": "na",
-      "label": "== Pitchfork ======================",
+      "label": "== PITCHFORK ======================",
       "value": ""
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "type": "na",
-      "label": "== Apple Music ===================",
+      "label": "== APPLE MUSIC ===================",
       "value": ""
     },
     {
@@ -177,7 +177,7 @@
     },
     {
       "type": "na",
-      "label": "BILLBOARD HOT 100 =============",
+      "label": "== BILLBOARD HOT 100 =============",
       "value": ""
     },
     {
