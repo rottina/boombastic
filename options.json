@@ -22,6 +22,26 @@
     },
     {
       "type": "na",
+      "label": "== UNIQUE PLAYLISTS ===============",
+      "value": ""
+    },
+    {
+      "type": "custom",
+      "label": "Unique | Prince's Party Mix",
+      "value": "custom-unique-prince"
+    },
+    {
+      "type": "custom",
+      "label": "Unique | Rolling Stone | Summer 70s",
+      "value": "custom-unique-rs-summer70s"
+    },
+    {
+      "type": "custom",
+      "label": "Unique | Rolling Stone | Sexiest Songs",
+      "value": "custom-unique-rs-sexiest"
+    },
+    {
+      "type": "na",
       "label": "== APPLE MUSIC ===================",
       "value": ""
     },
