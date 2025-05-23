@@ -13,5 +13,8 @@
   { "s": "Lean On", "a": "Major Lazer and DJ Snake featuring MØ" },
   { "s": "Where Are Ü Now", "a": "Skrillex and Diplo featuring Justin Bieber" },
   { "s": "Fight Song", "a": "Rachel Platten" },
-  { "s": "I Don't Like It, I Love It", "a": "Flo Rida featuring Robin Thicke and Verdine White" }
+  {
+    "s": "I Don't Like It, I Love It",
+    "a": "Flo Rida featuring Robin Thicke and Verdine White"
+  }
 ]

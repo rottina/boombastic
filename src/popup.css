@@ -7,9 +7,8 @@
 
 @font-face {
   font-family: "DM Sans";
-  src:
-    local("DM Sans"),
-    url("lib/DMSans-VariableFont_opsz,wght.ttf") format("ttf");
+  src: local("DM Sans"), url("lib/DMSans-VariableFont_opsz,wght.ttf")
+    format("ttf");
 }
 
 ::-webkit-scrollbar {
@@ -39,7 +38,6 @@
 ::-webkit-resizer {
   display: none;
 }
-
 
 body {
   background-color: var(--boom-black);
@@ -286,13 +284,13 @@ a {
   top: 10px;
   width: 128px;
   -webkit-box-reflect: below 1px
-  gradient(
-    linear,
-    left top,
-    left bottom,
-    from(transparent),
-    to(rgba(255, 255, 255, 0.2))
-  );
+    gradient(
+      linear,
+      left top,
+      left bottom,
+      from(transparent),
+      to(rgba(255, 255, 255, 0.2))
+    );
 }
 
 #visualisation > div {

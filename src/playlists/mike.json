@@ -13,7 +13,10 @@
     { "artist": "Diana Ross", "song": "Ain't No Mountain High Enough" },
     { "artist": "A Taste of Honey", "song": "Boogie Oogie Oogie" },
     { "artist": "Anita Ward", "song": "Ring My Bell" },
-    {"artist": "Walter Murphy and the Big Apple Band","song": "A Fifth of Beethoven"},
+    {
+      "artist": "Walter Murphy and the Big Apple Band",
+      "song": "A Fifth of Beethoven"
+    },
     { "artist": "Freda Payne", "song": "Band of Gold" },
     { "artist": "Three Dog Night", "song": "Mama Told Me (Not To Come)" },
     { "artist": "Frankie Valli", "song": "Grease" },

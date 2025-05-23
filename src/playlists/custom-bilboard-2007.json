@@ -5,7 +5,10 @@
   { "s": "This Is Why I'm Hot", "a": "Mims" },
   { "s": "Glamorous", "a": "Fergie featuring Ludacris" },
   { "s": "Don't Matter", "a": "Akon" },
-  { "s": "Give It to Me", "a": "Timbaland featuring Nelly Furtado and Justin Timberlake" },
+  {
+    "s": "Give It to Me",
+    "a": "Timbaland featuring Nelly Furtado and Justin Timberlake"
+  },
   { "s": "Girlfriend", "a": "Avril Lavigne" },
   { "s": "Makes Me Wonder", "a": "Maroon 5" },
   { "s": "Buy U a Drank (Shawty Snappin')", "a": "T-Pain featuring Yung Joc" },

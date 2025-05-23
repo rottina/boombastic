@@ -37,13 +37,13 @@ var Boom = {
     }
   },
 
-  getXmlChart: function (url, findNode) {
+  getXmlChart: (url, findNode) => {
     $.ajax({
       type: "GET",
       url: url,
       dataType: "xml",
       timeout: 5000,
-      success: function (data) {
+      success: (data) => {
         if (data) {
           var xmlChart = [],
             item = $(data).find(findNode),
@@ -51,7 +51,7 @@ var Boom = {
             artist,
             song,
             title;
-          $(item).each(function (i, value) {
+          $(item).each((i, value) => {
             if (url.indexOf("billboard") != -1) {
               artist = $(value).children("artist").text();
               song = $(value).children("chart_item_title").text();
@@ -85,7 +85,7 @@ var Boom = {
     });
   },
 
-  getInternalChart: function (url) {
+  getInternalChart: (url) => {
     var customChart = [],
       iTunesTerm = "",
       theData = [],
@@ -1772,7 +1772,7 @@ var Boom = {
     Boom.displayChart(customChart);
   },
 
-  displayChart: function (theChart) {
+  displayChart: (theChart) => {
     const iTunesStoreLogo = "/img/iTunes_Store_Small_Badge_RGB_012318.svg";
     var iTunesTerm = "",
       listItemCollection = [],
@@ -1786,7 +1786,7 @@ var Boom = {
       $.getJSON(
         "https://itunes.apple.com/search?limit=1&entity=song&term=" +
           iTunesTerm,
-        function (data) {
+        (data) => {
           $.each(data, function () {
             $.each(this, function (s, song) {
               let li = document.createElement("li"),
@@ -1845,10 +1845,10 @@ var Boom = {
               li.appendChild(audio);
               li.appendChild(logo);
               listItemCollection[i++] = li;
-              a.onclick = function () {
+              a.onclick = (() => {
                 chrome.tabs.update(null, { url: trackViewUrl });
                 return false;
-              }.bind(this, trackViewUrl);
+              }).bind(this, trackViewUrl);
               $("section ol").append(li);
             });
           });
@@ -1857,7 +1857,7 @@ var Boom = {
     }
   },
 
-  getLocalizedLink: function (url) {
+  getLocalizedLink: (url) => {
     var userLocale = chrome.i18n.getMessage("@@ui_locale");
     var iTunesCountry = "us";
     switch (userLocale) {
@@ -2031,20 +2031,20 @@ var Boom = {
     return url;
   },
 
-  createItunesSearchTerm: function (searchterm) {
+  createItunesSearchTerm: (searchterm) => {
     searchterm = searchterm.replace(/ /g, "+");
     return searchterm;
   },
 
-  displayError: function () {
+  displayError: () => {
     // hide gracefully
   },
 
-  update: function () {
+  update: () => {
     requestAnimationFrame(Boom.update);
     analyser.getByteFrequencyData(frequencyData);
     var fullBG = 0;
-    bars.each(function (index, bar) {
+    bars.each((index, bar) => {
       var barHeightPerc = frequencyData[index] / 256,
         r = Math.floor(barHeightPerc * 255),
         g = 0,
@@ -2054,7 +2054,7 @@ var Boom = {
     });
   },
 
-  setCurrentAudio: function (currentAudio) {
+  setCurrentAudio: (currentAudio) => {
     sourceNode = context.createMediaElementSource(currentAudio);
     sourceNode.connect(analyser);
     analyser.connect(context.destination);
@@ -2068,11 +2068,11 @@ var Boom = {
   },
 };
 
-$(function () {
+$(() => {
   Boom.init();
   document.addEventListener(
     "play",
-    function (e) {
+    (e) => {
       audios = document.getElementsByTagName("audio");
       for (var i = 0, len = audios.length; i < len; i++) {
         if (audios[i] != e.target) {

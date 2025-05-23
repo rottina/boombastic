@@ -7,7 +7,7 @@
 //     bars = document.getElementById("visualisation > div"),
 //     barSpacingPercent = 100 / this.analyser.frequencyBinCount;
 
-let Boom = {
+const Boom = {
   init: () => {
     console.log("in INIT");
     Boom.getTracks(
@@ -37,8 +37,8 @@ let Boom = {
 
     if (tracks) {
       if (dataType === "xml") {
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(tracks, "text/xml");
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(tracks, "text/xml");
         //console.log(Object.values(xmlDoc));
         const nodeList = xmlDoc.querySelectorAll("entry");
         for (const [i, node] of nodeList.entries()) {

@@ -1,485 +1,485 @@
 {
   "options": [
-      {
-        "type": "na",
-        "label": "== Apple Music ===================",          
-        "value": ""
-      },
-      {
-        "type": "appmus",  
-        "label": "Apple Music Top 25 | Alternative",
-        "value": "genre=20/explicit=true/json"
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Blues",
-        "value": "genre=2/explicit=true/json"
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Brazilian",
-        "value": "genre=1122/explicit=true/json"
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Chinese",
-        "value": "genre=1232/explicit=true/json"
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Classical",          
-        "value": "genre=5/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Country",          
-        "value": "genre=6/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Dance",          
-        "value": "genre=17/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Easy Listening",          
-        "value": "genre=25/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Electronic",
-        "value": "genre=7/explicit=true/json"
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Folk",
-        "value": "genre=22/explicit=true/json"
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | French Pop",          
-        "value": "genre=50000064/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | German Pop",          
-        "value": "genre=50000066/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Hip-Hop / Rap",          
-        "value": "genre=18/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Indie",          
-        "value": "genre=50000065/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Jazz",          
-        "value": "genre=11/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | J-Pop",          
-        "value": "genre=27/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | K-Pop",          
-        "value": "genre=51/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Latino",          
-        "value": "genre=12/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Metal",          
-        "value": "genre=21/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | New Age",          
-        "value": "genre=13/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Opera",          
-        "value": "genre=25/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Pop",          
-        "value": "genre=14/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | R&B",          
-        "value": "genre=15/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Raggae",          
-        "value": "genre=24/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Rock",          
-        "value": "genre=21/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | Soundtrack",          
-        "value": "genre=50000067/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | TV Shows",          
-        "value": "genre=50000068/explicit=true/json"   
-      },
-      {
-        "type": "appmus",
-        "label": "Apple Music Top 25 | World",          
-        "value": "genre=19/explicit=true/json"   
-      },
-      {
-        "type": "na",
-        "label": "========================",          
-        "value": ""
-      },
-      {
-        "type": "custom",
-        "label": "Mike's Custom Playlist",          
-        "value": "mike.json"   
-      },
-      {
-        "type": "na",
-        "label": "BILLBOARD HOT 100 =============",          
-        "value": ""
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2025",          
-        "value": "custom-bilboard-2025"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2024",          
-        "value": "custom-bilboard-2024"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2023",          
-        "value": "custom-bilboard-2023"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2022",          
-        "value": "custom-bilboard-2022"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2021",          
-        "value": "custom-bilboard-2021"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2020",          
-        "value": "custom-bilboard-2020"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2019",          
-        "value": "custom-bilboard-2019"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2018",          
-        "value": "custom-bilboard-2018"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2017",          
-        "value": "custom-bilboard-2017"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2016",          
-        "value": "custom-bilboard-2016"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2015",          
-        "value": "custom-bilboard-2015"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2014",          
-        "value": "custom-bilboard-2014"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2013",          
-        "value": "custom-bilboard-2013"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2012",          
-        "value": "custom-bilboard-2012"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2011",          
-        "value": "custom-bilboard-2011"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2010",          
-        "value": "custom-bilboard-2010"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2009",          
-        "value": "custom-bilboard-2009"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2008",          
-        "value": "custom-bilboard-2008"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2007",          
-        "value": "custom-bilboard-2007"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2006",          
-        "value": "custom-bilboard-2006"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2005",          
-        "value": "custom-bilboard-2005"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2004",          
-        "value": "custom-bilboard-2004"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2003",          
-        "value": "custom-bilboard-2003"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2002",          
-        "value": "custom-bilboard-2002"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2001",          
-        "value": "custom-bilboard-2001"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 2000",          
-        "value": "custom-bilboard-2000"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1999",          
-        "value": "custom-bilboard-1999"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1998",          
-        "value": "custom-bilboard-1998"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1997",          
-        "value": "custom-bilboard-1997"   
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1996",          
-        "value": "custom-bilboard-1996"
-      },
+    {
+      "type": "na",
+      "label": "== Apple Music ===================",
+      "value": ""
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Alternative",
+      "value": "genre=20/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Blues",
+      "value": "genre=2/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Brazilian",
+      "value": "genre=1122/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Chinese",
+      "value": "genre=1232/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Classical",
+      "value": "genre=5/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Country",
+      "value": "genre=6/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Dance",
+      "value": "genre=17/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Easy Listening",
+      "value": "genre=25/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Electronic",
+      "value": "genre=7/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Folk",
+      "value": "genre=22/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | French Pop",
+      "value": "genre=50000064/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | German Pop",
+      "value": "genre=50000066/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Hip-Hop / Rap",
+      "value": "genre=18/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Indie",
+      "value": "genre=50000065/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Jazz",
+      "value": "genre=11/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | J-Pop",
+      "value": "genre=27/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | K-Pop",
+      "value": "genre=51/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Latino",
+      "value": "genre=12/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Metal",
+      "value": "genre=21/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | New Age",
+      "value": "genre=13/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Opera",
+      "value": "genre=25/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Pop",
+      "value": "genre=14/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | R&B",
+      "value": "genre=15/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Raggae",
+      "value": "genre=24/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Rock",
+      "value": "genre=21/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | Soundtrack",
+      "value": "genre=50000067/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | TV Shows",
+      "value": "genre=50000068/explicit=true/json"
+    },
+    {
+      "type": "appmus",
+      "label": "Apple Music Top 25 | World",
+      "value": "genre=19/explicit=true/json"
+    },
+    {
+      "type": "na",
+      "label": "========================",
+      "value": ""
+    },
+    {
+      "type": "custom",
+      "label": "Mike's Custom Playlist",
+      "value": "mike.json"
+    },
+    {
+      "type": "na",
+      "label": "BILLBOARD HOT 100 =============",
+      "value": ""
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2025",
+      "value": "custom-bilboard-2025"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2024",
+      "value": "custom-bilboard-2024"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2023",
+      "value": "custom-bilboard-2023"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2022",
+      "value": "custom-bilboard-2022"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2021",
+      "value": "custom-bilboard-2021"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2020",
+      "value": "custom-bilboard-2020"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2019",
+      "value": "custom-bilboard-2019"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2018",
+      "value": "custom-bilboard-2018"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2017",
+      "value": "custom-bilboard-2017"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2016",
+      "value": "custom-bilboard-2016"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2015",
+      "value": "custom-bilboard-2015"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2014",
+      "value": "custom-bilboard-2014"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2013",
+      "value": "custom-bilboard-2013"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2012",
+      "value": "custom-bilboard-2012"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2011",
+      "value": "custom-bilboard-2011"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2010",
+      "value": "custom-bilboard-2010"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2009",
+      "value": "custom-bilboard-2009"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2008",
+      "value": "custom-bilboard-2008"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2007",
+      "value": "custom-bilboard-2007"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2006",
+      "value": "custom-bilboard-2006"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2005",
+      "value": "custom-bilboard-2005"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2004",
+      "value": "custom-bilboard-2004"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2003",
+      "value": "custom-bilboard-2003"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2002",
+      "value": "custom-bilboard-2002"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2001",
+      "value": "custom-bilboard-2001"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2000",
+      "value": "custom-bilboard-2000"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1999",
+      "value": "custom-bilboard-1999"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1998",
+      "value": "custom-bilboard-1998"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1997",
+      "value": "custom-bilboard-1997"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1996",
+      "value": "custom-bilboard-1996"
+    },
 
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1995",          
-        "value": "custom-bilboard-1995"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1994",          
-        "value": "custom-bilboard-1994"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1993",          
-        "value": "custom-bilboard-1993"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1992",          
-        "value": "custom-bilboard-1992"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1991",          
-        "value": "custom-bilboard-1991"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1990",          
-        "value": "custom-bilboard-1990"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1989",          
-        "value": "custom-bilboard-1989"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1988",          
-        "value": "custom-bilboard-1988"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1987",          
-        "value": "custom-bilboard-1987"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1986",          
-        "value": "custom-bilboard-1986"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1985",          
-        "value": "custom-bilboard-1985"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1984",          
-        "value": "custom-bilboard-1984"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1983",          
-        "value": "custom-bilboard-1983"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1982",          
-        "value": "custom-bilboard-1982"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1981",          
-        "value": "custom-bilboard-1981"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1980",          
-        "value": "custom-bilboard-1980"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1979",          
-        "value": "custom-bilboard-1979"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1978",          
-        "value": "custom-bilboard-1978"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1977",          
-        "value": "custom-bilboard-1977"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1976",          
-        "value": "custom-bilboard-1976"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1975",          
-        "value": "custom-bilboard-1975"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1974",          
-        "value": "custom-bilboard-1974"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1973",          
-        "value": "custom-bilboard-1973"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1972",          
-        "value": "custom-bilboard-1972"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1971",          
-        "value": "custom-bilboard-1971"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1970",          
-        "value": "custom-bilboard-1970"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1969",          
-        "value": "custom-bilboard-1969"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1968",          
-        "value": "custom-bilboard-1968"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1967",          
-        "value": "custom-bilboard-1967"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1966",          
-        "value": "custom-bilboard-1966"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1965",          
-        "value": "custom-bilboard-1965"
-      },
-      {
-        "type": "custom",
-        "label": "Billboard | Hot 100 | #1 singles | 1964",          
-        "value": "custom-bilboard-1964"
-      },
-      {
-        "type": "na",
-        "label": "=PITTCHHHHH=======================",          
-        "value": ""
-      },
-      {
-        "type": "rssfeed",
-        "label": "Pitchfork | Best New Reissues",          
-        "value": "https://pitchfork.com/feed/reviews/best/reissues/rss"   
-      }
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1995",
+      "value": "custom-bilboard-1995"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1994",
+      "value": "custom-bilboard-1994"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1993",
+      "value": "custom-bilboard-1993"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1992",
+      "value": "custom-bilboard-1992"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1991",
+      "value": "custom-bilboard-1991"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1990",
+      "value": "custom-bilboard-1990"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1989",
+      "value": "custom-bilboard-1989"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1988",
+      "value": "custom-bilboard-1988"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1987",
+      "value": "custom-bilboard-1987"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1986",
+      "value": "custom-bilboard-1986"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1985",
+      "value": "custom-bilboard-1985"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1984",
+      "value": "custom-bilboard-1984"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1983",
+      "value": "custom-bilboard-1983"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1982",
+      "value": "custom-bilboard-1982"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1981",
+      "value": "custom-bilboard-1981"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1980",
+      "value": "custom-bilboard-1980"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1979",
+      "value": "custom-bilboard-1979"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1978",
+      "value": "custom-bilboard-1978"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1977",
+      "value": "custom-bilboard-1977"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1976",
+      "value": "custom-bilboard-1976"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1975",
+      "value": "custom-bilboard-1975"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1974",
+      "value": "custom-bilboard-1974"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1973",
+      "value": "custom-bilboard-1973"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1972",
+      "value": "custom-bilboard-1972"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1971",
+      "value": "custom-bilboard-1971"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1970",
+      "value": "custom-bilboard-1970"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1969",
+      "value": "custom-bilboard-1969"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1968",
+      "value": "custom-bilboard-1968"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1967",
+      "value": "custom-bilboard-1967"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1966",
+      "value": "custom-bilboard-1966"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1965",
+      "value": "custom-bilboard-1965"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1964",
+      "value": "custom-bilboard-1964"
+    },
+    {
+      "type": "na",
+      "label": "=PITTCHHHHH=======================",
+      "value": ""
+    },
+    {
+      "type": "rssfeed",
+      "label": "Pitchfork | Best New Reissues",
+      "value": "https://pitchfork.com/feed/reviews/best/reissues/rss"
+    }
   ]
 }
