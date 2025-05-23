@@ -73,7 +73,7 @@ const Boom = {
         if (parent) { parent.innerHTML = ""; } //clear children
         const data = await response.json();
         const tracks = data.feed.entry;
-        //console.dir(tracks);
+        console.log(tracks.length);
         for (const track of tracks) {
           let trackId = track.id.attributes["im:id"];
           let trackArtist = track["im:artist"].label;
@@ -146,6 +146,7 @@ const Boom = {
     amImage.setAttribute("title", "Lsten on Apple Music");
 
     let img = document.createElement("img");
+    img.setAttribute("loading", "lazy");
     img.setAttribute("alt", "album cover");
     img.setAttribute("class", "album");
     img.setAttribute("src", trackImgUrl);
@@ -168,6 +169,7 @@ const Boom = {
     link.appendChild(h4);
     li.appendChild(link);
     li.appendChild(audio);
+    console.trace();
     li.appendChild(amImage);
     document.querySelector("ul")?.appendChild(li);
   },
@@ -183,36 +185,31 @@ const Boom = {
       const data = await response.json();
       const appleMusicPrefix = "https://itunes.apple.com/us/rss/topsongs/limit=25/";
       const opts = data.options;
-      const selector = document.querySelector("select");
+      const selector = document.querySelector("select")!;
         //console.dir(opts);
         for(const opt of opts) {
           //break; // debug
-          if (selector) {
-              let optionElement = document.createElement("option");
-              if (optionElement) {
-                if (opt.type === "appmus") {
-                  optionElement.value = appleMusicPrefix + opt.value;
-                } else {
-                  optionElement.value = opt.value;
-                }
-                optionElement.textContent = opt.label;
-                if(opt.type === "na") {
-                  optionElement.setAttribute("disabled", "disabled");
-                }
-                selector.setAttribute("selected", "selected");
-                selector.appendChild(optionElement);
-              }
-
-              selector.addEventListener("change", (event) => {
-              let selectedValue = (event.target as HTMLSelectElement).value;
-              console.log("Selected value:", selectedValue);
-              localStorage["lastListenedTo"] = selectedValue;
-              console.log("changed lastListenedTo: " + selectedValue);
-              // Call getTracks with the selected value
-              Boom.getTracks(selectedValue);
-            });
+          let optionElement = document.createElement("option");
+          if (opt.type === "appmus") {
+            optionElement.value = appleMusicPrefix + opt.value;
+          } else {
+            optionElement.value = opt.value;
           }
+          optionElement.textContent = opt.label;
+          if(opt.type === "na") {
+            optionElement.setAttribute("disabled", "disabled");
+          }
+          selector.setAttribute("selected", "selected");
+          selector.appendChild(optionElement);
         }
+        selector.addEventListener("change", (event) => {
+          let selectedValue = (event.target as HTMLSelectElement).value;
+          console.log("Selected value:", selectedValue);
+          localStorage["lastListenedTo"] = selectedValue;
+          console.log("changed lastListenedTo: " + selectedValue);
+          // Call getTracks with the selected value
+          Boom.getTracks(selectedValue);
+        });
         return data as T; // Return the data as the generic type T
     }
     catch (error: any) {
