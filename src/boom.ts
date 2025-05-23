@@ -1,7 +1,7 @@
 const publisherSlug =
   "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
 const githubPrefix =
-  "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/AG/src/playlists/";
+  "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/main/src/playlists/";
 const itunesApiPrefix =
   "https://itunes.apple.com/search?limit=1&media=music&entity=song&term=";
 
