@@ -249,9 +249,7 @@ const Boom = {
       const opts = data.options;
       // biome-ignore lint/style/noNonNullAssertion: <explanation>
       const selector = document.querySelector("select")!;
-      //console.dir(opts);
       for (const opt of opts) {
-        //break; // debug
         const optionElement = document.createElement("option");
         if (opt.type === "appmus") {
           optionElement.value = appleMusicPrefix + opt.value;
@@ -264,7 +262,6 @@ const Boom = {
         }
         if (opts.value === localStorage.lastListenedTo) {
           optionElement.setAttribute("selected", "selected");
-        //selector.setAttribute("selected", "selected");
         }
         selector.appendChild(optionElement);
       }
@@ -273,7 +270,6 @@ const Boom = {
         console.log("Selected value:", selectedValue);
         localStorage.setItem("lastListenedTo", selectedValue);
         console.log(`changed lastListenedTo: ${selectedValue}`);
-        // Call getTracks with the selected value
         Boom.getTracks(selectedValue);
       });
       return data as T; // Return the data as the generic type T
@@ -286,10 +282,10 @@ const Boom = {
 
 document.addEventListener(
   "play",
-  (e) => {
+  (ag) => {
     const audios = document.getElementsByTagName("audio");
     for (const audio of audios) {
-      if (audio !== e.target) {
+      if (audio !== ag.target) {
         audio.pause();
       }
     }
@@ -297,7 +293,7 @@ document.addEventListener(
   true,
 );
 
-window.addEventListener("load", (event) => {
-  console.log("extension loaded");
+window.addEventListener("load", (e) => {
+  console.log("boom! lets go...");
   Boom.init();
 });
