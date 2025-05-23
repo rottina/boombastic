@@ -49,14 +49,13 @@ const Boom = {
         console.error("Fetch error:", error);
         throw error;
       }
-    } else if (playlist.includes("custom-bilboard")) {
+    } else if (playlist.includes("custom")) {
       try {
         const response = await fetch(`${githubPrefix + playlist}.json`);
         console.log(`bilboard playlist ${playlist}.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
         const parent = document.querySelector("ul");
         if (parent) {
           parent.innerHTML = "";
@@ -66,7 +65,6 @@ const Boom = {
         console.dir(tracks);
         for (const track of tracks) {
           const searchTerm = `${track.s} ${track.a}`;
-          console.log(`searchTermmmmmmmm :::: ${searchTerm}`);
           const finalSearchString = searchTerm.replace(/ /g, "+");
           console.log(`finalSearchString :::: ${finalSearchString}`);
           Boom.itunesSearch(finalSearchString);
