@@ -1,0 +1,30 @@
+[
+  { "a": "Carly Simon", "s": "You're So Vain" },
+  { "a": "Stevie Wonder", "s": "Superstition" },
+  { "a": "Elton John", "s": "Crocodile Rock" },
+  { "a": "Roberta Flack", "s": "Killing Me Softly With His Song" },
+  { "a": "The O'Jays", "s": "Love Train" },
+  { "a": "Vicki Lawrence", "s": "The Night The Lights Went Out In Georgia" },
+  {
+    "a": "Dawn Featuring Tony Orlando",
+    "s": "Tie A Yellow Ribbon Round The Ole Oak Tree"
+  },
+  { "a": "Stevie Wonder", "s": "You Are The Sunshine Of My Life" },
+  { "a": "Edgar Winter Group", "s": "Frankenstein" },
+  { "a": "Wings", "s": "My Love" },
+  { "a": "George Harrison", "s": "Give Me Love" },
+  { "a": "Billy Preston", "s": "Will It Go Round In Circles" },
+  { "a": "Jim Croce", "s": "Bad, Bad Leroy Brown" },
+  { "a": "Maureen McGovern", "s": "The Morning After" },
+  { "a": "Diana Ross", "s": "Touch Me In The Morning" },
+  { "a": "Marvin Gaye", "s": "Let's Get It On" },
+  { "a": "Helen Reddy", "s": "Delta Dawn" },
+  { "a": "Grand Funk", "s": "We're An American Band" },
+  { "a": "The Rolling Stones", "s": "Angie" },
+  { "a": "Gladys Knight and the Pips", "s": "Midnight Train To Georgia" },
+  { "a": "Eddie Kendricks", "s": "Keep On Truckin" },
+  { "a": "Ringo Starr", "s": "Photograph" },
+  { "a": "Carpenters", "s": "Top Of The World" },
+  { "a": "Charlie Rich", "s": "The Most Beautiful Girl" },
+  { "a": "Jim Croce", "s": "Time In A Bottle" }
+]
