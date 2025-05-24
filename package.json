@@ -1,11 +1,8 @@
 {
   "name": "boombastic",
   "version": "3.0.0",
-  "description": "A chrome extension that displays music charts & other feeds, and lets you preview songs.",
+  "description": "Discover and preview popular tracks on the web.",
   "main": "index.js",
-  "directories": {
-    "lib": "_lib"
-  },
   "scripts": {
     "build": "esbuild \"src/**/*.*\" --loader:.json=copy --loader:.css=copy --outdir=lib --resolve-extensions=.ts,.json,.css",
     "format": "biome format --write .",
@@ -16,6 +13,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@tsconfig/recommended": "^1.0.8",
+    "@types/chrome": "^0.0.323",
     "esbuild": "0.25.4",
     "esbuild-plugin-copy": "^2.1.1"
   },

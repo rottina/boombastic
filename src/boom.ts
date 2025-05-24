@@ -6,13 +6,17 @@ const itunesApiPrefix =
   "https://itunes.apple.com/search?limit=1&media=music&entity=song&term=";
 const defaultPlaylist =
   "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
+const localStorageKey = "lastListenedTo";
+//const localStorageValue = localStorage.getItem(localStorageKey);
 
 class Boomer {
   // public lastListenedTo: string;
   constructor() {
     //this.populateSelector();
     this.getTracks(defaultPlaylist);
+    this.prefsStorage(localStorageKey, defaultPlaylist);
   }
+
   getTracks(playlist: string) {
     console.log(playlist);
     if (playlist.includes("pitchfork")) {
@@ -23,6 +27,17 @@ class Boomer {
       console.log("default");
     }
   }
+
+  async prefsStorage(k: string, v: string) {
+    console.log("INNNNN prefsStorage");
+    chrome.storage.local.set({ k: v });
+      // .then(() => chrome.storage.local.get([k]))
+      // .then(result => console.log(result))
+      // .catch(error => console.log(error));
+      // https://www.reddit.com/r/learnjavascript/comments/13s6256/not_able_to_set_chrome_local_storage_in_extension/
+      
+  }
+
 }
 
 class Header extends HTMLElement {
@@ -140,7 +155,7 @@ class Playlist extends HTMLElement {
         for (const track of tracks) {
           const searchTerm = `${track.s} ${track.a}`;
           const finalSearchString = searchTerm.replace(/ /g, "+");
-          console.log(`finalSearchString :::: ${finalSearchString}`);
+          //console.log(`finalSearchString :::: ${finalSearchString}`);
           Boom.itunesSearch(finalSearchString);
         }
         return data as T; // Return the data as the generic type T
