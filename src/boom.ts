@@ -201,6 +201,8 @@ class Playlist extends HTMLElement {
         // console.log(`changed lastListenedTo: ${selectedValue}`);
         // Boom.getTracks(selectedValue);
       });
+    } else {
+      console.warn("header component not found");
     }
   }
 }
