@@ -24,7 +24,7 @@
   "manifest_version": 3,
   "name": "__MSG_extName__",
   "offline_enabled": false,
-  "permissions": [ "storage"],
+  "permissions": ["storage"],
   "short_name": "Boom!",
   "version": "3.0.0"
 }

@@ -7,7 +7,8 @@ const itunesApiPrefix =
 const defaultPlaylist =
   "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
 const localStorageKey = "lastListenedTo";
-const localStorageVal = localStorage.getItem("lastListenedTo") || defaultPlaylist;
+const localStorageVal =
+  localStorage.getItem("lastListenedTo") || defaultPlaylist;
 
 class Boomer {
   // public lastListenedTo: string;
@@ -70,8 +71,6 @@ class Header extends HTMLElement {
           composed: true,
         }),
       );
-      //localStorage.setItem("lastListenedTo", selectedValue);
-      // console.log(`changed lastListenedTo: ${selectedValue}`);
       // Boom.getTracks(selectedValue);
     });
   }
@@ -104,22 +103,28 @@ class Playlist extends HTMLElement {
     `;
     this.appendChild(template.content.cloneNode(true));
   }
-  async getPlaylist<T = unknown>(playlist: string): Promise<T> {
 
-    if (playlist.includes("pitchfork")) {
-      try {
-        const response = await fetch(`${playlist}`);
-        console.log(`pfork playlist ${playlist}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const parent = document.querySelector("ul");
-        if (parent) {
-          parent.innerHTML = "";
-        } //clear children
-        const data = await response.json();
+  async getPlaylist<T = unknown>(playlist: string): Promise<T> {
+    try {
+      let response: Response;
+      if (playlist.includes("pitchfork")) {
+        response = await fetch(playlist);
+      } else if (playlist.includes("custom")) {
+        response = await fetch(`${githubPrefix + playlist}.json`);
+      } else {
+        response = await fetch(playlist);
+      }
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const ulElement = document.querySelector("ul");
+      if (ulElement) {
+        ulElement.innerHTML = "";
+      }
+      const data = await response.json();
+
+      if (playlist.includes("pitchfork")) {
         const tracks = data.items;
-        //console.dir(tracks);
         for (const track of tracks) {
           let finalSearchString = `${track.url}`;
           const parts = finalSearchString.split("/");
@@ -127,48 +132,15 @@ class Playlist extends HTMLElement {
           finalSearchString = finalSearchString.replace(/-/g, " ");
           Boom.itunesSearch(finalSearchString);
         }
-        return data as T; // Return the data as the generic type T
-      } catch (error: unknown) {
-        console.error("Fetch error:", error);
-        throw error;
-      }
-    } else if (playlist.includes("custom")) {
-      try {
-        const response = await fetch(`${githubPrefix + playlist}.json`);
-        console.log(`bilboard playlist ${playlist}.json`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const parent = document.querySelector("ul");
-        if (parent) {
-          parent.innerHTML = "";
-        } //clear children
-        const data = await response.json();
+      } else if (playlist.includes("custom")) {
         const tracks = data;
-        console.dir(tracks);
         for (const track of tracks) {
           const searchTerm = `${track.s} ${track.a}`;
           const finalSearchString = searchTerm.replace(/ /g, "+");
           //console.log(`finalSearchString :::: ${finalSearchString}`);
           Boom.itunesSearch(finalSearchString);
         }
-        return data as T; // Return the data as the generic type T
-      } catch (error: unknown) {
-        console.error("Fetch error:", error);
-        throw error;
-      }
-    } else {
-      try {
-        const response = await fetch(playlist);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const parent = document.querySelector("ul");
-        if (parent) {
-          parent.innerHTML = "";
-        } //clear children
-        const data = await response.json();
+      } else {
         const tracks = data.feed.entry;
         console.log(tracks.length);
         for (const track of tracks) {
@@ -188,14 +160,14 @@ class Playlist extends HTMLElement {
             trackAppleMusicUrl,
             trackAlbumName,
           );
-          //break; // debug: Remove this break to display all tracks
         }
-        return data as T; // Return the data as the generic type T
-      } catch (error: unknown) {
-        console.error("Fetch error:", error);
-        throw error;
       }
+      return data as T;
+    } catch (error: unknown) {
+      console.error("Fetch error:", error);
+      throw error;
     }
+
   }
   connectedCallback() {
     console.log("playlist component added to DOM");
@@ -461,14 +433,14 @@ const Boom = {
       const data = await response.json();
       const appleMusicPrefix =
         "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=";
-        const appleMusicSuffix = "/explicit=true/json";
+      const appleMusicSuffix = "/explicit=true/json";
       const opts = data.options;
       // biome-ignore lint/style/noNonNullAssertion: <explanation>
       const selector = document.querySelector("select")!;
       for (const opt of opts) {
         const optionElement = document.createElement("option");
         if (opt.type === "appmus") {
-          optionElement.value = appleMusicPrefix+ opt.value +appleMusicSuffix;
+          optionElement.value = appleMusicPrefix + opt.value + appleMusicSuffix;
         } else {
           optionElement.value = opt.value;
         }
