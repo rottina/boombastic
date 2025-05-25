@@ -7,14 +7,13 @@ const itunesApiPrefix =
 const defaultPlaylist =
   "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
 const localStorageKey = "lastListenedTo";
-//const localStorageValue = localStorage.getItem(localStorageKey);
+const localStorageVal = localStorage.getItem("lastListenedTo") || defaultPlaylist;
 
 class Boomer {
   // public lastListenedTo: string;
   constructor() {
     //this.populateSelector();
     this.getTracks(defaultPlaylist);
-    this.prefsStorage(localStorageKey, defaultPlaylist);
   }
 
   getTracks(playlist: string) {
@@ -27,17 +26,6 @@ class Boomer {
       console.log("default");
     }
   }
-
-  async prefsStorage(k: string, v: string) {
-    console.log("INNNNN prefsStorage");
-    chrome.storage.local.set({ k: v });
-      // .then(() => chrome.storage.local.get([k]))
-      // .then(result => console.log(result))
-      // .catch(error => console.log(error));
-      // https://www.reddit.com/r/learnjavascript/comments/13s6256/not_able_to_set_chrome_local_storage_in_extension/
-      
-  }
-
 }
 
 class Header extends HTMLElement {
@@ -56,6 +44,12 @@ class Header extends HTMLElement {
           optionElement.textContent = opt.label;
           if (opt.type === "na") {
             optionElement.setAttribute("disabled", "disabled");
+          }
+          if (opt.value === localStorageVal) {
+            console.log(
+              `localStorage.lastListenedTo: ${localStorage.lastListenedTo}`,
+            );
+            optionElement.setAttribute("selected", "selected");
           }
           selector.appendChild(optionElement);
         }
@@ -111,7 +105,7 @@ class Playlist extends HTMLElement {
     this.appendChild(template.content.cloneNode(true));
   }
   async getPlaylist<T = unknown>(playlist: string): Promise<T> {
-    //console.log(playlist);
+
     if (playlist.includes("pitchfork")) {
       try {
         const response = await fetch(`${playlist}`);
@@ -210,10 +204,9 @@ class Playlist extends HTMLElement {
       console.log("header component found");
       Header.addEventListener("playlist-changed", (event) => {
         const selectedValue = (event as CustomEvent).detail.selectedValue;
+        localStorage.setItem("lastListenedTo", selectedValue);
         console.log("Selected value from playlist:", selectedValue);
         this.getPlaylist(selectedValue);
-        // localStorage.setItem("lastListenedTo", selectedValue);
-        // console.log(`changed lastListenedTo: ${selectedValue}`);
         // Boom.getTracks(selectedValue);
       });
     } else {
@@ -467,14 +460,15 @@ const Boom = {
       }
       const data = await response.json();
       const appleMusicPrefix =
-        "https://itunes.apple.com/us/rss/topsongs/limit=25/";
+        "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=";
+        const appleMusicSuffix = "/explicit=true/json";
       const opts = data.options;
       // biome-ignore lint/style/noNonNullAssertion: <explanation>
       const selector = document.querySelector("select")!;
       for (const opt of opts) {
         const optionElement = document.createElement("option");
         if (opt.type === "appmus") {
-          optionElement.value = appleMusicPrefix + opt.value;
+          optionElement.value = appleMusicPrefix+ opt.value +appleMusicSuffix;
         } else {
           optionElement.value = opt.value;
         }
@@ -483,6 +477,9 @@ const Boom = {
           optionElement.setAttribute("disabled", "disabled");
         }
         if (opts.value === localStorage.lastListenedTo) {
+          console.log(
+            `localStorage.lastListenedTo: ${localStorage.lastListenedTo}`,
+          );
           optionElement.setAttribute("selected", "selected");
         }
         selector.appendChild(optionElement);
