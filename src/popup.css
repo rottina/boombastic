@@ -261,39 +261,23 @@ select {
   left: 5px;
 }
 
-.badge {
-  left: 9px;
-  position: absolute;
-  top: 42px;
-}
-
 a {
   outline: none;
   text-decoration: none;
 }
-.noaudio {
-  cursor: not-allowed;
-  opacity: 0.33;
-}
 
-#visualisation {
+#viz {
   border-radius: 2px;
   height: 25px;
   position: absolute;
   right: 3px;
-  top: 10px;
-  width: 128px;
+  top: 8px;
+  width: 111px;
   -webkit-box-reflect: below 1px
-    gradient(
-      linear,
-      left top,
-      left bottom,
-      from(transparent),
-      to(rgba(255, 255, 255, 0.2))
-    );
+    linear-gradient(transparent, rgba(255, 255, 255, 0.2));
 }
 
-#visualisation > div {
+#viz > div {
   bottom: 0;
   display: inline-block;
   position: absolute;

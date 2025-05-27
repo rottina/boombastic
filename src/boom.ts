@@ -13,10 +13,19 @@ const appleMusicPrefix =
   "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=";
 const appleMusicSuffix = "/explicit=true/json";
 
+const context = new AudioContext();
+const analyser = context.createAnalyser();
+const audios = undefined;
+const bars = document.getElementsByName("#viz > div");
+const barSpacingPercent = 100 / analyser.frequencyBinCount;
+const currentAudio = undefined;
+const frequencyData = new Uint8Array(analyser.frequencyBinCount);
+let sourceNode = undefined;
+const visualisation = document.getElementById("viz");
+
 class Boomer {
   // public lastListenedTo: string;
   constructor() {
-    //this.populateSelector();
     this.getTracks(defaultPlaylist);
   }
 
@@ -85,7 +94,7 @@ class Header extends HTMLElement {
     <header>
         <h1>B<span class="o1">o</span><span class="o2">o</span>mbastic<span class="o2"> !</span></h1>
         <h2>Discover and preview popular tracks on the web.</h2>
-        <div id="visualisation" class="hideIfNoApi">
+        <div id="viz" class="hideIfNoApi">
           <div style="left: 0%; height: 0"></div><div style="left: 3.125%; height: 0"></div><div style="left: 6.25%; height: 0"></div><div style="left: 9.375%; height: 0"></div><div style="left: 12.5%; height: 0"></div><div style="left: 15.625%; height: 0"></div><div style="left: 18.75%; height: 0"></div><div style="left: 21.875%; height: 0"></div><div style="left: 25%; height: 0"></div><div style="left: 28.125%; height: 0"></div><div style="left: 31.25%; height: 0"></div><div style="left: 34.375%; height: 0"></div><div style="left: 37.5%; height: 0"></div><div style="left: 40.625%; height: 0"></div><div style="left: 43.75%; height: 0"></div><div style="left: 46.875%; height: 0"></div><div style="left: 50%; height: 0"></div><div style="left: 53.125%; height: 0"></div><div style="left: 56.25%; height: 0"></div><div style="left: 59.375%; height: 0"></div><div style="left: 62.5%; height: 0"></div><div style="left: 65.625%; height: 0"></div><div style="left: 68.75%; height: 0"></div><div style="left: 71.875%; height: 0"></div><div style="left: 75%; height: 0"></div><div style="left: 78.125%; height: 0"></div><div style="left: 81.25%; height: 0"></div><div style="left: 84.375%; height: 0"></div><div style="left: 87.5%; height: 0"></div><div style="left: 90.625%; height: 0"></div><div style="left: 93.75%; height: 0"></div><div style="left: 96.875%; height: 0"></div>
         </div>
         <select></select>
@@ -171,6 +180,7 @@ class Playlist extends HTMLElement {
       throw error;
     }
   }
+
   connectedCallback() {
     console.log("playlist component added to DOM");
     const Header = document.querySelector("header-component");
@@ -181,7 +191,7 @@ class Playlist extends HTMLElement {
         localStorage.setItem("lastListenedTo", selectedValue);
         console.log("Selected value from playlist:", selectedValue);
         this.getPlaylist(selectedValue);
-        // Boom.getTracks(selectedValue);
+        //Boom.getTracks(selectedValue);
       });
     } else {
       console.warn("header component not found");
@@ -381,6 +391,36 @@ const Boom = {
       throw error;
     }
   },
+
+  update: () => {
+    requestAnimationFrame(Boom.update);
+    analyser.getByteFrequencyData(frequencyData);
+    Array.from(document.querySelectorAll("#viz > div")).forEach(
+      (bar, index) => {
+        const barHeightPerc = frequencyData[index] / 256;
+        const r = Math.floor(barHeightPerc * 255);
+        const g = 29 + Math.floor(barHeightPerc * 186);
+        const b = 255 - Math.floor(barHeightPerc * 255);
+        (bar as HTMLElement).style.height = `${barHeightPerc * 25}px`;
+        (bar as HTMLElement).style.backgroundColor = `rgb(${r},${g},${b})`;
+      },
+    );
+  },
+
+  setCurrentAudio: (currentAudio: HTMLAudioElement) => {
+    // @ts-ignore
+    sourceNode = context.createMediaElementSource(currentAudio);
+    // @ts-ignore
+    sourceNode.connect(analyser);
+    analyser.connect(context.destination);
+    analyser.getByteFrequencyData(frequencyData);
+    for (let i = 0; i < analyser.frequencyBinCount; i++) {
+      const div = document.createElement("div");
+      div.style.left = `${i * barSpacingPercent}%`;
+      visualisation?.appendChild(div);
+    }
+    Boom.update();
+  },
 }; // Closing brace for Boom object
 
 document.addEventListener(
@@ -388,6 +428,7 @@ document.addEventListener(
   (ag) => {
     const audios = document.getElementsByTagName("audio");
     for (const audio of audios) {
+      Boom.setCurrentAudio(audio);
       if (audio !== ag.target) {
         audio.pause();
       }
@@ -398,4 +439,5 @@ document.addEventListener(
 const boomer = new Boomer();
 window.addEventListener("load", (e) => {
   console.log("boom! lets go...");
+  // You can call Boom.init() or other startup logic here if needed.
 });

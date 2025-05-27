@@ -396,7 +396,7 @@ var Boom = {
                     { artist: "Peter, Paul %26 Mary", song: "Leaving on a Jet Plane" },
                     {
                         artist: "Diana Ross %26 the Supremes",
-                        song: "Someday We'll Be Together",
+                        song: "Someday We'll Be Together"
                     },
                 ];
                 break;
