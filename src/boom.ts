@@ -399,7 +399,7 @@ const Boom = {
       (bar, index) => {
         const barHeightPerc = frequencyData[index] / 256;
         const r = Math.floor(barHeightPerc * 255);
-        const g = 29 + Math.floor(barHeightPerc * 186);
+        const g = 229 + Math.floor(barHeightPerc * 186);
         const b = 255 - Math.floor(barHeightPerc * 255);
         (bar as HTMLElement).style.height = `${barHeightPerc * 25}px`;
         (bar as HTMLElement).style.backgroundColor = `rgb(${r},${g},${b})`;
@@ -436,6 +436,7 @@ document.addEventListener(
   },
   true,
 );
+
 const boomer = new Boomer();
 window.addEventListener("load", (e) => {
   console.log("boom! lets go...");

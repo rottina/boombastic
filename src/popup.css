@@ -205,6 +205,7 @@ audio {
 audio:hover {
   cursor: pointer;
 }
+
 audio::-webkit-media-controls-panel {
   background: transparent;
 }
@@ -273,8 +274,7 @@ a {
   right: 3px;
   top: 8px;
   width: 111px;
-  -webkit-box-reflect: below 1px
-    linear-gradient(transparent, rgba(255, 255, 255, 0.2));
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(255, 255, 255, 0.2));
 }
 
 #viz > div {
