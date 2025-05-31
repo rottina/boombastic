@@ -16,7 +16,6 @@ const appleMusicSuffix = "/explicit=true/json";
 const context = new AudioContext();
 const analyser = context.createAnalyser();
 const audios = undefined;
-const bars = document.getElementsByName("#viz > div");
 const barSpacingPercent = 100 / analyser.frequencyBinCount;
 const currentAudio = undefined;
 const frequencyData = new Uint8Array(analyser.frequencyBinCount);
@@ -24,7 +23,7 @@ let sourceNode = undefined;
 const visualisation = document.getElementById("viz");
 
 class Boomer {
-  // public lastListenedTo: string;
+  // OK boomer!
   constructor() {
     this.getTracks(defaultPlaylist);
   }
@@ -42,6 +41,23 @@ class Boomer {
 }
 
 class Header extends HTMLElement {
+  constructor() {
+    super();
+    const template = document.createElement("template");
+    template.innerHTML = `
+    <header>
+        <h1>B<span class="o1">o</span><span class="o2">o</span>mbastic<span class="o2"> !</span></h1>
+        <h2>Discover and preview popular tracks on the web.</h2>
+        <div id="viz" class="hideIfNoApi">
+          <div data-yo="mike" style="left: 0%; height: 0"></div><div data-yo="ag" style="left: 3.125%; height: 0"></div><div data-yo="chris" style="left: 6.25%; height: 0"></div><div style="left: 9.375%; height: 0"></div><div style="left: 12.5%; height: 0"></div><div style="left: 15.625%; height: 0"></div><div style="left: 18.75%; height: 0"></div><div style="left: 21.875%; height: 0"></div><div style="left: 25%; height: 0"></div><div style="left: 28.125%; height: 0"></div><div style="left: 31.25%; height: 0"></div><div style="left: 34.375%; height: 0"></div><div style="left: 37.5%; height: 0"></div><div style="left: 40.625%; height: 0"></div><div style="left: 43.75%; height: 0"></div><div style="left: 46.875%; height: 0"></div><div style="left: 50%; height: 0"></div><div style="left: 53.125%; height: 0"></div><div style="left: 56.25%; height: 0"></div><div style="left: 59.375%; height: 0"></div><div style="left: 62.5%; height: 0"></div><div style="left: 65.625%; height: 0"></div><div style="left: 68.75%; height: 0"></div><div style="left: 71.875%; height: 0"></div><div style="left: 75%; height: 0"></div><div style="left: 78.125%; height: 0"></div><div style="left: 81.25%; height: 0"></div><div style="left: 84.375%; height: 0"></div><div style="left: 87.5%; height: 0"></div><div style="left: 90.625%; height: 0"></div><div style="left: 93.75%; height: 0"></div><div style="left: 96.875%; height: 0"></div>
+        </div>
+        <select></select>
+      </header>
+    `;
+    this.appendChild(template.content.cloneNode(true));
+    this.populateSelector(appleMusicPrefix, appleMusicSuffix);
+  }
+
   populateSelector(appleMusicPrefix: string, appleMusicSuffix: string) {
     console.log("in populateSelect");
     const optionsFile = "options.json";
@@ -69,7 +85,7 @@ class Header extends HTMLElement {
       });
   }
 
-  connectedCallback() {
+  connectedCallback(): void {
     console.log("header component added to DOM");
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const selector = this.querySelector("select")!;
@@ -85,23 +101,6 @@ class Header extends HTMLElement {
       );
       //Boom.getTracks(selectedValue);
     });
-  }
-
-  constructor() {
-    super();
-    const template = document.createElement("template");
-    template.innerHTML = `
-    <header>
-        <h1>B<span class="o1">o</span><span class="o2">o</span>mbastic<span class="o2"> !</span></h1>
-        <h2>Discover and preview popular tracks on the web.</h2>
-        <div id="viz" class="hideIfNoApi">
-          <div style="left: 0%; height: 0"></div><div style="left: 3.125%; height: 0"></div><div style="left: 6.25%; height: 0"></div><div style="left: 9.375%; height: 0"></div><div style="left: 12.5%; height: 0"></div><div style="left: 15.625%; height: 0"></div><div style="left: 18.75%; height: 0"></div><div style="left: 21.875%; height: 0"></div><div style="left: 25%; height: 0"></div><div style="left: 28.125%; height: 0"></div><div style="left: 31.25%; height: 0"></div><div style="left: 34.375%; height: 0"></div><div style="left: 37.5%; height: 0"></div><div style="left: 40.625%; height: 0"></div><div style="left: 43.75%; height: 0"></div><div style="left: 46.875%; height: 0"></div><div style="left: 50%; height: 0"></div><div style="left: 53.125%; height: 0"></div><div style="left: 56.25%; height: 0"></div><div style="left: 59.375%; height: 0"></div><div style="left: 62.5%; height: 0"></div><div style="left: 65.625%; height: 0"></div><div style="left: 68.75%; height: 0"></div><div style="left: 71.875%; height: 0"></div><div style="left: 75%; height: 0"></div><div style="left: 78.125%; height: 0"></div><div style="left: 81.25%; height: 0"></div><div style="left: 84.375%; height: 0"></div><div style="left: 87.5%; height: 0"></div><div style="left: 90.625%; height: 0"></div><div style="left: 93.75%; height: 0"></div><div style="left: 96.875%; height: 0"></div>
-        </div>
-        <select></select>
-      </header>
-    `;
-    this.appendChild(template.content.cloneNode(true));
-    this.populateSelector(appleMusicPrefix, appleMusicSuffix);
   }
 }
 customElements.define("header-component", Header);
@@ -124,8 +123,7 @@ class Playlist extends HTMLElement {
       } else if (playlist.includes("custom")) {
         response = await fetch(`${githubPrefix + playlist}.json`);
       } else {
-        //apple
-        response = await fetch(playlist);
+        response = await fetch(playlist); //apple music
       }
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -154,7 +152,6 @@ class Playlist extends HTMLElement {
         }
       } else {
         const tracks = data.feed.entry;
-        console.log(`AAAAAAPPPPLLLLLLEEEEEEEEE ${tracks.length}`);
         for (const track of tracks) {
           const trackId = track.id.attributes["im:id"];
           const trackArtist = track["im:artist"].label;
@@ -399,7 +396,7 @@ const Boom = {
       (bar, index) => {
         const barHeightPerc = frequencyData[index] / 256;
         const r = Math.floor(barHeightPerc * 255);
-        const g = 229 + Math.floor(barHeightPerc * 186);
+        const g = 255 + Math.floor(barHeightPerc * 255);
         const b = 255 - Math.floor(barHeightPerc * 255);
         (bar as HTMLElement).style.height = `${barHeightPerc * 25}px`;
         (bar as HTMLElement).style.backgroundColor = `rgb(${r},${g},${b})`;
@@ -428,9 +425,12 @@ document.addEventListener(
   (ag) => {
     const audios = document.getElementsByTagName("audio");
     for (const audio of audios) {
-      Boom.setCurrentAudio(audio);
+      //Boom.setCurrentAudio(audio);
       if (audio !== ag.target) {
         audio.pause();
+      } else {
+        Boom.setCurrentAudio(audio as HTMLAudioElement);
+        //Boom.setCurrentAudio(audio);
       }
     }
   },
@@ -438,7 +438,6 @@ document.addEventListener(
 );
 
 const boomer = new Boomer();
-window.addEventListener("load", (e) => {
+window.addEventListener("load", () => {
   console.log("boom! lets go...");
-  // You can call Boom.init() or other startup logic here if needed.
 });
