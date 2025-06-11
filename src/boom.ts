@@ -112,6 +112,38 @@ class Playlist extends HTMLElement {
     this.appendChild(template.content.cloneNode(true));
   }
 
+  static itunesSearch(finalSearchString: string) {
+    const searchUrl = itunesApiPrefix + finalSearchString;
+    fetch(searchUrl)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.resultCount > 0) {
+          const trackId = res.results[0].trackId;
+          const trackArtist = res.results[0].artistName;
+          const trackTitle = res.results[0].trackName;
+          const trackImgUrl = res.results[0].artworkUrl100;
+          const trackAudioUrl = res.results[0].previewUrl;
+          const trackAppleMusicUrl =
+            res.results[0].collectionViewUrl + publisherSlug;
+          const trackAlbumName = res.results[0].collectionName;
+          Synth.displayTrack(
+            trackId,
+            trackArtist,
+            trackTitle,
+            trackImgUrl,
+            trackAudioUrl,
+            trackAppleMusicUrl,
+            trackAlbumName,
+          );
+        } else {
+          console.log("No results found for this track.");
+        }
+      })
+      .catch((error) =>
+        console.error("Error fetching or parsing JSON:", error),
+      );
+  }
+
   async getPlaylist<T = unknown>(playlist: string): Promise<T> {
     try {
       let response: Response;
@@ -138,14 +170,14 @@ class Playlist extends HTMLElement {
           const parts = finalSearchString.split("/");
           finalSearchString = parts.pop() || "";
           finalSearchString = finalSearchString.replace(/-/g, " ");
-          Synth.itunesSearch(finalSearchString);
+          Playlist.itunesSearch(finalSearchString);
         }
       } else if (playlist.includes("custom")) {
         const tracks = data;
         for (const track of tracks) {
           const searchTerm = `${track.s} ${track.a}`;
           const finalSearchString = searchTerm.replace(/ /g, "+");
-          Synth.itunesSearch(finalSearchString);
+          Playlist.itunesSearch(finalSearchString);
         }
       } else {
         const tracks = data.feed.entry;
@@ -247,38 +279,6 @@ class TrackPanel extends HTMLElement {
 customElements.define("track-panel", TrackPanel);
 
 const Synth = {
-  itunesSearch: (finalSearchString: string) => {
-    const searchUrl = itunesApiPrefix + finalSearchString;
-
-    fetch(searchUrl)
-      .then((response) => response.json())
-      .then((res) => {
-        if (res.resultCount > 0) {
-          const trackId = res.results[0].trackId;
-          const trackArtist = res.results[0].artistName;
-          const trackTitle = res.results[0].trackName;
-          const trackImgUrl = res.results[0].artworkUrl100;
-          const trackAudioUrl = res.results[0].previewUrl;
-          const trackAppleMusicUrl =
-            res.results[0].collectionViewUrl + publisherSlug;
-          const trackAlbumName = res.results[0].collectionName;
-          Synth.displayTrack(
-            trackId,
-            trackArtist,
-            trackTitle,
-            trackImgUrl,
-            trackAudioUrl,
-            trackAppleMusicUrl,
-            trackAlbumName,
-          );
-        } else {
-          console.log("No results found for this track.");
-        }
-      })
-      .catch((error) =>
-        console.error("Error fetching or parsing JSON:", error),
-      );
-  },
 
   displayTrack: function displayTrack(
     trackId: string,
