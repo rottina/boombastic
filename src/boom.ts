@@ -279,7 +279,6 @@ class TrackPanel extends HTMLElement {
 customElements.define("track-panel", TrackPanel);
 
 const Synth = {
-
   displayTrack: function displayTrack(
     trackId: string,
     trackArtist: string,
