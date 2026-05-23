@@ -202,6 +202,11 @@
     },
     {
       "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 2026",
+      "value": "custom-bilboard-2026"
+    },
+    {
+      "type": "custom",
       "label": "Billboard | Hot 100 | #1 singles | 2025",
       "value": "custom-bilboard-2025"
     },
