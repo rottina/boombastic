@@ -22,10 +22,9 @@ let sourceNode = undefined;
 const visualisation = document.getElementById("viz");
 
 class Boomer {
-  // OK Boomer!
   constructor() {
     Playlist.prototype.getPlaylist(defaultPlaylist);
-    console.log("Boomer initialized with default playlist:", defaultPlaylist);
+    console.log("Tha BOOM initialized with default playlist:", defaultPlaylist);
   }
 }
 
@@ -40,7 +39,7 @@ class Header extends HTMLElement {
         <div id="viz" class="hideIfNoApi">
           <div data-yo="mike" style="left: 0%; height: 0"></div><div data-yo="ag" style="left: 3.125%; height: 0"></div><div data-yo="chris" style="left: 6.25%; height: 0"></div><div style="left: 9.375%; height: 0"></div><div style="left: 12.5%; height: 0"></div><div style="left: 15.625%; height: 0"></div><div style="left: 18.75%; height: 0"></div><div style="left: 21.875%; height: 0"></div><div style="left: 25%; height: 0"></div><div style="left: 28.125%; height: 0"></div><div style="left: 31.25%; height: 0"></div><div style="left: 34.375%; height: 0"></div><div style="left: 37.5%; height: 0"></div><div style="left: 40.625%; height: 0"></div><div style="left: 43.75%; height: 0"></div><div style="left: 46.875%; height: 0"></div><div style="left: 50%; height: 0"></div><div style="left: 53.125%; height: 0"></div><div style="left: 56.25%; height: 0"></div><div style="left: 59.375%; height: 0"></div><div style="left: 62.5%; height: 0"></div><div style="left: 65.625%; height: 0"></div><div style="left: 68.75%; height: 0"></div><div style="left: 71.875%; height: 0"></div><div style="left: 75%; height: 0"></div><div style="left: 78.125%; height: 0"></div><div style="left: 81.25%; height: 0"></div><div style="left: 84.375%; height: 0"></div><div style="left: 87.5%; height: 0"></div><div style="left: 90.625%; height: 0"></div><div style="left: 93.75%; height: 0"></div><div style="left: 96.875%; height: 0"></div>
         </div>
-        <select></select>
+        <select name="playlist-dropdown"></select>
       </header>
     `;
     this.appendChild(template.content.cloneNode(true));
@@ -63,9 +62,9 @@ class Header extends HTMLElement {
             optionElement.setAttribute("disabled", "disabled");
           }
           if (opt.value === localStorageVal) {
-            console.log(
-              `localStorage.lastListenedTo: ${localStorage.lastListenedTo}`,
-            );
+            // console.log(
+            //   `localStorage.lastListenedTo: ${localStorage.lastListenedTo}`,
+            // );
             optionElement.setAttribute("selected", "selected");
           }
           selector.appendChild(optionElement);
@@ -83,12 +82,12 @@ class Header extends HTMLElement {
   }
 
   connectedCallback(): void {
-    console.log("header component added to DOM");
+    //console.log("header component added to DOM");
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const selector = this.querySelector("select")!;
     selector.addEventListener("change", (event) => {
       const selectedValue = (event.target as HTMLSelectElement).value;
-      console.log("Selected value:", selectedValue);
+      //console.log("Selected value:", selectedValue);
       this.dispatchEvent(
         new CustomEvent("playlist-changed", {
           detail: { selectedValue },
@@ -208,14 +207,14 @@ class Playlist extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log("playlist component added to DOM");
+    //console.log("playlist component added to DOM");
     const headerComponent = document.querySelector("header-component");
     if (headerComponent) {
-      console.log("header component found");
+      //console.log("header component found");
       document.addEventListener("playlist-changed", (event) => {
         const selectedValue = (event as CustomEvent).detail.selectedValue;
         localStorage.setItem("lastListenedTo", selectedValue);
-        console.log("Selected value from playlist:", selectedValue);
+        //console.log("Selected value from playlist:", selectedValue);
         this.getPlaylist(selectedValue);
         //Boom.getTracks(selectedValue);
       });
@@ -248,7 +247,7 @@ class TrackPanel extends HTMLElement {
   }
 
   connectedCallback(): void {
-    console.log("track-panel component added to DOM");
+    //console.log("track-panel component added to DOM");
     this.setAttribute("track-artist", "Unknown Artist");
     this.setAttribute("track-title", "Unknown Title");
     this.setAttribute("track-img-url", "https://via.placeholder.com/60");
@@ -365,7 +364,7 @@ const Synth = {
     link.appendChild(img);
     link.appendChild(h3);
     link.appendChild(h4);
-    console.log(li);
+    //console.log(li);
     li.appendChild(link);
     li.appendChild(audio);
     //console.trace();
@@ -390,6 +389,7 @@ const Synth = {
 
   setCurrentAudio: (currentAudio: HTMLAudioElement) => {
     // @ts-ignore
+    sourceNode.disconnect();
     sourceNode = context.createMediaElementSource(currentAudio);
     // @ts-ignore
     sourceNode.connect(analyser);
