@@ -154,7 +154,9 @@ class Playlist extends HTMLElement {
       } else {
         console.log("Apple Music RSS feed id: ", playlist);
         //response = await fetch(playlist); //apple music
-        response = await fetch(`https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=true/json`);
+        response = await fetch(
+          `https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=true/json`,
+        );
       }
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -407,7 +409,9 @@ const Synth = {
         } catch (e) {
           // If the audio element was previously connected, reuse existing sourceNode
           if (e instanceof DOMException && e.name === "InvalidStateError") {
-            console.warn("Audio element already connected, reusing existing source node");
+            console.warn(
+              "Audio element already connected, reusing existing source node",
+            );
           } else {
             throw e;
           }
