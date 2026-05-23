@@ -42,7 +42,7 @@
     },
     {
       "type": "custom",
-      "label": "Mike's Top 10 Hip-Hop Joints",
+      "label": "Mike's Top Hip-Hop Joints",
       "value": "custom-unique-mike"
     },
     {
@@ -189,11 +189,6 @@
       "type": "appmus",
       "label": "Apple Music Top 25 | World",
       "value": "19"
-    },
-    {
-      "type": "na",
-      "label": "========================",
-      "value": ""
     },
     {
       "type": "na",
