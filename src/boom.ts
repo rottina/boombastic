@@ -63,9 +63,9 @@ class Header extends HTMLElement {
             optionElement.setAttribute("disabled", "disabled");
           }
           if (opt.value === localStorageVal) {
-            // console.log(
-            //   `localStorage.lastListenedTo: ${localStorage.lastListenedTo}`,
-            // );
+            console.log(
+              `localStorage.lastListenedTo: ${localStorage.lastListenedTo}`,
+            );
             optionElement.setAttribute("selected", "selected");
           }
           selector.appendChild(optionElement);
@@ -83,12 +83,12 @@ class Header extends HTMLElement {
   }
 
   connectedCallback(): void {
-    //console.log("header component added to DOM");
+    console.log("header component added to DOM");
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const selector = this.querySelector("select")!;
     selector.addEventListener("change", (event) => {
       const selectedValue = (event.target as HTMLSelectElement).value;
-      //console.log("Selected value:", selectedValue);
+      console.log("Selected value:", selectedValue);
       this.dispatchEvent(
         new CustomEvent("playlist-changed", {
           detail: { selectedValue },
@@ -152,7 +152,9 @@ class Playlist extends HTMLElement {
       } else if (playlist.includes("custom")) {
         response = await fetch(`${githubPrefix + playlist}.json`);
       } else {
-        response = await fetch(playlist); //apple music
+        console.log("Apple Music RSS feed id: ", playlist);
+        //response = await fetch(playlist); //apple music
+        response = await fetch(`https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=true/json`);
       }
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -208,14 +210,14 @@ class Playlist extends HTMLElement {
   }
 
   connectedCallback() {
-    //console.log("playlist component added to DOM");
+    console.log("playlist component added to DOM");
     const headerComponent = document.querySelector("header-component");
     if (headerComponent) {
-      //console.log("header component found");
+      console.log("header component found");
       document.addEventListener("playlist-changed", (event) => {
         const selectedValue = (event as CustomEvent).detail.selectedValue;
         localStorage.setItem("lastListenedTo", selectedValue);
-        //console.log("Selected value from playlist:", selectedValue);
+        console.log("Selected value from playlist:", selectedValue);
         this.getPlaylist(selectedValue);
         //Boom.getTracks(selectedValue);
       });
@@ -248,7 +250,7 @@ class TrackPanel extends HTMLElement {
   }
 
   connectedCallback(): void {
-    //console.log("track-panel component added to DOM");
+    console.log("track-panel component added to DOM");
     this.setAttribute("track-artist", "Unknown Artist");
     this.setAttribute("track-title", "Unknown Title");
     this.setAttribute("track-img-url", "https://via.placeholder.com/60");
@@ -288,7 +290,7 @@ const Synth = {
     trackAppleMusicUrl: string,
     trackAlbumName: string,
   ) {
-    //console.log("in displayTrack");
+    console.log("in displayTrack");
     const li = document.createElement("li");
     li.setAttribute("data-id", trackId);
     document.querySelector("ul")?.appendChild(li);
@@ -365,7 +367,7 @@ const Synth = {
     link.appendChild(img);
     link.appendChild(h3);
     link.appendChild(h4);
-    //console.log(li);
+    console.log(li);
     li.appendChild(link);
     li.appendChild(audio);
     //console.trace();
@@ -389,16 +391,29 @@ const Synth = {
   },
 
   setCurrentAudio: (currentAudio: HTMLAudioElement) => {
-    if (sourceNode) {
-      sourceNode.disconnect();
-    }
-    // Only create a new MediaElementAudioSourceNode if this is a different audio element
+    // Create source node only once for a new audio element
     if (connectedAudio !== currentAudio) {
-      sourceNode = context.createMediaElementSource(currentAudio);
+      // Stop playing the previous audio before switching
+      if (connectedAudio) {
+        connectedAudio.pause();
+      }
       connectedAudio = currentAudio;
+      // createMediaElementSource() can only be called once per audio element
+      // If it's already been connected, we need to skip creating a new source node
+      if (!sourceNode || sourceNode.mediaElement !== currentAudio) {
+        try {
+          sourceNode = context.createMediaElementSource(currentAudio);
+          sourceNode.connect(analyser);
+        } catch (e) {
+          // If the audio element was previously connected, reuse existing sourceNode
+          if (e instanceof DOMException && e.name === "InvalidStateError") {
+            console.warn("Audio element already connected, reusing existing source node");
+          } else {
+            throw e;
+          }
+        }
+      }
     }
-    // @ts-ignore
-    sourceNode.connect(analyser);
     analyser.connect(context.destination);
     analyser.getByteFrequencyData(frequencyData);
     for (let i = 0; i < analyser.frequencyBinCount; i++) {
@@ -408,7 +423,7 @@ const Synth = {
     }
     Synth.update();
   },
-}; // Closing brace for Boom object
+}; // Closing Boom object
 
 const boomer = new Boomer(); //Esiason or Berman
 
@@ -422,7 +437,6 @@ document.addEventListener(
         audio.pause();
       } else {
         Synth.setCurrentAudio(audio as HTMLAudioElement);
-        //Synth.setCurrentAudio(audio); ?
       }
     }
   },
