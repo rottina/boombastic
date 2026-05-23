@@ -19,6 +19,7 @@ const barSpacingPercent = 100 / analyser.frequencyBinCount;
 const currentAudio = undefined;
 const frequencyData = new Uint8Array(analyser.frequencyBinCount);
 let sourceNode: MediaElementAudioSourceNode | undefined = undefined;
+let connectedAudio: HTMLAudioElement | undefined = undefined;
 const visualisation = document.getElementById("viz");
 
 class Boomer {
@@ -391,7 +392,11 @@ const Synth = {
     if (sourceNode) {
       sourceNode.disconnect();
     }
-    sourceNode = context.createMediaElementSource(currentAudio);
+    // Only create a new MediaElementAudioSourceNode if this is a different audio element
+    if (connectedAudio !== currentAudio) {
+      sourceNode = context.createMediaElementSource(currentAudio);
+      connectedAudio = currentAudio;
+    }
     // @ts-ignore
     sourceNode.connect(analyser);
     analyser.connect(context.destination);
