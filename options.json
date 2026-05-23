@@ -27,18 +27,23 @@
     },
     {
       "type": "custom",
-      "label": "Unique | Prince's Party Mix",
+      "label": "Prince's Party Mix",
       "value": "custom-unique-prince"
     },
     {
       "type": "custom",
-      "label": "Unique | Rolling Stone | Summer 70s",
+      "label": "Rolling Stone | Summer 70s",
       "value": "custom-unique-rs-summer70s"
     },
     {
       "type": "custom",
-      "label": "Unique | Rolling Stone | Sexiest Songs",
+      "label": "Rolling Stone | Sexiest Songs",
       "value": "custom-unique-rs-sexiest"
+    },
+    {
+      "type": "custom",
+      "label": "Mike's Top 10 Hip-Hop Joints",
+      "value": "custom-unique-mike"
     },
     {
       "type": "na",
@@ -189,11 +194,6 @@
       "type": "na",
       "label": "========================",
       "value": ""
-    },
-    {
-      "type": "custom",
-      "label": "Mike's Custom Playlist",
-      "value": "mike.json"
     },
     {
       "type": "na",
