@@ -146,6 +146,7 @@ class Playlist extends HTMLElement {
   async getPlaylist<T = unknown>(playlist: string): Promise<T> {
     try {
       let response: Response;
+      
       switch (playlist) {
         case playlist.includes("pitchfork") ? playlist : "":
           console.log(`Processing pitchfork playlist - ${playlist}`);
@@ -156,7 +157,7 @@ class Playlist extends HTMLElement {
           if (playlist.includes("billboard")) {
             console.log(`Processing a local billboard playlist - ${playlist}`);
             response = await fetch(
-              chrome.runtime.getURL(`playlists/${playlist}.json`),
+              chrome.runtime.getURL(`lib/playlists/${playlist}.json`),
             );
           } else if (playlist.includes("unique")) {
             console.log(`Processing a unique playlist - ${playlist}`);
@@ -174,6 +175,7 @@ class Playlist extends HTMLElement {
               }
             } catch (e) {
               // if local fetch fails, try remote
+              console.log(`IN CATCHHHHH - ${e}`);
               response = await fetch(
                 `${githubPrefix}playlists/${playlist}.json`,
               );
