@@ -23,10 +23,10 @@ let sourceNode: MediaElementAudioSourceNode | undefined = undefined;
 let connectedAudio: HTMLAudioElement | undefined = undefined;
 const visualisation = document.getElementById("viz");
 
-class Boomer {
+class Boomshakalaka {
   constructor() {
     Playlist.prototype.getPlaylist(defaultPlaylist);
-    console.log("Tha BOOM initialized with default playlist:", defaultPlaylist);
+    console.log("BOOMSHAKALAKA: ", defaultPlaylist);
   }
 }
 
@@ -37,7 +37,7 @@ class Header extends HTMLElement {
     template.innerHTML = `
     <header>
         <h1>B<span class="o1">o</span><span class="o2">o</span>mbastic<span class="o2"> !</span></h1>
-        <h2>Discover and preview popular tracks on the web.</h2>
+        <h2>Discover and preview hot tracks on the web.</h2>
         <div id="viz" class="hideIfNoApi">
           <div data-yo="mike" style="left: 0%; height: 0"></div><div data-yo="ag" style="left: 3.125%; height: 0"></div><div data-yo="chris" style="left: 6.25%; height: 0"></div><div style="left: 9.375%; height: 0"></div><div style="left: 12.5%; height: 0"></div><div style="left: 15.625%; height: 0"></div><div style="left: 18.75%; height: 0"></div><div style="left: 21.875%; height: 0"></div><div style="left: 25%; height: 0"></div><div style="left: 28.125%; height: 0"></div><div style="left: 31.25%; height: 0"></div><div style="left: 34.375%; height: 0"></div><div style="left: 37.5%; height: 0"></div><div style="left: 40.625%; height: 0"></div><div style="left: 43.75%; height: 0"></div><div style="left: 46.875%; height: 0"></div><div style="left: 50%; height: 0"></div><div style="left: 53.125%; height: 0"></div><div style="left: 56.25%; height: 0"></div><div style="left: 59.375%; height: 0"></div><div style="left: 62.5%; height: 0"></div><div style="left: 65.625%; height: 0"></div><div style="left: 68.75%; height: 0"></div><div style="left: 71.875%; height: 0"></div><div style="left: 75%; height: 0"></div><div style="left: 78.125%; height: 0"></div><div style="left: 81.25%; height: 0"></div><div style="left: 84.375%; height: 0"></div><div style="left: 87.5%; height: 0"></div><div style="left: 90.625%; height: 0"></div><div style="left: 93.75%; height: 0"></div><div style="left: 96.875%; height: 0"></div>
         </div>
@@ -83,12 +83,12 @@ class Header extends HTMLElement {
   }
 
   connectedCallback(): void {
-    console.log("header component added to DOM");
+    //console.log("header component added to DOM");
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const selector = this.querySelector("select")!;
     selector.addEventListener("change", (event) => {
       const selectedValue = (event.target as HTMLSelectElement).value;
-      console.log("Selected value:", selectedValue);
+      //console.log("Selected value:", selectedValue);
       this.dispatchEvent(
         new CustomEvent("playlist-changed", {
           detail: { selectedValue },
@@ -187,9 +187,9 @@ class Playlist extends HTMLElement {
           response = await fetch(`playlists/${playlist}.json`);
           break;
         default:
-          console.log("Processing Apple playlists - {playlist}");
+          console.log("Processing an Apple playlist...");
           response = await fetch(
-            `https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=true/json`,
+            `https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=false/json`,
           );
 
           if (!response.ok) {
@@ -257,7 +257,7 @@ class Playlist extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log("playlist component added to DOM");
+    //console.log("playlist component added to DOM");
     const headerComponent = document.querySelector("header-component");
     if (headerComponent) {
       //console.log("header component found");
@@ -413,7 +413,7 @@ const Synth = {
     link.appendChild(img);
     link.appendChild(h3);
     link.appendChild(h4);
-    console.log(li);
+    //console.log(li);
     li.appendChild(link);
     li.appendChild(audio);
     //console.trace();
@@ -427,9 +427,9 @@ const Synth = {
     Array.from(document.querySelectorAll("#viz > div")).forEach(
       (bar, index) => {
         const barHeightPerc = frequencyData[index] / 256;
-        const r = Math.floor(barHeightPerc * 255);
-        const g = 255 + Math.floor(barHeightPerc * 255);
-        const b = 255 - Math.floor(barHeightPerc * 255);
+        const r = Math.floor(barHeightPerc * 5);
+        const g = 255 + Math.floor(barHeightPerc * 55);
+        const b = 255 - Math.floor(barHeightPerc * 75);
         (bar as HTMLElement).style.height = `${barHeightPerc * 25}px`;
         (bar as HTMLElement).style.backgroundColor = `rgb(${r},${g},${b})`;
       },
@@ -473,8 +473,7 @@ const Synth = {
   },
 }; // Closing Boom object
 
-const boomer = new Boomer(); //Esiason or Berman
-
+const boom = new Boomshakalaka(); // kaboom!
 document.addEventListener(
   "play",
   (ag) => {

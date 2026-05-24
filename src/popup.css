@@ -292,6 +292,8 @@ a {
 }
 
 #viz > div {
+  border-top-left-radius: 33%;
+  border-top-right-radius: 33%;
   bottom: 0;
   display: inline-block;
   position: absolute;

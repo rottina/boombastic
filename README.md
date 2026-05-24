@@ -12,3 +12,5 @@ A chrome extension to displays music feeds, and previews tracks.
 * `npm run build -- --watch`
 * `npx biome check --write` 
 * `npx biome format --write`
+
+## Store submission
