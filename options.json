@@ -515,6 +515,11 @@
       "type": "custom",
       "label": "Billboard | Hot 100 | #1 singles | 1963",
       "value": "custom-bilboard-1963"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1962",
+      "value": "custom-bilboard-1962"
     }
   ]
 }
