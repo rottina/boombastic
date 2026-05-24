@@ -1,17 +1,18 @@
 const defaultPlaylist =
-  "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=18/explicit=true/json";
+  "https://itunes.apple.com/us/rss/topsongs/limit=20/genre=18/explicit=false/json";
 const localStorageKey = "lastListenedTo";
 const localStorageVal =
   localStorage.getItem("lastListenedTo") || defaultPlaylist;
 const publisherSlug =
   "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
 const githubPrefix =
-  "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/main/src/playlists/";
+  "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/main";
+const optionsUrl = "/options.json";
 const itunesApiPrefix =
   "https://itunes.apple.com/search?limit=1&media=music&entity=song&term=";
 const appleMusicPrefix =
-  "https://itunes.apple.com/us/rss/topsongs/limit=25/genre=";
-const appleMusicSuffix = "/explicit=true/json";
+  "https://itunes.apple.com/us/rss/topsongs/limit=20/genre=";
+const appleMusicSuffix = "/explicit=false/json";
 const context = new AudioContext();
 const analyser = context.createAnalyser();
 const audios = undefined;
@@ -48,8 +49,7 @@ class Header extends HTMLElement {
   }
 
   populateSelector(appleMusicPrefix: string, appleMusicSuffix: string) {
-    const optionsFile = "options.json";
-    fetch(optionsFile)
+    fetch(`${githubPrefix}${optionsUrl}`)
       .then((response) => response.json())
       .then((data) => {
         const opts = data.options;
@@ -150,10 +150,9 @@ class Playlist extends HTMLElement {
       if (playlist.includes("pitchfork")) {
         response = await fetch(playlist);
       } else if (playlist.includes("custom")) {
-        response = await fetch(`${githubPrefix + playlist}.json`);
+        response = await fetch(`${`${githubPrefix}/src/playlists/${playlist}`}.json`);
       } else {
-        console.log("Apple Music RSS feed id: ", playlist);
-        //response = await fetch(playlist); //apple music
+        console.log("Apple Music genre: ", playlist);
         response = await fetch(
           `https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=true/json`,
         );
@@ -215,7 +214,7 @@ class Playlist extends HTMLElement {
     console.log("playlist component added to DOM");
     const headerComponent = document.querySelector("header-component");
     if (headerComponent) {
-      console.log("header component found");
+      //console.log("header component found");
       document.addEventListener("playlist-changed", (event) => {
         const selectedValue = (event as CustomEvent).detail.selectedValue;
         localStorage.setItem("lastListenedTo", selectedValue);
@@ -292,7 +291,7 @@ const Synth = {
     trackAppleMusicUrl: string,
     trackAlbumName: string,
   ) {
-    console.log("in displayTrack");
+    //console.log("in displayTrack");
     const li = document.createElement("li");
     li.setAttribute("data-id", trackId);
     document.querySelector("ul")?.appendChild(li);
@@ -436,7 +435,6 @@ document.addEventListener(
   (ag) => {
     const audios = document.getElementsByTagName("audio");
     for (const audio of audios) {
-      //Synth.setCurrentAudio(audio);
       if (audio !== ag.target) {
         audio.pause();
       } else {
@@ -447,6 +445,4 @@ document.addEventListener(
   true,
 );
 
-window.addEventListener("load", () => {
-  console.log("boom! lets go...");
-});
+window.addEventListener("load", () => { });

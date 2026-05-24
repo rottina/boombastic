@@ -7,7 +7,7 @@ A chrome extension to displays music feeds, and previews tracks.
 ## Screenshot
 ![Screenshot](https://lh3.googleusercontent.com/q_HOZL-41-bbmS_5A1SY_VCzpmlR8BVU6pjC3C6XRUY0Ew_oCFAsNcihGjCoJORXums9GsYwvA=s1280-h800-e365-rw "Boombastic!")
 
-## Local development commands
+## Local development
 * `npm ci`
 * `npm run build -- --watch`
 * `npx biome check --write` 

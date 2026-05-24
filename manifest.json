@@ -26,5 +26,5 @@
   "offline_enabled": false,
   "permissions": ["storage"],
   "short_name": "Boom!",
-  "version": "3.0.0"
+  "version": "3.0.1"
 }
