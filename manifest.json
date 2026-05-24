@@ -19,9 +19,7 @@
   "name": "__MSG_extName__",
   "offline_enabled": false,
   "permissions": ["storage", "runtime"],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "host_permissions": ["<all_urls>"],
   "short_name": "Boom!",
   "version": "3.0.1"
 }

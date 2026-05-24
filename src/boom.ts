@@ -155,14 +155,18 @@ class Playlist extends HTMLElement {
           console.log(`Processing a custom playlist - ${playlist}`);
           if (playlist.includes("billboard")) {
             console.log(`Processing a local billboard playlist - ${playlist}`);
-            response = await fetch(chrome.runtime.getURL(`playlists/${playlist}.json`));
+            response = await fetch(
+              chrome.runtime.getURL(`playlists/${playlist}.json`),
+            );
           } else if (playlist.includes("unique")) {
             console.log(`Processing a unique playlist - ${playlist}`);
             response = await fetch(`${githubPrefix}playlists/${playlist}.json`);
           } else {
             // fallback for other custom playlists - try local then remote
             try {
-              response = await fetch(chrome.runtime.getURL(`playlists/${playlist}.json`));
+              response = await fetch(
+                chrome.runtime.getURL(`playlists/${playlist}.json`),
+              );
               if (!response.ok) {
                 response = await fetch(
                   `${githubPrefix}playlists/${playlist}.json`,
