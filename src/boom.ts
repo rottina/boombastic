@@ -150,7 +150,9 @@ class Playlist extends HTMLElement {
       if (playlist.includes("pitchfork")) {
         response = await fetch(playlist);
       } else if (playlist.includes("custom")) {
-        response = await fetch(`${`${githubPrefix}/src/playlists/${playlist}`}.json`);
+        response = await fetch(
+          `${`${githubPrefix}/src/playlists/${playlist}`}.json`,
+        );
       } else {
         console.log("Apple Music genre: ", playlist);
         response = await fetch(
@@ -444,4 +446,4 @@ document.addEventListener(
   true,
 );
 
-window.addEventListener("load", () => { });
+window.addEventListener("load", () => {});
