@@ -20,6 +20,10 @@
     "*://*.githubusercontent.com/*",
     "*://pitchfork.com/*"
   ],
+  "web_accessible_resources": [{
+    "resources": [ "playlists/*.json" ],
+    "use_dynamic_url": false
+  }],
   "incognito": "spanning",
   "manifest_version": 3,
   "name": "__MSG_extName__",

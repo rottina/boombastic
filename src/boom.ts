@@ -6,8 +6,8 @@ const localStorageVal =
 const publisherSlug =
   "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
 const githubPrefix =
-  "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/main";
-const optionsUrl = "/options.json";
+  "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/main/src/";
+const optionsUrl = "../options.json";
 const itunesApiPrefix =
   "https://itunes.apple.com/search?limit=1&media=music&entity=song&term=";
 const appleMusicPrefix =
@@ -96,7 +96,6 @@ class Header extends HTMLElement {
           composed: true,
         }),
       );
-      //Boom.getTracks(selectedValue);
     });
   }
 }
@@ -136,7 +135,7 @@ class Playlist extends HTMLElement {
             trackAlbumName,
           );
         } else {
-          console.log("No results found for this track.");
+          console.log(`No results found for ${finalSearchString}.`);
         }
       })
       .catch((error) =>
@@ -147,21 +146,47 @@ class Playlist extends HTMLElement {
   async getPlaylist<T = unknown>(playlist: string): Promise<T> {
     try {
       let response: Response;
-      if (playlist.includes("pitchfork")) {
-        response = await fetch(playlist);
-      } else if (playlist.includes("custom")) {
-        response = await fetch(
-          `${`${githubPrefix}/src/playlists/${playlist}`}.json`,
-        );
-      } else {
-        console.log("Apple Music genre: ", playlist);
-        response = await fetch(
-          `https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=true/json`,
-        );
+      switch (playlist) {
+        case playlist.includes("pitchfork") ? playlist : "":
+          console.log(`Processing pitchfork playlist - ${playlist}`);
+          response = await fetch(playlist);
+          break;
+        case playlist.includes("custom") ? playlist : "":
+          console.log(`Processing a custom playlist - ${playlist}`);
+          if (playlist.includes("billboard")) {
+            console.log(`Processing a local billboard playlist - ${playlist}`);
+            response = await fetch(`playlists/${playlist}.json`);
+          } else if (playlist.includes("unique")) {
+            console.log(`Processing a unique playlist - ${playlist}`);
+            response = await fetch(`${githubPrefix}playlists/${playlist}.json`);
+          } else {
+            // fallback for other custom playlists - try local then remote
+            try {
+              response = await fetch(`playlists/${playlist}.json`);
+              if (!response.ok) {
+                response = await fetch(`${githubPrefix}playlists/${playlist}.json`);
+              }
+            } catch (e) {
+              // if local fetch fails, try remote
+              response = await fetch(`${githubPrefix}playlists/${playlist}.json`);
+            }
+          }
+          break;
+        case playlist.includes("unique") ? playlist : "":
+          console.log(`Processing custom-unique playlist${playlist}`);
+          response = await fetch(`playlists/${playlist}.json`);
+          break;
+        default:
+          console.log("Processing Apple playlists - {playlist}");
+          response = await fetch(
+            `https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=true/json`,
+          );
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
       }
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+
       const ulElement = document.querySelector("ul");
       if (ulElement) {
         ulElement.innerHTML = "";
@@ -177,7 +202,16 @@ class Playlist extends HTMLElement {
           finalSearchString = finalSearchString.replace(/-/g, " ");
           Playlist.itunesSearch(finalSearchString);
         }
-      } else if (playlist.includes("custom")) {
+      } else if (playlist.includes("billboard")) {
+        console.log(`Processing custom-billboard playlist - ${playlist}`);
+        const tracks = data;
+        for (const track of tracks) {
+          const searchTerm = `${track.s} ${track.a}`;
+          const finalSearchString = searchTerm.replace(/ /g, "+");
+          Playlist.itunesSearch(finalSearchString);
+        }
+      } else if (playlist.includes("unique")) {
+        console.log(`Processing custom-unique playlist - ${playlist}`);
         const tracks = data;
         for (const track of tracks) {
           const searchTerm = `${track.s} ${track.a}`;
