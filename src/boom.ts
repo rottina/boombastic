@@ -164,11 +164,15 @@ class Playlist extends HTMLElement {
             try {
               response = await fetch(`playlists/${playlist}.json`);
               if (!response.ok) {
-                response = await fetch(`${githubPrefix}playlists/${playlist}.json`);
+                response = await fetch(
+                  `${githubPrefix}playlists/${playlist}.json`,
+                );
               }
             } catch (e) {
               // if local fetch fails, try remote
-              response = await fetch(`${githubPrefix}playlists/${playlist}.json`);
+              response = await fetch(
+                `${githubPrefix}playlists/${playlist}.json`,
+              );
             }
           }
           break;
