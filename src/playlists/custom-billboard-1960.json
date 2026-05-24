@@ -9,7 +9,10 @@
   { "a": "Connie Francis", "s": "My Heart Has a Mind of Its Own" },
   { "a": "Chubby Checker", "s": "The Twist" },
   { "a": "Elvis Presley", "s": "It's Now or Never" },
-  { "a": "Brian Hyland", "s": "Itsy Bitsy Teenie Weenie Yellow Polkadot Bikini" },
+  {
+    "a": "Brian Hyland",
+    "s": "Itsy Bitsy Teenie Weenie Yellow Polkadot Bikini"
+  },
   { "a": "Brenda Lee", "s": "I'm Sorry" },
   { "a": "Hollywood Argyles", "s": "Alley Oop" },
   { "a": "Connie Francis", "s": "Everybody's Somebody's Fool" },
