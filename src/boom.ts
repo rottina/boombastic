@@ -220,7 +220,6 @@ class Playlist extends HTMLElement {
         localStorage.setItem("lastListenedTo", selectedValue);
         console.log("Selected value from playlist:", selectedValue);
         this.getPlaylist(selectedValue);
-        //Boom.getTracks(selectedValue);
       });
     } else {
       console.warn("header component not found");
@@ -263,7 +262,7 @@ class TrackPanel extends HTMLElement {
     this.setAttribute("track-album-name", "Unknown Album");
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const li = this.querySelector("li")!;
-    li.setAttribute("data-id", "track-id-placeholder");
+    li.setAttribute("data-track-id", "track-id-placeholder");
     const trackArtist = this.getAttribute("track-artist") || "Unknown Artist";
     const trackTitle = this.getAttribute("track-title") || "Unknown Title";
     const trackImgUrl =
@@ -293,7 +292,7 @@ const Synth = {
   ) {
     //console.log("in displayTrack");
     const li = document.createElement("li");
-    li.setAttribute("data-id", trackId);
+    li.setAttribute("data-track-id", trackId);
     document.querySelector("ul")?.appendChild(li);
     Synth.generateTrackPanel({
       li,
