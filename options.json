@@ -520,6 +520,11 @@
       "type": "custom",
       "label": "Billboard | Hot 100 | #1 singles | 1962",
       "value": "custom-bilboard-1962"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | Hot 100 | #1 singles | 1961",
+      "value": "custom-bilboard-1961"
     }
   ]
 }
