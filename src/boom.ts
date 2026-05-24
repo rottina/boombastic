@@ -22,6 +22,7 @@ const frequencyData = new Uint8Array(analyser.frequencyBinCount);
 let sourceNode: MediaElementAudioSourceNode | undefined = undefined;
 let connectedAudio: HTMLAudioElement | undefined = undefined;
 const visualisation = document.getElementById("viz");
+const currentYear = new Date().getFullYear();
 
 class Boomshakalaka {
   constructor() {
@@ -37,10 +38,10 @@ class Header extends HTMLElement {
     template.innerHTML = `
     <header>
         <h1>B<span class="o1">o</span><span class="o2">o</span>mbastic<span class="o2"> !</span></h1>
-        <h2>Discover and preview hot tracks on the web.</h2>
-        <div id="viz" class="hideIfNoApi">
+        <h2>Discover and preview the greastest tracks of all time</h2>
+        <aside id="viz">
           <div data-yo="mike" style="left: 0%; height: 0"></div><div data-yo="ag" style="left: 3.125%; height: 0"></div><div data-yo="chris" style="left: 6.25%; height: 0"></div><div style="left: 9.375%; height: 0"></div><div style="left: 12.5%; height: 0"></div><div style="left: 15.625%; height: 0"></div><div style="left: 18.75%; height: 0"></div><div style="left: 21.875%; height: 0"></div><div style="left: 25%; height: 0"></div><div style="left: 28.125%; height: 0"></div><div style="left: 31.25%; height: 0"></div><div style="left: 34.375%; height: 0"></div><div style="left: 37.5%; height: 0"></div><div style="left: 40.625%; height: 0"></div><div style="left: 43.75%; height: 0"></div><div style="left: 46.875%; height: 0"></div><div style="left: 50%; height: 0"></div><div style="left: 53.125%; height: 0"></div><div style="left: 56.25%; height: 0"></div><div style="left: 59.375%; height: 0"></div><div style="left: 62.5%; height: 0"></div><div style="left: 65.625%; height: 0"></div><div style="left: 68.75%; height: 0"></div><div style="left: 71.875%; height: 0"></div><div style="left: 75%; height: 0"></div><div style="left: 78.125%; height: 0"></div><div style="left: 81.25%; height: 0"></div><div style="left: 84.375%; height: 0"></div><div style="left: 87.5%; height: 0"></div><div style="left: 90.625%; height: 0"></div><div style="left: 93.75%; height: 0"></div><div style="left: 96.875%; height: 0"></div>
-        </div>
+        </aside>
         <select name="playlist-dropdown"></select>
       </header>
     `;
@@ -153,14 +154,21 @@ class Playlist extends HTMLElement {
           response = await fetch(playlist);
           break;
         case playlist.includes("custom") ? playlist : "":
-          console.log(`Processing a custom playlist - ${playlist}`);
+          console.log(`Processing a custom playlist: ${playlist}`);
           if (playlist.includes("billboard")) {
-            console.log(`Processing a local billboard playlist - ${playlist}`);
-            response = await fetch(
-              chrome.runtime.getURL(`lib/playlists/${playlist}.json`),
-            );
+            console.log(`Processing a local billboard playlist: ${playlist}`);
+            if (currentYear && playlist.includes(currentYear.toString())) {
+              console.log("Its 2026 use github billboard playlist:");
+              response = await fetch(
+                `${githubPrefix}playlists/${playlist}.json`,
+              );
+            } else {
+              response = await fetch(
+                chrome.runtime.getURL(`lib/playlists/${playlist}.json`),
+              );
+            }
           } else if (playlist.includes("unique")) {
-            console.log(`Processing a unique playlist - ${playlist}`);
+            console.log(`Processing a unique playlist: ${playlist}`);
             response = await fetch(`${githubPrefix}playlists/${playlist}.json`);
           } else {
             // fallback for other custom playlists - try local then remote
@@ -320,8 +328,6 @@ class TrackPanel extends HTMLElement {
       "https://example.com/apple-music";
     const trackAlbumName =
       this.getAttribute("track-album-name") || "Unknown Album";
-
-    //generateTrackPanel: function generateTrackPane do this here
   }
 }
 customElements.define("track-panel", TrackPanel);
