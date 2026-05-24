@@ -146,7 +146,7 @@ class Playlist extends HTMLElement {
   async getPlaylist<T = unknown>(playlist: string): Promise<T> {
     try {
       let response: Response;
-      
+
       switch (playlist) {
         case playlist.includes("pitchfork") ? playlist : "":
           console.log(`Processing pitchfork playlist - ${playlist}`);
