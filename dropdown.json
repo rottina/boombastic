@@ -387,6 +387,16 @@
       "value": "custom-billboard-1960"
     },
     {
+      "type": "custom",
+      "label": "Billboard | #1 singles | 1959",
+      "value": "custom-billboard-1959"
+    },
+    {
+      "type": "custom",
+      "label": "Billboard | #1 singles | 1958",
+      "value": "custom-billboard-1958"
+    },
+    {
       "type": "na",
       "label": "== APPLE MUSIC ===================",
       "value": ""
