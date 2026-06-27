@@ -207,11 +207,11 @@ li:hover h4 {
 }
 audio {
   border: 0;
+  left: 255px;
   margin: 0;
   outline: 0;
   padding: 0;
   position: absolute;
-  right: -35px;
   top: 8px;
   width: 100px;
 }
@@ -226,8 +226,8 @@ audio::-webkit-media-controls-panel {
 
 audio::-webkit-media-controls-enclosure {
   background: transparent;
-  width: 59px;
   overflow: hidden;
+  width: 59px;
 }
 
 audio::-webkit-media-controls-panel {
@@ -254,16 +254,16 @@ input[type="range"] {
 
 select {
   background-color: var(--boom-dark-gray-3);
-  border: 1px solid var(--boom-very-dark-2);
   border-radius: 3px;
+  border: 1px solid var(--boom-very-dark-2);
   box-shadow: 1px 1px 2px 0 var(--boom-very-dark-3);
   color: var(--boom-off-white);
   height: 31px;
   inset: 1px 1px 1px 0 var(--boom-dark-gray-3);
   outline: 0;
   position: absolute;
-  top: 58px;
   right: 3px;
+  top: 58px;
   width: 325px;
 }
 

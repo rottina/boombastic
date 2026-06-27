@@ -4,7 +4,9 @@
     "browser_style": true,
     "default_icon": {
       "16": "img/icon16.png",
+      "32": "img/icon32.png",
       "48": "img/icon48.png",
+      "64": "img/icon64.png",
       "128": "img/icon128.png"
     },
     "default_area": "navbar",
@@ -18,8 +20,8 @@
   "manifest_version": 3,
   "name": "__MSG_extName__",
   "offline_enabled": false,
-  "permissions": ["storage", "runtime"],
+  "permissions": ["storage"],
   "host_permissions": ["<all_urls>"],
   "short_name": "Boom!",
-  "version": "3.0.1"
+  "version": "3.0.2"
 }
