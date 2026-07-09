@@ -23,5 +23,5 @@
   "permissions": ["storage"],
   "host_permissions": ["<all_urls>"],
   "short_name": "Boom!",
-  "version": "3.0.2"
+  "version": "3.0.3"
 }

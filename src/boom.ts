@@ -5,9 +5,8 @@ const localStorageVal =
   localStorage.getItem("lastListenedTo") || defaultPlaylist;
 const publisherSlug =
   "&itscg=30200&itsct=music_box_link&ls=1&app=music&mttnsubad=1667990774&at=11l6841";
-const githubPrefix =
-  "https://raw.githubusercontent.com/rottina/boombastic/refs/heads/main/src/";
-const optionsUrl = "../options.json";
+const roPrefix = "https://rottina.com/boombastic/";
+const optionsUrl = "options.json";
 const itunesApiPrefix =
   "https://itunes.apple.com/search?limit=1&media=music&entity=song&term=";
 const appleMusicPrefix =
@@ -51,7 +50,7 @@ class Header extends HTMLElement {
   }
 
   populateSelector(appleMusicPrefix: string, appleMusicSuffix: string) {
-    fetch(`${githubPrefix}${optionsUrl}`)
+    fetch(`${roPrefix}${optionsUrl}`)
       .then((response) => response.json())
       .then((data) => {
         const opts = data.options;
@@ -160,9 +159,7 @@ class Playlist extends HTMLElement {
             console.log(`Processing a local billboard playlist: ${playlist}`);
             if (currentYear && playlist.includes(currentYear.toString())) {
               console.log("Its 2026 use github billboard playlist:");
-              response = await fetch(
-                `${githubPrefix}playlists/${playlist}.json`,
-              );
+              response = await fetch(`${roPrefix}playlists/${playlist}.json`);
             } else {
               response = await fetch(
                 chrome.runtime.getURL(`lib/playlists/${playlist}.json`),
@@ -170,7 +167,7 @@ class Playlist extends HTMLElement {
             }
           } else if (playlist.includes("unique")) {
             console.log(`Processing a unique playlist: ${playlist}`);
-            response = await fetch(`${githubPrefix}playlists/${playlist}.json`);
+            response = await fetch(`${roPrefix}playlists/${playlist}.json`);
           } else {
             // fallback for other custom playlists - try local then remote
             try {
@@ -178,16 +175,12 @@ class Playlist extends HTMLElement {
                 chrome.runtime.getURL(`playlists/${playlist}.json`),
               );
               if (!response.ok) {
-                response = await fetch(
-                  `${githubPrefix}playlists/${playlist}.json`,
-                );
+                response = await fetch(`${roPrefix}playlists/${playlist}.json`);
               }
             } catch (e) {
               // if local fetch fails, try remote
               console.log(`IN CATCHHHHH - ${e}`);
-              response = await fetch(
-                `${githubPrefix}playlists/${playlist}.json`,
-              );
+              response = await fetch(`${roPrefix}playlists/${playlist}.json`);
             }
           }
           break;
