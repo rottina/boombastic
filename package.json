@@ -1,6 +1,6 @@
 {
   "name": "boombastic",
-  "version": "3.0.0",
+  "version": "3.0.3",
   "description": "Discover and preview popular tracks on the web.",
   "main": "index.js",
   "scripts": {
