@@ -158,7 +158,7 @@ class Playlist extends HTMLElement {
           if (playlist.includes("billboard")) {
             console.log(`Processing a local billboard playlist: ${playlist}`);
             if (currentYear && playlist.includes(currentYear.toString())) {
-              console.log("Its 2026 use github billboard playlist:");
+              console.log(`Its ${playlist} use remote playlist`);
               response = await fetch(`${roPrefix}playlists/${playlist}.json`);
             } else {
               response = await fetch(
@@ -179,7 +179,7 @@ class Playlist extends HTMLElement {
               }
             } catch (e) {
               // if local fetch fails, try remote
-              console.log(`IN CATCHHHHH - ${e}`);
+              console.log(`Failed to get local and remote playlists :( - ${e}`);
               response = await fetch(`${roPrefix}playlists/${playlist}.json`);
             }
           }
@@ -193,7 +193,6 @@ class Playlist extends HTMLElement {
           response = await fetch(
             `https://itunes.apple.com/us/rss/topsongs/limit=25/genre=${playlist}/explicit=false/json`,
           );
-
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
